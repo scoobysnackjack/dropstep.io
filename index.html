@@ -110,8 +110,8 @@
             position: fixed;
             inset: 0 0 auto 0;
             z-index: 20;
-            background: rgba(8, 8, 8, .92);
-            border-bottom: 2px solid rgba(185,255,46,.25);
+            background: rgba(245, 240, 223, .9);
+            border-bottom: 2px solid rgba(8,8,8,.12);
             backdrop-filter: blur(14px);
         }
         .nav-inner {
@@ -129,7 +129,7 @@
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: .04em;
-            color: rgba(255,255,255,.82);
+            color: var(--black);
         }
         .menu-btn {
             display: none;
@@ -144,8 +144,8 @@
         .mobile-menu {
             display: none;
             padding: 10px 0 20px;
-            border-top: 2px solid rgba(185,255,46,.25);
-            background: var(--black);
+            border-top: 2px solid rgba(8,8,8,.1);
+            background: var(--cream);
         }
         .mobile-menu.open { display: block; }
         .mobile-menu a {
@@ -154,7 +154,7 @@
             font-size: 12px;
             font-weight: 900;
             text-transform: uppercase;
-            color: rgba(255,255,255,.82);
+            color: var(--black);
         }
 
         .hero {
@@ -552,7 +552,7 @@
             min-height: 280px;
             border: 3px solid var(--white);
             border-radius: 24px;
-            background: var(--black);
+            background: var(--cream);
             box-shadow: 9px 9px 0 var(--purple);
         }
         .logo-card img { width: min(320px, 82%); }
