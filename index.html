@@ -248,173 +248,160 @@
             line-height: .8;
             transform: rotate(-8deg);
         }
-        .automation-dashboard {
+        .os-map {
             position: relative;
             z-index: 3;
-            width: min(560px, 100%);
-            padding: 22px;
-            border: 2px solid rgba(255,255,255,.14);
-            border-radius: 28px;
-            background:
-                linear-gradient(135deg, rgba(255,255,255,.09), rgba(255,255,255,.02)),
-                var(--black);
-            color: var(--white);
+            width: min(620px, 100%);
+            padding: 20px;
+            border: 2px solid var(--black);
+            border-radius: 30px;
+            background: rgba(255, 249, 233, .86);
             box-shadow:
-                14px 14px 0 rgba(135,87,255,.62),
-                -10px -10px 0 rgba(185,255,46,.72),
-                0 34px 90px rgba(8,8,8,.42);
-            transform: rotate(-1.2deg);
-            transform-origin: center;
-            -webkit-font-smoothing: antialiased;
+                12px 12px 0 rgba(135,87,255,.75),
+                -9px -9px 0 rgba(185,255,46,.78),
+                0 30px 80px rgba(8,8,8,.18);
+            transform: rotate(-1deg);
         }
-        .dashboard-top {
+        .os-map::before {
+            content: "";
+            position: absolute;
+            inset: 70px 36px 98px;
+            z-index: -1;
+            border: 2px dashed rgba(8,8,8,.16);
+            border-radius: 26px;
+        }
+        .os-head {
             display: flex;
             justify-content: space-between;
+            gap: 18px;
             align-items: flex-start;
-            gap: 20px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid rgba(255,255,255,.12);
+            padding: 6px 4px 16px;
         }
-        .dashboard-kicker {
-            color: var(--lime);
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: .14em;
-            text-transform: uppercase;
+        .os-head h3 {
+            max-width: 390px;
+            font-size: 31px;
+            line-height: .9;
+            letter-spacing: -.025em;
         }
-        .dashboard-top h3 {
+        .os-head p {
             margin-top: 8px;
-            max-width: 310px;
-            font-size: 30px;
-            line-height: .92;
-            letter-spacing: -.035em;
-        }
-        .system-live {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 7px 10px;
-            border: 1px solid rgba(185,255,46,.5);
-            border-radius: 999px;
-            color: var(--lime);
-            font-size: 10px;
-            font-weight: 900;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-        .system-live::before {
-            content: "";
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--lime);
-            box-shadow: 0 0 14px var(--lime);
-        }
-        .metric-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 18px;
-        }
-        .metric {
-            min-height: 112px;
-            padding: 15px;
-            border: 1px solid rgba(255,255,255,.18);
-            border-radius: 18px;
-            background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.045));
-        }
-        .metric span {
-            display: block;
-            min-height: 28px;
-            color: rgba(255,255,255,.64);
-            font-size: 10px;
-            font-weight: 900;
-            line-height: 1.25;
-            letter-spacing: .06em;
-            text-transform: uppercase;
-        }
-        .metric strong {
-            display: block;
-            margin-top: 18px;
-            color: var(--white);
-            font-size: 36px;
-            line-height: .86;
-            letter-spacing: -.055em;
-        }
-        .metric.accent strong { color: var(--lime); }
-        .dashboard-bottom {
-            display: grid;
-            grid-template-columns: 1.08fr .92fr;
-            gap: 12px;
-            margin-top: 14px;
-        }
-        .pipeline-panel,
-        .briefing-panel {
-            border: 1px solid rgba(255,255,255,.18);
-            border-radius: 18px;
-            background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
-            padding: 15px;
-        }
-        .panel-label {
-            color: rgba(255,255,255,.56);
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-        .pipeline-item {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 12px;
-            align-items: center;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,.09);
+            max-width: 300px;
+            color: rgba(8,8,8,.64);
             font-size: 12px;
+            line-height: 1.35;
             font-weight: 800;
         }
-        .pipeline-item small {
-            display: block;
-            margin-top: 4px;
-            color: rgba(255,255,255,.52);
-            font-size: 10px;
-            font-weight: 750;
-        }
-        .status-pill {
-            padding: 6px 8px;
+        .os-badge {
+            flex: none;
+            padding: 8px 10px;
+            border: 2px solid var(--black);
             border-radius: 999px;
-            background: rgba(185,255,46,.14);
+            background: var(--black);
             color: var(--lime);
+            box-shadow: 3px 3px 0 var(--purple);
             font-size: 9px;
             font-weight: 900;
+            letter-spacing: .08em;
             text-transform: uppercase;
         }
-        .briefing-panel p {
-            margin-top: 14px;
-            color: rgba(255,255,255,.72);
-            font-size: 13px;
-            line-height: 1.45;
-            font-weight: 750;
-        }
-        .briefing-bars {
+        .flow-grid {
             display: grid;
-            gap: 8px;
-            margin-top: 16px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-areas:
+                "step1 step2 step3 step4"
+                "step8 step7 step6 step5";
+            gap: 24px 16px;
+            align-items: stretch;
         }
-        .briefing-bars i {
-            display: block;
-            height: 7px;
+        .flow-step {
+            position: relative;
+            min-height: 148px;
+            padding: 14px;
+            border: 2px solid var(--black);
+            border-radius: 18px;
+            background: var(--paper);
+            box-shadow: 4px 4px 0 rgba(8,8,8,.14);
+        }
+        .flow-step::after {
+            content: "→";
+            position: absolute;
+            right: -22px;
+            top: 50%;
+            z-index: 2;
+            color: var(--black);
+            font-size: 22px;
+            font-weight: 900;
+            transform: translateY(-50%);
+        }
+        .flow-step:nth-child(4)::after {
+            content: "↓";
+            right: 50%;
+            top: auto;
+            bottom: -28px;
+            transform: translateX(50%);
+        }
+        .flow-step:nth-child(5)::after,
+        .flow-step:last-child::after {
+            content: "";
+        }
+        .flow-step:nth-child(6)::after,
+        .flow-step:nth-child(7)::after,
+        .flow-step:nth-child(8)::after {
+            content: "←";
+        }
+        .flow-step:nth-child(1) { background: #FFF6D8; }
+        .flow-step:nth-child(2) { background: rgba(185,255,46,.92); }
+        .flow-step:nth-child(3) { background: rgba(135,87,255,.92); color: var(--white); }
+        .flow-step:nth-child(4) { background: rgba(255,129,92,.9); }
+        .flow-step:nth-child(5) { background: var(--black); color: var(--white); }
+        .flow-step:nth-child(6) { background: rgba(58,168,255,.72); }
+        .flow-step:nth-child(7) { background: rgba(255,85,187,.72); }
+        .flow-step:nth-child(8) { background: var(--lime); }
+        .flow-step:nth-child(1) { grid-area: step1; }
+        .flow-step:nth-child(2) { grid-area: step2; }
+        .flow-step:nth-child(3) { grid-area: step3; }
+        .flow-step:nth-child(4) { grid-area: step4; }
+        .flow-step:nth-child(5) { grid-area: step8; }
+        .flow-step:nth-child(6) { grid-area: step7; }
+        .flow-step:nth-child(7) { grid-area: step6; }
+        .flow-step:nth-child(8) { grid-area: step5; }
+        .flow-num {
+            display: inline-grid;
+            place-items: center;
+            width: 24px;
+            height: 24px;
+            border: 2px solid currentColor;
             border-radius: 999px;
-            background: linear-gradient(90deg, var(--lime), var(--purple));
-            opacity: .85;
+            font-size: 11px;
+            font-weight: 900;
         }
-        .briefing-bars i:nth-child(2) { width: 74%; opacity: .62; }
-        .briefing-bars i:nth-child(3) { width: 52%; opacity: .45; }
-        .dashboard-callout {
+        .flow-step h4 {
+            margin: 14px 0 8px;
+            font-size: 17px;
+            line-height: 1;
+            letter-spacing: -.01em;
+        }
+        .flow-step ul {
+            margin: 0;
+            padding-left: 14px;
+            color: rgba(8,8,8,.66);
+            font-size: 10px;
+            line-height: 1.28;
+            font-weight: 800;
+        }
+        .flow-step:nth-child(3) ul,
+        .flow-step:nth-child(5) ul {
+            color: rgba(255,255,255,.72);
+        }
+        .flow-step.featured {
+            transform: translateY(-5px);
+            box-shadow: 6px 6px 0 var(--black);
+        }
+        .flow-sticker {
             position: absolute;
             z-index: 4;
-            max-width: 172px;
-            padding: 10px 12px;
+            max-width: 180px;
+            padding: 9px 11px;
             border: 2px solid var(--black);
             border-radius: 8px;
             background: var(--paper);
@@ -425,10 +412,11 @@
             letter-spacing: .02em;
             text-transform: uppercase;
         }
-        .dashboard-callout.one { left: -4%; top: 22px; background: var(--lime); transform: rotate(-4deg); }
-        .dashboard-callout.two { right: -12%; top: -8px; transform: rotate(4deg); }
-        .dashboard-callout.three { left: -4%; bottom: 28px; background: var(--purple); color: var(--white); transform: rotate(3deg); }
-        .dashboard-callout.four { right: -5%; bottom: 18px; background: var(--orange); transform: rotate(-3deg); }
+        .flow-sticker.one { left: -5%; top: 84px; background: var(--lime); transform: rotate(-5deg); }
+        .flow-sticker.two { right: -6%; top: 190px; transform: rotate(4deg); }
+        .flow-sticker.three { left: -3%; bottom: 62px; background: var(--purple); color: var(--white); transform: rotate(3deg); }
+        .flow-sticker.four { right: -5%; bottom: 80px; background: var(--orange); transform: rotate(-3deg); }
+        .flow-sticker.five { right: 10%; top: -18px; background: var(--black); color: var(--lime); transform: rotate(2deg); }
 
         .section { position: relative; padding: 68px 0; }
         .cream { background: var(--cream); color: var(--black); }
@@ -711,7 +699,21 @@
             .hero-grid, .split, .about-grid, .final-grid { grid-template-columns: 1fr; }
             .hero { min-height: auto; }
             .hero-art { min-height: 610px; }
-            .automation-dashboard { max-width: 560px; transform: rotate(-.8deg); }
+            .os-map { max-width: 620px; transform: rotate(-.6deg); }
+            .flow-grid { grid-template-columns: repeat(2, 1fr); grid-template-areas: none; }
+            .flow-step { grid-area: auto !important; }
+            .flow-step::after,
+            .flow-step:nth-child(4)::after,
+            .flow-step:nth-child(6)::after,
+            .flow-step:nth-child(7)::after,
+            .flow-step:nth-child(8)::after {
+                content: "↓";
+                right: 50%;
+                top: auto;
+                bottom: -27px;
+                transform: translateX(50%);
+            }
+            .flow-step:last-child::after { content: ""; }
             .features { grid-template-columns: repeat(3, 1fr); }
             .steps { grid-template-columns: repeat(2, 1fr); }
             .pricing-grid, .pilot-row { grid-template-columns: repeat(2, 1fr); }
@@ -727,14 +729,25 @@
             .hero-art { min-height: auto; padding: 52px 0 24px; }
             .hero-art::before { width: 360px; height: 360px; }
             .hero-art::after { right: 0; top: 0; font-size: 250px; }
-            .automation-dashboard { padding: 16px; border-radius: 22px; transform: none; box-shadow: 9px 9px 0 rgba(135,87,255,.72), -7px -7px 0 rgba(185,255,46,.8), 0 24px 55px rgba(8,8,8,.25); }
-            .dashboard-top { flex-direction: column; gap: 12px; }
-            .dashboard-top h3 { font-size: 25px; }
-            .metric-grid, .dashboard-bottom { grid-template-columns: 1fr 1fr; }
-            .metric { min-height: 96px; padding: 13px; }
-            .metric strong { font-size: 31px; margin-top: 12px; }
-            .briefing-panel { grid-column: 1 / -1; }
-            .dashboard-callout { position: relative; inset: auto; display: inline-flex; margin: 8px 6px 0 0; font-size: 9px; max-width: none; transform: none !important; }
+            .os-map { padding: 15px; border-radius: 22px; transform: none; box-shadow: 8px 8px 0 rgba(135,87,255,.72), -6px -6px 0 rgba(185,255,46,.78), 0 24px 55px rgba(8,8,8,.18); }
+            .os-map::before { display: none; }
+            .os-head { flex-direction: column; gap: 12px; }
+            .os-head h3 { font-size: 27px; }
+            .flow-grid { grid-template-columns: 1fr; grid-template-areas: none; gap: 22px; }
+            .flow-step { min-height: auto; }
+            .flow-step::after,
+            .flow-step:nth-child(4)::after,
+            .flow-step:nth-child(6)::after,
+            .flow-step:nth-child(7)::after,
+            .flow-step:nth-child(8)::after {
+                content: "↓";
+                right: 50%;
+                top: auto;
+                bottom: -26px;
+                transform: translateX(50%);
+            }
+            .flow-step:last-child::after { content: ""; }
+            .flow-sticker { position: relative; inset: auto; display: inline-flex; margin: 8px 6px 0 0; font-size: 9px; max-width: none; transform: none !important; }
             .section { padding: 52px 0; }
             .section-title { font-size: 45px; }
             .pain-list, .features, .steps, .pricing-grid, .pilot-row { grid-template-columns: 1fr; }
@@ -786,44 +799,61 @@
                     </div>
                 </div>
 
-                <div class="hero-art" aria-label="Dropstep automation dashboard preview">
-                    <div class="dashboard-callout one">50 brand pitches / month</div>
-                    <div class="dashboard-callout two">Follow-ups on autopilot</div>
-                    <div class="dashboard-callout three">Weekly agent briefing</div>
-                    <div class="dashboard-callout four">Deal pipeline tracked</div>
-                    <div class="automation-dashboard">
-                        <div class="dashboard-top">
+                <div class="hero-art" aria-label="Dropstep Operating System flowchart">
+                    <div class="flow-sticker one">50 pitches / month</div>
+                    <div class="flow-sticker two">Follow-ups on autopilot</div>
+                    <div class="flow-sticker three">Weekly briefing</div>
+                    <div class="flow-sticker four">Content ready</div>
+                    <div class="flow-sticker five">Agent steps in when brands say yes</div>
+                    <div class="os-map">
+                        <div class="os-head">
                             <div>
-                                <div class="dashboard-kicker">Dropstep NIL OS</div>
-                                <h3 class="condensed">Athlete brand operation running live.</h3>
+                                <h3 class="condensed">How Dropstep runs the whole operation</h3>
+                                <p>You stay focused on deals. We handle setup, outreach, follow-up, content, and reporting.</p>
                             </div>
-                            <div class="system-live">System Active</div>
+                            <div class="os-badge">NIL Agency OS</div>
                         </div>
-                        <div class="metric-grid">
-                            <div class="metric accent"><span>Pitches Sent</span><strong>2,450</strong></div>
-                            <div class="metric"><span>Open Rate</span><strong>62%</strong></div>
-                            <div class="metric"><span>Replies This Week</span><strong>18</strong></div>
-                            <div class="metric accent"><span>Deals Closed</span><strong>7</strong></div>
-                            <div class="metric"><span>Follow-ups Active</span><strong>138</strong></div>
-                            <div class="metric"><span>Content Posts Ready</span><strong>30</strong></div>
-                        </div>
-                        <div class="dashboard-bottom">
-                            <div class="pipeline-panel">
-                                <div class="panel-label">Deal Pipeline</div>
-                                <div class="pipeline-item">
-                                    <div>Recovery brand <small>Reply received. Agent closing.</small></div>
-                                    <span class="status-pill">Warm</span>
-                                </div>
-                                <div class="pipeline-item">
-                                    <div>Local auto group <small>Second follow-up queued.</small></div>
-                                    <span class="status-pill">Active</span>
-                                </div>
-                            </div>
-                            <div class="briefing-panel">
-                                <div class="panel-label">Monday Briefing</div>
-                                <p>Roster summary, hot replies, next actions, and deals ready for agent follow-up.</p>
-                                <div class="briefing-bars"><i></i><i></i><i></i></div>
-                            </div>
+                        <div class="flow-grid">
+                            <article class="flow-step">
+                                <span class="flow-num">1</span>
+                                <h4 class="condensed">Athlete Onboarded</h4>
+                                <ul><li>roster info</li><li>sport, school, audience</li><li>interests and market</li></ul>
+                            </article>
+                            <article class="flow-step featured">
+                                <span class="flow-num">2</span>
+                                <h4 class="condensed">NIL Website Built</h4>
+                                <ul><li>personal athlete page</li><li>stats and audience demos</li><li>brand fit and agent contact</li></ul>
+                            </article>
+                            <article class="flow-step featured">
+                                <span class="flow-num">3</span>
+                                <h4 class="condensed">Brand Outreach</h4>
+                                <ul><li>50 personalized pitches</li><li>matched by sport, audience, location</li></ul>
+                            </article>
+                            <article class="flow-step featured">
+                                <span class="flow-num">4</span>
+                                <h4 class="condensed">Follow-Up</h4>
+                                <ul><li>openers bumped every 5-7 days</li><li>no deal dies from silence</li></ul>
+                            </article>
+                            <article class="flow-step">
+                                <span class="flow-num">8</span>
+                                <h4 class="condensed">Agent Closes Deals</h4>
+                                <ul><li>fewer manual tasks</li><li>more sponsor conversations</li><li>more closed NIL deals</li></ul>
+                            </article>
+                            <article class="flow-step">
+                                <span class="flow-num">7</span>
+                                <h4 class="condensed">Weekly Briefing</h4>
+                                <ul><li>Monday email</li><li>responses and growth</li><li>highlights and next actions</li></ul>
+                            </article>
+                            <article class="flow-step featured">
+                                <span class="flow-num">6</span>
+                                <h4 class="condensed">Content Calendar</h4>
+                                <ul><li>30 days of post ideas</li><li>captions and hashtags</li><li>games, deals, personality</li></ul>
+                            </article>
+                            <article class="flow-step">
+                                <span class="flow-num">5</span>
+                                <h4 class="condensed">Deal Dashboard</h4>
+                                <ul><li>sent, opened, replied, closed</li><li>clean roster visibility</li></ul>
+                            </article>
                         </div>
                     </div>
                 </div>
