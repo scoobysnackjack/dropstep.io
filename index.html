@@ -227,116 +227,215 @@
         .hero-art {
             position: relative;
             min-height: 632px;
+            display: grid;
+            place-items: center;
+            perspective: 1200px;
         }
-        .athlete {
+        .hero-art::before {
+            content: "";
             position: absolute;
+            width: min(520px, 72vw);
+            height: min(520px, 72vw);
+            border-radius: 44% 56% 48% 52%;
+            background:
+                radial-gradient(circle at 42% 38%, rgba(255,255,255,.34), transparent 18%),
+                radial-gradient(circle at 50% 50%, rgba(185,255,46,.72), rgba(185,255,46,.38) 42%, transparent 70%);
+            filter: blur(.2px);
+            opacity: .82;
+            transform: rotate(-8deg);
+        }
+        .hero-art::after {
+            content: "d";
+            position: absolute;
+            z-index: 1;
+            right: 8%;
+            top: 6%;
+            color: rgba(8,8,8,.06);
+            font-family: Oswald, Inter, sans-serif;
+            font-size: clamp(260px, 34vw, 470px);
+            font-weight: 700;
+            line-height: .8;
+            transform: rotate(-8deg);
+        }
+        .automation-dashboard {
+            position: relative;
             z-index: 3;
-            right: 16%;
-            bottom: -34px;
-            width: 332px;
-            height: 600px;
-            filter: drop-shadow(18px 28px 0 rgba(135, 87, 255, .22));
-        }
-        .head {
-            position: absolute;
-            left: 118px;
-            top: 72px;
-            width: 102px;
-            height: 126px;
-            border: 3px solid var(--black);
-            border-radius: 46% 46% 44% 42%;
-            background: linear-gradient(140deg, #9f6f49, #5a3422);
-            box-shadow: -8px -18px 0 #2b1b12;
-        }
-        .hair {
-            position: absolute;
-            left: 86px;
-            top: 38px;
-            width: 146px;
-            height: 92px;
-            border-radius: 50%;
+            width: min(560px, 100%);
+            padding: 22px;
+            border: 2px solid rgba(255,255,255,.14);
+            border-radius: 28px;
             background:
-                radial-gradient(circle at 16% 34%, #16100d 0 14px, transparent 15px),
-                radial-gradient(circle at 32% 18%, #16100d 0 18px, transparent 19px),
-                radial-gradient(circle at 52% 14%, #16100d 0 18px, transparent 19px),
-                radial-gradient(circle at 70% 26%, #16100d 0 17px, transparent 18px),
-                radial-gradient(circle at 88% 44%, #16100d 0 14px, transparent 15px);
+                linear-gradient(135deg, rgba(255,255,255,.09), rgba(255,255,255,.02)),
+                var(--black);
+            color: var(--white);
+            box-shadow:
+                18px 18px 0 rgba(135,87,255,.72),
+                -14px -14px 0 rgba(185,255,46,.8),
+                0 34px 90px rgba(8,8,8,.42);
+            transform: rotateY(-9deg) rotateX(5deg) rotateZ(-1.5deg);
         }
-        .neck {
-            position: absolute;
-            left: 145px;
-            top: 178px;
-            width: 54px;
-            height: 72px;
-            background: #6a412b;
-            border-left: 3px solid var(--black);
-            border-right: 3px solid var(--black);
+        .dashboard-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255,255,255,.12);
         }
-        .body {
-            position: absolute;
-            left: 38px;
-            bottom: 34px;
-            width: 260px;
-            height: 380px;
-            background:
-                radial-gradient(circle at 50% 37%, var(--gold) 0 13px, transparent 14px),
-                linear-gradient(115deg, transparent 0 11%, var(--black) 12% 86%, transparent 87%);
-            clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
-        }
-        .arm-left, .arm-right {
-            position: absolute;
-            bottom: 100px;
-            width: 56px;
-            height: 240px;
-            border: 3px solid var(--black);
-            background: linear-gradient(150deg, #8f5d3d, #4f2e20);
-            border-radius: 999px;
-        }
-        .arm-left { left: 6px; transform: rotate(17deg); }
-        .arm-right { right: 3px; transform: rotate(-17deg); }
-        .ball {
-            position: absolute;
-            right: 72px;
-            bottom: 30px;
-            width: 170px;
-            height: 170px;
-            border: 4px solid var(--black);
-            border-radius: 50%;
-            background:
-                linear-gradient(90deg, transparent 47%, rgba(8,8,8,.85) 48% 50%, transparent 51%),
-                linear-gradient(16deg, transparent 47%, rgba(8,8,8,.85) 48% 50%, transparent 51%),
-                linear-gradient(145deg, #d66b2d, #8e391f);
-            z-index: 4;
-            box-shadow: 8px 8px 0 var(--black);
-        }
-        .callout {
-            position: absolute;
-            z-index: 4;
-            max-width: 150px;
-            padding: 10px 12px;
-            border: 2px solid var(--black);
-            background: var(--paper);
-            box-shadow: 4px 4px 0 var(--black);
-            font-size: 11px;
+        .dashboard-kicker {
+            color: var(--lime);
+            font-size: 10px;
             font-weight: 900;
-            line-height: 1.1;
+            letter-spacing: .14em;
             text-transform: uppercase;
         }
-        .callout.one { left: 7%; top: 72px; background: var(--purple); color: var(--white); transform: rotate(-2deg); }
-        .callout.two { right: 4%; top: 160px; background: var(--paper); transform: rotate(5deg); }
-        .callout.three { left: 10%; bottom: 178px; background: var(--lime); transform: rotate(-6deg); }
-        .callout.four { right: 6%; bottom: 138px; background: var(--paper); transform: rotate(2deg); }
-        .scribble {
-            position: absolute;
-            z-index: 2;
-            font-family: Oswald, sans-serif;
-            font-size: 54px;
-            font-weight: 700;
-            color: var(--black);
+        .dashboard-top h3 {
+            margin-top: 8px;
+            max-width: 310px;
+            font-size: 30px;
+            line-height: .92;
+            letter-spacing: -.035em;
         }
-        .scribble.a { left: 2%; top: 240px; color: var(--purple); transform: rotate(12deg); }
-        .scribble.b { right: 2%; bottom: 242px; color: var(--black); transform: rotate(-12deg); }
-        .scribble.c { left: 2%; bottom: 76px; color: var(--orange); transform: rotate(22deg); }
+        .system-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 10px;
+            border: 1px solid rgba(185,255,46,.5);
+            border-radius: 999px;
+            color: var(--lime);
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .system-live::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--lime);
+            box-shadow: 0 0 14px var(--lime);
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 18px;
+        }
+        .metric {
+            min-height: 112px;
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 18px;
+            background: rgba(255,255,255,.055);
+        }
+        .metric span {
+            display: block;
+            min-height: 28px;
+            color: rgba(255,255,255,.56);
+            font-size: 10px;
+            font-weight: 900;
+            line-height: 1.25;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+        .metric strong {
+            display: block;
+            margin-top: 18px;
+            color: var(--white);
+            font-size: 36px;
+            line-height: .86;
+            letter-spacing: -.055em;
+        }
+        .metric.accent strong { color: var(--lime); }
+        .dashboard-bottom {
+            display: grid;
+            grid-template-columns: 1.08fr .92fr;
+            gap: 12px;
+            margin-top: 14px;
+        }
+        .pipeline-panel,
+        .briefing-panel {
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 18px;
+            background: rgba(255,255,255,.045);
+            padding: 15px;
+        }
+        .panel-label {
+            color: rgba(255,255,255,.44);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .pipeline-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            align-items: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,.09);
+            font-size: 12px;
+            font-weight: 800;
+        }
+        .pipeline-item small {
+            display: block;
+            margin-top: 4px;
+            color: rgba(255,255,255,.44);
+            font-size: 10px;
+            font-weight: 750;
+        }
+        .status-pill {
+            padding: 6px 8px;
+            border-radius: 999px;
+            background: rgba(185,255,46,.14);
+            color: var(--lime);
+            font-size: 9px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .briefing-panel p {
+            margin-top: 14px;
+            color: rgba(255,255,255,.72);
+            font-size: 13px;
+            line-height: 1.45;
+            font-weight: 750;
+        }
+        .briefing-bars {
+            display: grid;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .briefing-bars i {
+            display: block;
+            height: 7px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--lime), var(--purple));
+            opacity: .85;
+        }
+        .briefing-bars i:nth-child(2) { width: 74%; opacity: .62; }
+        .briefing-bars i:nth-child(3) { width: 52%; opacity: .45; }
+        .dashboard-callout {
+            position: absolute;
+            z-index: 4;
+            max-width: 172px;
+            padding: 10px 12px;
+            border: 2px solid var(--black);
+            border-radius: 8px;
+            background: var(--paper);
+            box-shadow: 4px 4px 0 var(--black);
+            font-size: 10px;
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: .02em;
+            text-transform: uppercase;
+        }
+        .dashboard-callout.one { left: 2%; top: 64px; background: var(--lime); transform: rotate(-4deg); }
+        .dashboard-callout.two { right: 0; top: 136px; transform: rotate(4deg); }
+        .dashboard-callout.three { left: 5%; bottom: 112px; background: var(--purple); color: var(--white); transform: rotate(3deg); }
+        .dashboard-callout.four { right: 6%; bottom: 58px; background: var(--orange); transform: rotate(-3deg); }
 
         .section { position: relative; padding: 68px 0; }
         .cream { background: var(--cream); color: var(--black); }
@@ -619,6 +718,7 @@
             .hero-grid, .split, .about-grid, .final-grid { grid-template-columns: 1fr; }
             .hero { min-height: auto; }
             .hero-art { min-height: 610px; }
+            .automation-dashboard { max-width: 560px; transform: rotateY(-5deg) rotateX(3deg) rotateZ(-1deg); }
             .features { grid-template-columns: repeat(3, 1fr); }
             .steps { grid-template-columns: repeat(2, 1fr); }
             .pricing-grid, .pilot-row { grid-template-columns: repeat(2, 1fr); }
@@ -631,14 +731,17 @@
             .hero { padding-top: 96px; }
             h1 { font-size: 55px; }
             .hero-actions, .btn { width: 100%; }
-            .hero-art { min-height: 650px; }
-            .athlete { right: -24px; width: 280px; transform: scale(.88); transform-origin: bottom right; }
-            .callout { font-size: 9px; max-width: 124px; }
-            .callout.one { left: 0; top: 34px; }
-            .callout.two { right: 0; top: 118px; }
-            .callout.three { left: 0; bottom: 232px; }
-            .callout.four { right: 0; bottom: 162px; }
-            .scribble { display: none; }
+            .hero-art { min-height: auto; padding: 52px 0 24px; }
+            .hero-art::before { width: 360px; height: 360px; }
+            .hero-art::after { right: 0; top: 0; font-size: 250px; }
+            .automation-dashboard { padding: 16px; border-radius: 22px; transform: none; box-shadow: 9px 9px 0 rgba(135,87,255,.72), -7px -7px 0 rgba(185,255,46,.8), 0 24px 55px rgba(8,8,8,.25); }
+            .dashboard-top { flex-direction: column; gap: 12px; }
+            .dashboard-top h3 { font-size: 25px; }
+            .metric-grid, .dashboard-bottom { grid-template-columns: 1fr 1fr; }
+            .metric { min-height: 96px; padding: 13px; }
+            .metric strong { font-size: 31px; margin-top: 12px; }
+            .briefing-panel { grid-column: 1 / -1; }
+            .dashboard-callout { position: relative; inset: auto; display: inline-flex; margin: 8px 6px 0 0; font-size: 9px; max-width: none; transform: none !important; }
             .section { padding: 52px 0; }
             .section-title { font-size: 45px; }
             .pain-list, .features, .steps, .pricing-grid, .pilot-row { grid-template-columns: 1fr; }
@@ -690,22 +793,45 @@
                     </div>
                 </div>
 
-                <div class="hero-art" aria-label="Creator athlete campaign preview">
-                    <div class="callout one">Dashboard<br>for every agent</div>
-                    <div class="callout two">Follow-ups<br>on autopilot</div>
-                    <div class="callout three">50 brand<br>pitches / month</div>
-                    <div class="callout four">30 days of content<br>every month</div>
-                    <div class="scribble a">〰</div>
-                    <div class="scribble b">↯</div>
-                    <div class="scribble c">✦</div>
-                    <div class="athlete">
-                        <div class="hair"></div>
-                        <div class="head"></div>
-                        <div class="neck"></div>
-                        <div class="body"></div>
-                        <div class="arm-left"></div>
-                        <div class="arm-right"></div>
-                        <div class="ball"></div>
+                <div class="hero-art" aria-label="Dropstep automation dashboard preview">
+                    <div class="dashboard-callout one">50 brand pitches / month</div>
+                    <div class="dashboard-callout two">Follow-ups on autopilot</div>
+                    <div class="dashboard-callout three">Weekly agent briefing</div>
+                    <div class="dashboard-callout four">Deal pipeline tracked</div>
+                    <div class="automation-dashboard">
+                        <div class="dashboard-top">
+                            <div>
+                                <div class="dashboard-kicker">Dropstep NIL OS</div>
+                                <h3 class="condensed">Athlete brand operation running live.</h3>
+                            </div>
+                            <div class="system-live">System Active</div>
+                        </div>
+                        <div class="metric-grid">
+                            <div class="metric accent"><span>Pitches Sent</span><strong>2,450</strong></div>
+                            <div class="metric"><span>Open Rate</span><strong>62%</strong></div>
+                            <div class="metric"><span>Replies This Week</span><strong>18</strong></div>
+                            <div class="metric accent"><span>Deals Closed</span><strong>7</strong></div>
+                            <div class="metric"><span>Follow-ups Active</span><strong>138</strong></div>
+                            <div class="metric"><span>Content Posts Ready</span><strong>30</strong></div>
+                        </div>
+                        <div class="dashboard-bottom">
+                            <div class="pipeline-panel">
+                                <div class="panel-label">Deal Pipeline</div>
+                                <div class="pipeline-item">
+                                    <div>Recovery brand <small>Reply received. Agent closing.</small></div>
+                                    <span class="status-pill">Warm</span>
+                                </div>
+                                <div class="pipeline-item">
+                                    <div>Local auto group <small>Second follow-up queued.</small></div>
+                                    <span class="status-pill">Active</span>
+                                </div>
+                            </div>
+                            <div class="briefing-panel">
+                                <div class="panel-label">Monday Briefing</div>
+                                <p>Roster summary, hot replies, next actions, and deals ready for agent follow-up.</p>
+                                <div class="briefing-bars"><i></i><i></i><i></i></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
