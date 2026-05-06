@@ -222,19 +222,6 @@
             display: grid;
             place-items: center;
         }
-        .hero-art::before {
-            content: "";
-            position: absolute;
-            width: min(520px, 72vw);
-            height: min(520px, 72vw);
-            border-radius: 44% 56% 48% 52%;
-            background:
-                radial-gradient(circle at 42% 38%, rgba(255,255,255,.34), transparent 18%),
-                radial-gradient(circle at 50% 50%, rgba(185,255,46,.72), rgba(185,255,46,.38) 42%, transparent 70%);
-            filter: blur(10px);
-            opacity: .52;
-            transform: rotate(-8deg);
-        }
         .hero-art::after {
             content: "d";
             position: absolute;
@@ -290,19 +277,6 @@
             font-size: 12px;
             line-height: 1.35;
             font-weight: 800;
-        }
-        .os-badge {
-            flex: none;
-            padding: 8px 10px;
-            border: 2px solid var(--black);
-            border-radius: 999px;
-            background: var(--black);
-            color: var(--lime);
-            box-shadow: 3px 3px 0 var(--purple);
-            font-size: 9px;
-            font-weight: 900;
-            letter-spacing: .08em;
-            text-transform: uppercase;
         }
         .flow-grid {
             display: grid;
@@ -416,7 +390,6 @@
         .flow-sticker.two { right: -6%; top: 190px; transform: rotate(4deg); }
         .flow-sticker.three { left: -3%; bottom: 62px; background: var(--purple); color: var(--white); transform: rotate(3deg); }
         .flow-sticker.four { right: -5%; bottom: 80px; background: var(--orange); transform: rotate(-3deg); }
-        .flow-sticker.five { right: 10%; top: -18px; background: var(--black); color: var(--lime); transform: rotate(2deg); }
 
         .section { position: relative; padding: 68px 0; }
         .cream { background: var(--cream); color: var(--black); }
@@ -727,7 +700,6 @@
             h1 { font-size: 55px; }
             .hero-actions, .btn { width: 100%; }
             .hero-art { min-height: auto; padding: 52px 0 24px; }
-            .hero-art::before { width: 360px; height: 360px; }
             .hero-art::after { right: 0; top: 0; font-size: 250px; }
             .os-map { padding: 15px; border-radius: 22px; transform: none; box-shadow: 8px 8px 0 rgba(135,87,255,.72), -6px -6px 0 rgba(185,255,46,.78), 0 24px 55px rgba(8,8,8,.18); }
             .os-map::before { display: none; }
@@ -804,14 +776,12 @@
                     <div class="flow-sticker two">Follow-ups on autopilot</div>
                     <div class="flow-sticker three">Weekly briefing</div>
                     <div class="flow-sticker four">Content ready</div>
-                    <div class="flow-sticker five">Agent steps in when brands say yes</div>
                     <div class="os-map">
                         <div class="os-head">
                             <div>
                                 <h3 class="condensed">How Dropstep runs the whole operation</h3>
                                 <p>You stay focused on deals. We handle setup, outreach, follow-up, content, and reporting.</p>
                             </div>
-                            <div class="os-badge">NIL Agency OS</div>
                         </div>
                         <div class="flow-grid">
                             <article class="flow-step">
