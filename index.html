@@ -662,24 +662,6 @@
             letter-spacing: .12em;
             text-transform: uppercase;
         }
-        .walkthrough-close {
-            max-width: 760px;
-            margin: 70px auto 0;
-            text-align: center;
-        }
-        .walkthrough-close h3 {
-            color: var(--white);
-            font-size: clamp(38px, 5.2vw, 74px);
-            line-height: .95;
-        }
-        .walkthrough-close h3 span {
-            display: block;
-            color: var(--gold);
-        }
-        .walkthrough-close .btn {
-            margin-top: 28px;
-        }
-
         .problem-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -797,59 +779,6 @@
         .work-step.payoff h3,
         .work-step.payoff p {
             color: var(--black);
-        }
-
-        .social-proof-section {
-            background: var(--panel);
-            color: var(--white);
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-            text-align: center;
-        }
-        .big-stat {
-            padding: 34px 20px;
-            border: 1px solid rgba(255,255,255,.08);
-            background: rgba(255,255,255,.025);
-        }
-        .big-stat strong {
-            display: block;
-            color: var(--gold);
-            font-size: 64px;
-            line-height: 1;
-            letter-spacing: -.055em;
-        }
-        .big-stat span {
-            display: block;
-            margin-top: 12px;
-            color: rgba(245,240,223,.68);
-            font-size: 13px;
-            line-height: 1.4;
-            font-weight: 800;
-        }
-        .founder-quote {
-            max-width: 780px;
-            margin: 40px auto 0;
-            text-align: center;
-            color: rgba(245,240,223,.75);
-            font-size: 18px;
-            line-height: 1.55;
-            font-style: italic;
-            font-weight: 650;
-        }
-        .founder-quote cite {
-            display: block;
-            margin-top: 16px;
-            color: var(--gold);
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 900;
-            letter-spacing: .08em;
-            text-transform: uppercase;
         }
 
         .pricing-grid {
@@ -991,9 +920,9 @@
 
         footer {
             padding: 28px 0;
-            border-top: 1px solid var(--line);
-            background: var(--black);
-            color: rgba(255,255,255,.48);
+            border-top: 1px solid rgba(8,8,8,.1);
+            background: var(--white);
+            color: rgba(8,8,8,.58);
             font-size: 11px;
             font-weight: 700;
         }
@@ -1003,7 +932,20 @@
             justify-content: space-between;
             gap: 24px;
         }
-        footer img { width: 118px; opacity: .75; }
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 132px;
+            height: 46px;
+        }
+        .footer-brand img {
+            width: 112px;
+            height: 34px;
+            object-fit: cover;
+            object-position: center bottom;
+            display: block;
+        }
 
         @media (max-width: 980px) {
             .nav-links { display: none; }
@@ -1074,20 +1016,18 @@
             <a class="brand" href="#" aria-label="Dropstep home"><img src="assets/logo.png" alt="Dropstep"></a>
             <div class="nav-links">
                 <a href="#how-it-works">How It Works</a>
-                <a href="#pricing">Pricing</a>
                 <a href="#about">About</a>
                 <a href="#what-you-get">What You Get</a>
-                <a class="btn" href="https://calendly.com/" target="_blank" rel="noreferrer">Book a Call</a>
+                <a class="btn" href="https://calendly.com/jack-dropstep/30min" target="_blank" rel="noreferrer">Book a Call</a>
             </div>
             <button class="menu-btn" type="button" aria-label="Open menu">+</button>
         </div>
         <div class="mobile-menu">
             <div class="container">
                 <a href="#how-it-works">How It Works</a>
-                <a href="#pricing">Pricing</a>
                 <a href="#about">About</a>
                 <a href="#what-you-get">What You Get</a>
-                <a href="https://calendly.com/" target="_blank" rel="noreferrer">Book a Call</a>
+                <a href="https://calendly.com/jack-dropstep/30min" target="_blank" rel="noreferrer">Book a Call</a>
             </div>
         </div>
     </nav>
@@ -1099,7 +1039,7 @@
                     <h1 class="condensed">Your clients' brands on autopilot. <span>You just close the deals.</span></h1>
                     <p class="hero-copy">Dropstep is a done-for-you brand management system for agencies. We handle outreach, content, follow-up, talent websites, and deal tracking for your entire roster.</p>
                     <div class="hero-action">
-                        <a class="btn gold" href="https://calendly.com/" target="_blank" rel="noreferrer">Book a 15-Min Call</a>
+                        <a class="btn gold" href="https://calendly.com/jack-dropstep/30min" target="_blank" rel="noreferrer">Book a 15-Min Call</a>
                     </div>
                 </div>
 
@@ -1246,10 +1186,6 @@
                     </article>
                 </div>
 
-                <div class="walkthrough-close">
-                    <h3 class="condensed">Your athletes pitch brands every single day. <span>You just show up to close.</span></h3>
-                    <a class="btn gold" href="https://calendly.com/" target="_blank" rel="noreferrer">See It For Your Roster</a>
-                </div>
             </div>
         </section>
 
@@ -1355,42 +1291,6 @@
             </div>
         </section>
 
-        <section class="section social-proof-section">
-            <div class="container">
-                <div class="stat-grid">
-                    <div class="big-stat"><strong>50+</strong><span>Brand pitches per client every month</span></div>
-                    <div class="big-stat"><strong>7 Days</strong><span>From signup to first pitch sent</span></div>
-                    <div class="big-stat"><strong>0</strong><span>Deals that die from silence</span></div>
-                </div>
-                <blockquote class="founder-quote">
-                    "Built by a former agent who watched deals die from silence for years. Dropstep is the system we wish we had."
-                    <cite>— Dropstep Founder</cite>
-                </blockquote>
-            </div>
-        </section>
-
-        <section class="section pricing cream" id="pricing">
-            <div class="container">
-                <div class="center">
-                    <span class="kicker" style="color: var(--black);">Pricing</span>
-                    <h2 class="section-title condensed">Simple. Transparent. Built for agencies.</h2>
-                </div>
-                <div class="pricing-grid">
-                    <div class="price-card"><span>1-5 clients</span><strong>$299</strong><small>per client / month</small><p>Includes all 6 Dropstep services</p></div>
-                    <div class="price-card popular"><div class="popular-badge">Most Popular</div><span>6-15 clients</span><strong>$249</strong><small>per client / month</small><p>Includes all 6 Dropstep services</p></div>
-                    <div class="price-card"><span>16-30 clients</span><strong>$199</strong><small>per client / month</small><p>Includes all 6 Dropstep services</p></div>
-                    <div class="price-card"><span>31+ clients</span><strong>$149</strong><small>per client / month</small><p>Includes all 6 Dropstep services</p></div>
-                </div>
-                <div class="pilot-offer">
-                    <div>
-                        <h3 class="condensed">Not ready to commit? Start here.</h3>
-                        <p>$500/month for your first 5 clients. 60 days. If we don't generate 5 brand conversations — you pay nothing.</p>
-                    </div>
-                    <a class="btn black" href="https://calendly.com/" target="_blank" rel="noreferrer">Start Your Free Pilot</a>
-                </div>
-            </div>
-        </section>
-
         <section class="section about" id="about">
             <div class="container about-grid">
                 <div>
@@ -1409,14 +1309,14 @@
             <div class="container">
                 <h2 class="condensed">Ready to put your roster on autopilot?</h2>
                 <p>Start with 5 clients. Free for 30 days if it doesn't work.</p>
-                <a class="btn black" href="https://calendly.com/" target="_blank" rel="noreferrer">Book Your Free Call</a>
+                <a class="btn black" href="https://calendly.com/jack-dropstep/30min" target="_blank" rel="noreferrer">Book Your Free Call</a>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container footer-grid">
-            <img src="assets/logo.png" alt="Dropstep">
+            <a class="footer-brand" href="#" aria-label="Dropstep home"><img src="assets/logo.png" alt="Dropstep"></a>
             <div>Independent service. Not affiliated with any university, league, or governing body.</div>
             <div>&copy; <script>document.write(new Date().getFullYear())</script> Dropstep</div>
         </div>
