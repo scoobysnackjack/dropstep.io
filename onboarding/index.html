@@ -220,87 +220,6 @@
             line-height: 1.6;
             font-weight: 650;
         }
-        .upload-list {
-            display: grid;
-            gap: 1rem;
-            margin-top: 24px;
-        }
-        .upload-field {
-            display: grid;
-            gap: 8px;
-        }
-        .upload-label {
-            color: var(--gold);
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-        .optional {
-            color: rgba(255,255,255,.3);
-        }
-        .upload-hint {
-            color: rgba(245,240,223,.42);
-            font-size: 11px;
-            line-height: 1.45;
-            font-weight: 750;
-        }
-        .upload-zone {
-            display: grid;
-            place-items: center;
-            min-height: 150px;
-            padding: 1.5rem;
-            border: 1px dashed rgba(197,160,74,.3);
-            border-radius: 3px;
-            background: rgba(197,160,74,.04);
-            color: rgba(245,240,223,.72);
-            text-align: center;
-            cursor: pointer;
-            transition: border-color .16s ease, background .16s ease;
-        }
-        .upload-zone:hover,
-        .upload-zone:focus-within,
-        .upload-zone.has-file {
-            border-style: solid;
-            border-color: var(--gold);
-            background: rgba(197,160,74,.07);
-        }
-        .upload-zone input {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-            pointer-events: none;
-        }
-        .upload-icon {
-            color: var(--gold);
-            font-size: 28px;
-            line-height: 1;
-        }
-        .upload-main {
-            display: block;
-            margin-top: 10px;
-            color: var(--cream);
-            font-size: 13px;
-            font-weight: 900;
-        }
-        .upload-sub {
-            display: block;
-            margin-top: 6px;
-            color: rgba(245,240,223,.44);
-            font-size: 11px;
-            font-weight: 750;
-        }
-        .file-name {
-            display: none;
-            margin-top: 10px;
-            color: var(--gold);
-            font-size: 12px;
-            font-weight: 900;
-        }
-        .upload-zone.has-file .file-name {
-            display: block;
-        }
         .analytics-note {
             margin-top: 1rem;
             padding: 1rem 1.2rem;
@@ -311,6 +230,17 @@
             font-size: 12px;
             line-height: 1.55;
             font-weight: 750;
+        }
+        .analytics-note p {
+            margin: 0 0 0.85em;
+        }
+        .analytics-note p:last-child {
+            margin-bottom: 0;
+        }
+        .analytics-note a {
+            color: var(--gold);
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
         .choice-grid {
@@ -594,44 +524,12 @@
                     <div class="analytics-intro">
                         <span class="step-kicker">Prove Your Reach</span>
                         <h3 class="condensed">Show brands the numbers.</h3>
-                        <p>Optional — but creators who share analytics get brand matches that are 3x more relevant. More relevant matches = higher reply rates = better deals.</p>
+                        <p>Optional — creators who share analytics get brand matches that are 3x more relevant. Send screenshots by email using the instructions below.</p>
                     </div>
-                    <div class="upload-list">
-                        <div class="upload-field">
-                            <div class="upload-label">Instagram Insights <span class="optional">· Optional</span></div>
-                            <div class="upload-hint">Instagram → Professional Dashboard → screenshot your reach and engagement from the last 30 days</div>
-                            <label class="upload-zone">
-                                <input type="file" name="instagramInsights" accept=".jpg,.jpeg,.png">
-                                <span class="upload-icon">↑</span>
-                                <span class="upload-main">Drop file here or click to upload</span>
-                                <span class="upload-sub">JPG or PNG, max 5MB</span>
-                                <span class="file-name"></span>
-                            </label>
-                        </div>
-                        <div class="upload-field">
-                            <div class="upload-label">TikTok Analytics <span class="optional">· Optional</span></div>
-                            <div class="upload-hint">TikTok → Creator Tools → Analytics → screenshot your overview from the last 28 days</div>
-                            <label class="upload-zone">
-                                <input type="file" name="tiktokAnalytics" accept=".jpg,.jpeg,.png">
-                                <span class="upload-icon">↑</span>
-                                <span class="upload-main">Drop file here or click to upload</span>
-                                <span class="upload-sub">JPG or PNG, max 5MB</span>
-                                <span class="file-name"></span>
-                            </label>
-                        </div>
-                        <div class="upload-field">
-                            <div class="upload-label">Audience Demographics <span class="optional">· Optional</span></div>
-                            <div class="upload-hint">Age, gender, and location breakdown — shows brands exactly who is watching you. This one closes deals faster than anything else.</div>
-                            <label class="upload-zone">
-                                <input type="file" name="audienceDemographics" accept=".jpg,.jpeg,.png">
-                                <span class="upload-icon">↑</span>
-                                <span class="upload-main">Drop file here or click to upload</span>
-                                <span class="upload-sub">JPG or PNG, max 5MB</span>
-                                <span class="file-name"></span>
-                            </label>
-                        </div>
+                    <div class="analytics-note">
+                        <p>Email screenshots of your <strong>engagement</strong>, <strong>audience demographics</strong>, or any other numbers that would help brands to <a href="mailto:hello@dropstep.io">hello@dropstep.io</a>.</p>
+                        <p><strong>Subject line:</strong> use your <strong>first and last name</strong> exactly as you typed it under Full name in Step 1 (for example <strong>Jane Doe</strong>) so we can match your screenshots to this signup.</p>
                     </div>
-                    <div class="analytics-note">Don't have these yet? No problem — skip this section and hit Continue. You can always send screenshots later to hello@dropstep.io and we'll update your brand matches.</div>
                 </div>
             </section>
 
@@ -702,7 +600,7 @@
                     <div>2. Your brand site goes live — within 48 hours</div>
                     <div>3. First brand pitches sent — within 7 days</div>
                 </div>
-                <p class="note" id="complete-file-reminder" hidden>If you selected any screenshots or a logo file, they were not sent with this form — email them to hello@dropstep.io and we will use them.</p>
+                <p class="note" id="complete-file-reminder" hidden>If you selected a logo file, it was not sent with this form — email it to hello@dropstep.io and use your first and last name (same as Step 1) as the subject line.</p>
                 <p class="note">We'll email you a preview of your site before it goes live. You'll have a chance to request any changes.</p>
                 <a class="home-btn" href="/">Back to Dropstep</a>
             </div>
@@ -713,7 +611,7 @@
         /** Paste your Formspree form URL, e.g. https://formspree.io/f/abcdefgh — same pattern works for many form backends that accept multipart POST. */
         const ONBOARDING_SUBMIT_URL = 'https://formspree.io/f/mgodlzwj';
         /**
-         * File uploads (analytics screenshots, logo) require Formspree Personal, Professional, or Business.
+         * File uploads (e.g. logo on step 5) require Formspree Personal, Professional, or Business.
          * https://help.formspree.io/articles/building-your-form/file-uploads
          * Formspree emails you each submission when notifications are on; images appear as download links in that email and in the Submissions tab.
          * Set to false only if you stay on Formspree Free (then images cannot be sent through Formspree).
@@ -777,7 +675,7 @@
             if (!FORMSPREE_INCLUDE_FILES && hadNonEmptyFile) {
                 fd.set(
                     'attachmentsNote',
-                    'Creator chose file(s) on this form; they were not uploaded because Formspree Free blocks file uploads. Ask them to email assets to hello@dropstep.io, or upgrade Formspree (Personal+) and set FORMSPREE_INCLUDE_FILES to true in onboarding/index.html.'
+                    'Creator attached a file on this form (e.g. logo); it was not uploaded because Formspree Free blocks file uploads. Ask them to email assets to hello@dropstep.io (subject: their first and last name as in Step 1), or upgrade Formspree (Personal+) and set FORMSPREE_INCLUDE_FILES to true in onboarding/index.html.'
                 );
             }
             const creatorEmail = formElement.querySelector('input[name="email"]')?.value?.trim();
@@ -833,7 +731,7 @@
                     msg = msg || '';
                     if (/file uploads not permitted/i.test(String(msg))) {
                         msg =
-                            'Formspree is blocking file uploads on your current plan. To receive screenshots and logos, upgrade this form to Personal (or higher) at https://formspree.io/plans — then submit again. Notification emails and the Submissions tab will include file download links. To stay on Free, set FORMSPREE_INCLUDE_FILES to false in onboarding/index.html (text answers only).';
+                            'Formspree is blocking file uploads on your current plan. To receive logo files through this form, upgrade to Personal (or higher) at https://formspree.io/plans — then submit again. To stay on Free, set FORMSPREE_INCLUDE_FILES to false in onboarding/index.html (no file fields).';
                     }
                     throw new Error(msg || 'Submit failed. Try again or email hello@dropstep.io.');
                 }
@@ -874,16 +772,6 @@
         document.querySelectorAll('input[name="hasLogo"]').forEach((input) => {
             input.addEventListener('change', () => {
                 logoUpload.classList.toggle('show', input.value === 'Yes' && input.checked);
-            });
-        });
-
-        document.querySelectorAll('.upload-zone input[type="file"]').forEach((input) => {
-            input.addEventListener('change', () => {
-                const zone = input.closest('.upload-zone');
-                const fileName = zone.querySelector('.file-name');
-                const file = input.files && input.files[0];
-                zone.classList.toggle('has-file', Boolean(file));
-                fileName.textContent = file ? `✓ ${file.name}` : '';
             });
         });
 
