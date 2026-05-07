@@ -508,7 +508,7 @@
             </div>
         </section>
 
-        <form class="form-shell" id="onboarding-form">
+        <form class="form-shell" id="onboarding-form" method="post" enctype="multipart/form-data">
             <!-- Formspree: https://formspree.io — create a form, paste its POST URL into ONBOARDING_SUBMIT_URL in the script below. You get email + a dashboard of every field and attachment. -->
             <input type="hidden" name="_subject" value="Dropstep onboarding submission">
             <input type="hidden" name="formPage" value="onboarding">
@@ -702,6 +702,7 @@
                     <div>2. Your brand site goes live — within 48 hours</div>
                     <div>3. First brand pitches sent — within 7 days</div>
                 </div>
+                <p class="note" id="complete-file-reminder" hidden>If you selected any screenshots or a logo file, they were not sent with this form — email them to hello@dropstep.io and we will use them.</p>
                 <p class="note">We'll email you a preview of your site before it goes live. You'll have a chance to request any changes.</p>
                 <a class="home-btn" href="/">Back to Dropstep</a>
             </div>
@@ -711,6 +712,12 @@
     <script>
         /** Paste your Formspree form URL, e.g. https://formspree.io/f/abcdefgh — same pattern works for many form backends that accept multipart POST. */
         const ONBOARDING_SUBMIT_URL = 'https://formspree.io/f/mgodlzwj';
+        /**
+         * Formspree Free does not accept file uploads ("File Uploads Not Permitted").
+         * File uploads are available on Personal+ (see https://help.formspree.io/articles/building-your-form/file-uploads).
+         * Keep false on Free; set true after upgrading so analytics + logo files are sent.
+         */
+        const FORMSPREE_INCLUDE_FILES = false;
 
         const form = document.querySelector('#onboarding-form');
         const intro = document.querySelector('#form-intro');
@@ -751,6 +758,30 @@
             bad.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
+        function buildOnboardingFormData(formElement) {
+            const raw = new FormData(formElement);
+            const fd = new FormData();
+            let hadNonEmptyFile = false;
+            for (const [, value] of raw.entries()) {
+                if (value instanceof File && value.size > 0) hadNonEmptyFile = true;
+            }
+            for (const [key, value] of raw.entries()) {
+                if (value instanceof File) {
+                    if (FORMSPREE_INCLUDE_FILES && value.size > 0) fd.append(key, value);
+                    continue;
+                }
+                fd.append(key, value);
+            }
+            fd.set('submittedAt', new Date().toISOString());
+            if (!FORMSPREE_INCLUDE_FILES && hadNonEmptyFile) {
+                fd.set(
+                    'attachmentsNote',
+                    'Creator chose file(s) on this form; they were not uploaded because Formspree Free blocks file uploads. Ask them to email assets to hello@dropstep.io, or upgrade Formspree (Personal+) and set FORMSPREE_INCLUDE_FILES to true in onboarding/index.html.'
+                );
+            }
+            return fd;
+        }
+
         next.addEventListener('click', async () => {
             if (!currentRequiredFieldsAreValid()) return;
             if (currentStep < steps.length - 1) {
@@ -776,8 +807,7 @@
                 return;
             }
 
-            const fd = new FormData(form);
-            fd.set('submittedAt', new Date().toISOString());
+            const fd = buildOnboardingFormData(form);
 
             next.disabled = true;
             next.textContent = 'Sending…';
@@ -795,6 +825,13 @@
                             ? data.error
                             : data.errors && data.errors[0] && data.errors[0].message;
                     throw new Error(msg || 'Submit failed. Try again or email hello@dropstep.io.');
+                }
+                const hadLocalFiles = [...form.querySelectorAll('input[type="file"]')].some(
+                    (inp) => inp.files && inp.files.length > 0
+                );
+                const fileReminder = document.querySelector('#complete-file-reminder');
+                if (fileReminder) {
+                    fileReminder.hidden = !hadLocalFiles || FORMSPREE_INCLUDE_FILES;
                 }
                 form.style.display = 'none';
                 intro.style.display = 'none';
