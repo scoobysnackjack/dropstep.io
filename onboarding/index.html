@@ -202,6 +202,116 @@
             padding: 13px;
             cursor: pointer;
         }
+        .analytics-divider {
+            height: 1px;
+            margin: 2rem 0;
+            background: rgba(255,255,255,.06);
+        }
+        .analytics-intro h3 {
+            margin-top: 12px;
+            color: var(--white);
+            font-size: clamp(30px, 4.4vw, 48px);
+            line-height: .95;
+        }
+        .analytics-intro p {
+            margin-top: 14px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 650;
+        }
+        .upload-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 24px;
+        }
+        .upload-field {
+            display: grid;
+            gap: 8px;
+        }
+        .upload-label {
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .optional {
+            color: rgba(255,255,255,.3);
+        }
+        .upload-hint {
+            color: rgba(245,240,223,.42);
+            font-size: 11px;
+            line-height: 1.45;
+            font-weight: 750;
+        }
+        .upload-zone {
+            display: grid;
+            place-items: center;
+            min-height: 150px;
+            padding: 1.5rem;
+            border: 1px dashed rgba(197,160,74,.3);
+            border-radius: 3px;
+            background: rgba(197,160,74,.04);
+            color: rgba(245,240,223,.72);
+            text-align: center;
+            cursor: pointer;
+            transition: border-color .16s ease, background .16s ease;
+        }
+        .upload-zone:hover,
+        .upload-zone:focus-within,
+        .upload-zone.has-file {
+            border-style: solid;
+            border-color: var(--gold);
+            background: rgba(197,160,74,.07);
+        }
+        .upload-zone input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .upload-icon {
+            color: var(--gold);
+            font-size: 28px;
+            line-height: 1;
+        }
+        .upload-main {
+            display: block;
+            margin-top: 10px;
+            color: var(--cream);
+            font-size: 13px;
+            font-weight: 900;
+        }
+        .upload-sub {
+            display: block;
+            margin-top: 6px;
+            color: rgba(245,240,223,.44);
+            font-size: 11px;
+            font-weight: 750;
+        }
+        .file-name {
+            display: none;
+            margin-top: 10px;
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 900;
+        }
+        .upload-zone.has-file .file-name {
+            display: block;
+        }
+        .analytics-note {
+            margin-top: 1rem;
+            padding: 1rem 1.2rem;
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 3px;
+            background: rgba(255,255,255,.03);
+            color: rgba(245,240,223,.58);
+            font-size: 12px;
+            line-height: 1.55;
+            font-weight: 750;
+        }
 
         .choice-grid {
             display: grid;
@@ -286,6 +396,22 @@
             margin-left: auto;
             background: var(--gold);
             color: var(--black);
+        }
+        .continue:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        .submit-error {
+            margin: 16px 0 0;
+            padding: 12px 14px;
+            border-radius: 3px;
+            border: 1px solid rgba(255, 80, 80, 0.35);
+            background: rgba(255, 80, 80, 0.08);
+            color: rgba(255, 220, 220, 0.92);
+            font-size: 13px;
+            font-weight: 650;
+            line-height: 1.45;
         }
 
         .complete {
@@ -383,6 +509,9 @@
         </section>
 
         <form class="form-shell" id="onboarding-form">
+            <!-- Formspree: https://formspree.io — create a form, paste its POST URL into ONBOARDING_SUBMIT_URL in the script below. You get email + a dashboard of every field and attachment. -->
+            <input type="hidden" name="_subject" value="Dropstep onboarding submission">
+            <input type="hidden" name="formPage" value="onboarding">
             <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
 
             <section class="form-step active" data-step="1">
@@ -461,6 +590,48 @@
                     <div class="field"><label for="twitter-count">Twitter/X follower count</label><input id="twitter-count" name="twitterCount" type="number"></div>
                     <div class="field"><label for="youtube">YouTube channel URL</label><input id="youtube" name="youtube"></div>
                     <div class="field"><label for="other-platforms">Any other platforms?</label><input id="other-platforms" name="otherPlatforms" placeholder="Twitch, LinkedIn, etc."></div>
+                    <div class="analytics-divider"></div>
+                    <div class="analytics-intro">
+                        <span class="step-kicker">Prove Your Reach</span>
+                        <h3 class="condensed">Show brands the numbers.</h3>
+                        <p>Optional — but creators who share analytics get brand matches that are 3x more relevant. More relevant matches = higher reply rates = better deals.</p>
+                    </div>
+                    <div class="upload-list">
+                        <div class="upload-field">
+                            <div class="upload-label">Instagram Insights <span class="optional">· Optional</span></div>
+                            <div class="upload-hint">Instagram → Professional Dashboard → screenshot your reach and engagement from the last 30 days</div>
+                            <label class="upload-zone">
+                                <input type="file" name="instagramInsights" accept=".jpg,.jpeg,.png">
+                                <span class="upload-icon">↑</span>
+                                <span class="upload-main">Drop file here or click to upload</span>
+                                <span class="upload-sub">JPG or PNG, max 5MB</span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                        <div class="upload-field">
+                            <div class="upload-label">TikTok Analytics <span class="optional">· Optional</span></div>
+                            <div class="upload-hint">TikTok → Creator Tools → Analytics → screenshot your overview from the last 28 days</div>
+                            <label class="upload-zone">
+                                <input type="file" name="tiktokAnalytics" accept=".jpg,.jpeg,.png">
+                                <span class="upload-icon">↑</span>
+                                <span class="upload-main">Drop file here or click to upload</span>
+                                <span class="upload-sub">JPG or PNG, max 5MB</span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                        <div class="upload-field">
+                            <div class="upload-label">Audience Demographics <span class="optional">· Optional</span></div>
+                            <div class="upload-hint">Age, gender, and location breakdown — shows brands exactly who is watching you. This one closes deals faster than anything else.</div>
+                            <label class="upload-zone">
+                                <input type="file" name="audienceDemographics" accept=".jpg,.jpeg,.png">
+                                <span class="upload-icon">↑</span>
+                                <span class="upload-main">Drop file here or click to upload</span>
+                                <span class="upload-sub">JPG or PNG, max 5MB</span>
+                                <span class="file-name"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="analytics-note">Don't have these yet? No problem — skip this section and hit Continue. You can always send screenshots later to hello@dropstep.io and we'll update your brand matches.</div>
                 </div>
             </section>
 
@@ -486,7 +657,7 @@
                 <span class="step-kicker">Step 5 of 5 — Your Site</span>
                 <h2 class="condensed">Give us the assets.</h2>
                 <div class="field-grid">
-                    <div class="field"><label for="headshot">Upload headshot or action photo *</label><input id="headshot" name="headshot" type="file" accept=".jpg,.jpeg,.png" required><span class="field-label">Best quality available — this goes on your brand site</span></div>
+                    <div class="field"><label for="headshot">Upload headshot or action photo</label><input id="headshot" name="headshot" type="file" accept=".jpg,.jpeg,.png"><span class="field-label">Optional — best quality available if you have one</span></div>
                     <div class="field"><label for="photos">Upload additional photos</label><input id="photos" name="photos" type="file" accept=".jpg,.jpeg,.png" multiple><span class="field-label">Optional — any other photos for your site</span></div>
                     <div class="field">
                         <div class="field-label">Do you have a personal logo?</div>
@@ -510,6 +681,7 @@
                 </div>
             </section>
 
+            <p id="submit-error" class="submit-error" role="alert" hidden></p>
             <div class="actions">
                 <button class="back" type="button" id="back">Back</button>
                 <button class="continue" type="button" id="next">Continue</button>
@@ -538,6 +710,9 @@
     </main>
 
     <script>
+        /** Paste your Formspree form URL, e.g. https://formspree.io/f/abcdefgh — same pattern works for many form backends that accept multipart POST. */
+        const ONBOARDING_SUBMIT_URL = 'https://formspree.io/f/mgodlzwj';
+
         const form = document.querySelector('#onboarding-form');
         const intro = document.querySelector('#form-intro');
         const complete = document.querySelector('#complete');
@@ -545,6 +720,7 @@
         const progressFill = document.querySelector('#progress-fill');
         const next = document.querySelector('#next');
         const back = document.querySelector('#back');
+        const submitError = document.querySelector('#submit-error');
         const dealDescription = document.querySelector('#deal-description');
         const logoUpload = document.querySelector('#logo-upload');
         let currentStep = 0;
@@ -553,7 +729,9 @@
             steps.forEach((step, index) => step.classList.toggle('active', index === currentStep));
             progressFill.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
             back.style.visibility = currentStep === 0 ? 'hidden' : 'visible';
-            next.textContent = currentStep === steps.length - 1 ? 'Submit' : 'Continue';
+            if (!next.disabled) {
+                next.textContent = currentStep === steps.length - 1 ? 'Submit' : 'Continue';
+            }
         }
 
         function currentRequiredFieldsAreValid() {
@@ -561,18 +739,76 @@
             return required.every((field) => field.reportValidity());
         }
 
-        next.addEventListener('click', () => {
+        function focusFirstInvalidField() {
+            const bad = form.querySelector(':invalid');
+            if (!bad) return;
+            const stepIndex = steps.findIndex((s) => s.contains(bad));
+            if (stepIndex >= 0) {
+                currentStep = stepIndex;
+                updateStep();
+            }
+            bad.reportValidity();
+            bad.focus({ preventScroll: true });
+            bad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        next.addEventListener('click', async () => {
             if (!currentRequiredFieldsAreValid()) return;
             if (currentStep < steps.length - 1) {
+                submitError.hidden = true;
                 currentStep += 1;
                 updateStep();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 return;
             }
-            form.style.display = 'none';
-            intro.style.display = 'none';
-            complete.classList.add('show');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            submitError.hidden = true;
+            if (!form.checkValidity()) {
+                focusFirstInvalidField();
+                return;
+            }
+
+            const endpoint = ONBOARDING_SUBMIT_URL.trim();
+            if (!endpoint) {
+                submitError.hidden = false;
+                submitError.textContent =
+                    'Submissions are not connected yet. In onboarding/index.html, set ONBOARDING_SUBMIT_URL to your Formspree form URL (create a free form at formspree.io).';
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                return;
+            }
+
+            const fd = new FormData(form);
+            fd.set('submittedAt', new Date().toISOString());
+
+            next.disabled = true;
+            next.textContent = 'Sending…';
+
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    body: fd,
+                    headers: { Accept: 'application/json' },
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok) {
+                    const msg =
+                        typeof data.error === 'string'
+                            ? data.error
+                            : data.errors && data.errors[0] && data.errors[0].message;
+                    throw new Error(msg || 'Submit failed. Try again or email hello@dropstep.io.');
+                }
+                form.style.display = 'none';
+                intro.style.display = 'none';
+                complete.classList.add('show');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (err) {
+                submitError.hidden = false;
+                submitError.textContent =
+                    err instanceof Error ? err.message : 'Something went wrong. Try again or email hello@dropstep.io.';
+                next.disabled = false;
+                updateStep();
+                submitError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         });
 
         back.addEventListener('click', () => {
@@ -591,6 +827,16 @@
         document.querySelectorAll('input[name="hasLogo"]').forEach((input) => {
             input.addEventListener('change', () => {
                 logoUpload.classList.toggle('show', input.value === 'Yes' && input.checked);
+            });
+        });
+
+        document.querySelectorAll('.upload-zone input[type="file"]').forEach((input) => {
+            input.addEventListener('change', () => {
+                const zone = input.closest('.upload-zone');
+                const fileName = zone.querySelector('.file-name');
+                const file = input.files && input.files[0];
+                zone.classList.toggle('has-file', Boolean(file));
+                fileName.textContent = file ? `✓ ${file.name}` : '';
             });
         });
 
