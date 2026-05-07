@@ -509,7 +509,7 @@
         </section>
 
         <form class="form-shell" id="onboarding-form" method="post" enctype="multipart/form-data">
-            <!-- Formspree: https://formspree.io — create a form, paste its POST URL into ONBOARDING_SUBMIT_URL in the script below. You get email + a dashboard of every field and attachment. -->
+            <!-- Formspree: https://formspree.io — In Form → Settings, enable email notifications to your inbox. Each submit sends one email with all fields; uploads require Personal+ (see script FORMSPREE_INCLUDE_FILES). -->
             <input type="hidden" name="_subject" value="Dropstep onboarding submission">
             <input type="hidden" name="formPage" value="onboarding">
             <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
@@ -713,11 +713,12 @@
         /** Paste your Formspree form URL, e.g. https://formspree.io/f/abcdefgh — same pattern works for many form backends that accept multipart POST. */
         const ONBOARDING_SUBMIT_URL = 'https://formspree.io/f/mgodlzwj';
         /**
-         * Formspree Free does not accept file uploads ("File Uploads Not Permitted").
-         * File uploads are available on Personal+ (see https://help.formspree.io/articles/building-your-form/file-uploads).
-         * Keep false on Free; set true after upgrading so analytics + logo files are sent.
+         * File uploads (analytics screenshots, logo) require Formspree Personal, Professional, or Business.
+         * https://help.formspree.io/articles/building-your-form/file-uploads
+         * Formspree emails you each submission when notifications are on; images appear as download links in that email and in the Submissions tab.
+         * Set to false only if you stay on Formspree Free (then images cannot be sent through Formspree).
          */
-        const FORMSPREE_INCLUDE_FILES = false;
+        const FORMSPREE_INCLUDE_FILES = true;
 
         const form = document.querySelector('#onboarding-form');
         const intro = document.querySelector('#form-intro');
@@ -779,6 +780,11 @@
                     'Creator chose file(s) on this form; they were not uploaded because Formspree Free blocks file uploads. Ask them to email assets to hello@dropstep.io, or upgrade Formspree (Personal+) and set FORMSPREE_INCLUDE_FILES to true in onboarding/index.html.'
                 );
             }
+            const creatorEmail = formElement.querySelector('input[name="email"]')?.value?.trim();
+            fd.set(
+                '_subject',
+                creatorEmail ? `Dropstep onboarding — ${creatorEmail}` : 'Dropstep onboarding submission'
+            );
             return fd;
         }
 
@@ -820,10 +826,15 @@
                 });
                 const data = await res.json().catch(() => ({}));
                 if (!res.ok) {
-                    const msg =
+                    let msg =
                         typeof data.error === 'string'
                             ? data.error
                             : data.errors && data.errors[0] && data.errors[0].message;
+                    msg = msg || '';
+                    if (/file uploads not permitted/i.test(String(msg))) {
+                        msg =
+                            'Formspree is blocking file uploads on your current plan. To receive screenshots and logos, upgrade this form to Personal (or higher) at https://formspree.io/plans — then submit again. Notification emails and the Submissions tab will include file download links. To stay on Free, set FORMSPREE_INCLUDE_FILES to false in onboarding/index.html (text answers only).';
+                    }
                     throw new Error(msg || 'Submit failed. Try again or email hello@dropstep.io.');
                 }
                 const hadLocalFiles = [...form.querySelectorAll('input[type="file"]')].some(
