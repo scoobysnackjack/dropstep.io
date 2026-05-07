@@ -24,17 +24,14 @@
         }
 
         * { box-sizing: border-box; }
-        html {
-            scroll-behavior: smooth;
-            overflow-x: clip;
-        }
+        html { scroll-behavior: smooth; }
         body {
             margin: 0;
             background: var(--black);
             color: var(--white);
             font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             -webkit-font-smoothing: antialiased;
-            overflow-x: clip;
+            overflow-x: hidden;
         }
         body::before {
             content: "";
@@ -148,7 +145,7 @@
         }
 
         .hero {
-            padding: 132px 0 120px;
+            padding: 132px 0 86px;
             background:
                 radial-gradient(circle at 78% 22%, rgba(197,160,74,.18), transparent 28%),
                 radial-gradient(circle at 16% 10%, rgba(255,255,255,.07), transparent 24%),
@@ -160,7 +157,7 @@
             width: min(1420px, calc(100% - 20px));
             grid-template-columns: .74fr 1.26fr;
             gap: 22px;
-            align-items: start;
+            align-items: center;
         }
         .hero-grid > div:first-child {
             transform: translateX(-34px);
@@ -207,9 +204,9 @@
         .brand-site-mockup {
             position: relative;
             justify-self: end;
-            width: min(950px, calc(100% + 190px));
-            transform: translateX(96px);
-            padding: 12px;
+            width: min(820px, calc(100% + 120px));
+            transform: translateX(72px);
+            padding: 8px;
             border: 1px solid rgba(197,160,74,.7);
             background:
                 linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
@@ -220,7 +217,7 @@
         .brand-site-stack {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 4px;
         }
         .brand-site-card {
             position: relative;
@@ -967,7 +964,7 @@
             .hero-grid > div:first-child { transform: none; }
             .brand-site-stack { grid-template-columns: 1fr; }
             .athlete-site-grid { grid-template-columns: 1fr; }
-            .hero { padding: 108px 0 110px; }
+            .hero { padding-top: 108px; }
             .features { grid-template-columns: repeat(2, 1fr); }
             .problem-grid,
             .pricing-grid,
