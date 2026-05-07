@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropstep | NIL Brand Management for Creator-Athletes</title>
-    <meta name="description" content="Dropstep runs NIL brand outreach, athlete websites, follow-up, content calendars, and deal tracking for sports agencies.">
+    <title>Dropstep | Brand Management for Talent Agencies</title>
+    <meta name="description" content="Dropstep runs brand outreach, talent websites, follow-up, content calendars, and deal tracking for agencies managing athletes, creators, and talent.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
@@ -84,8 +84,8 @@
             position: fixed;
             inset: 0 0 auto 0;
             z-index: 20;
-            background: rgba(8,8,8,.86);
-            border-bottom: 1px solid var(--line);
+            background: rgba(255,255,255,.92);
+            border-bottom: 1px solid rgba(8,8,8,.1);
             backdrop-filter: blur(16px);
         }
         .nav-inner {
@@ -94,39 +94,50 @@
             align-items: center;
             justify-content: space-between;
         }
-        .brand img { width: 134px; display: block; }
+        .brand img {
+            width: 146px;
+            height: 38px;
+            object-fit: cover;
+            object-position: center bottom;
+            display: block;
+        }
         .nav-links {
             display: flex;
             align-items: center;
             gap: 34px;
-            color: rgba(255,255,255,.72);
+            color: rgba(8,8,8,.74);
             font-size: 10px;
             font-weight: 900;
             letter-spacing: .06em;
             text-transform: uppercase;
         }
-        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover { color: var(--black); }
+        .nav .btn {
+            background: var(--black);
+            border-color: var(--black);
+            color: var(--white);
+        }
         .menu-btn {
             display: none;
             width: 42px;
             height: 42px;
-            border: 1px solid rgba(255,255,255,.14);
+            border: 1px solid rgba(8,8,8,.14);
             border-radius: 10px;
-            background: rgba(255,255,255,.06);
-            color: var(--white);
+            background: rgba(8,8,8,.06);
+            color: var(--black);
             font-weight: 900;
         }
         .mobile-menu {
             display: none;
             padding: 10px 0 20px;
-            border-top: 1px solid var(--line);
-            background: var(--black);
+            border-top: 1px solid rgba(8,8,8,.1);
+            background: var(--white);
         }
         .mobile-menu.open { display: block; }
         .mobile-menu a {
             display: block;
             padding: 13px 0;
-            color: rgba(255,255,255,.78);
+            color: rgba(8,8,8,.78);
             font-size: 12px;
             font-weight: 900;
             text-transform: uppercase;
@@ -142,9 +153,13 @@
         }
         .hero-grid {
             display: grid;
-            grid-template-columns: .92fr 1.08fr;
-            gap: 64px;
+            width: min(1420px, calc(100% - 20px));
+            grid-template-columns: .74fr 1.26fr;
+            gap: 22px;
             align-items: center;
+        }
+        .hero-grid > div:first-child {
+            transform: translateX(-34px);
         }
         h1 {
             max-width: 610px;
@@ -187,12 +202,33 @@
         }
         .brand-site-mockup {
             position: relative;
+            justify-self: end;
+            width: min(950px, calc(100% + 190px));
+            transform: translateX(96px);
+            padding: 12px;
             border: 1px solid rgba(197,160,74,.7);
             background:
                 linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
                 var(--panel);
             box-shadow: 0 34px 110px rgba(0,0,0,.42);
             overflow: hidden;
+        }
+        .brand-site-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .brand-site-card {
+            position: relative;
+            min-width: 0;
+            border: 1px solid rgba(255,255,255,.08);
+            background: #050505;
+            overflow: hidden;
+        }
+        .brand-site-image {
+            display: block;
+            width: 100%;
+            height: auto;
         }
         .brand-site-top {
             display: flex;
@@ -326,6 +362,324 @@
             text-transform: uppercase;
         }
 
+        .build-walkthrough {
+            background: var(--black);
+            color: var(--white);
+            border-bottom: 1px solid var(--line);
+        }
+        .walkthrough-intro {
+            max-width: 820px;
+            margin: 0 auto 64px;
+            text-align: center;
+        }
+        .walkthrough-intro .section-title {
+            margin: 0 auto;
+            max-width: 760px;
+        }
+        .walkthrough-subhead {
+            margin-top: 18px;
+            color: rgba(245,240,223,.64);
+            font-size: 18px;
+            font-weight: 750;
+        }
+        .walkthrough-flow {
+            display: grid;
+            gap: 28px;
+            max-width: 1060px;
+            margin: 0 auto;
+        }
+        .walk-step {
+            display: grid;
+            grid-template-columns: .78fr 1.22fr;
+            gap: 34px;
+            align-items: center;
+            padding: 34px;
+            border: 1px solid rgba(255,255,255,.08);
+            background:
+                radial-gradient(circle at 82% 8%, rgba(197,160,74,.12), transparent 28%),
+                rgba(255,255,255,.025);
+        }
+        .walk-step.featured {
+            grid-template-columns: 1fr;
+            padding: 42px;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(197,160,74,.16), transparent 34%),
+                rgba(255,255,255,.03);
+        }
+        .step-label {
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+        .walk-copy h3 {
+            margin-top: 12px;
+            color: var(--white);
+            font-size: clamp(32px, 4vw, 56px);
+            line-height: .95;
+        }
+        .walk-copy p {
+            max-width: 520px;
+            margin-top: 16px;
+            color: rgba(245,240,223,.66);
+            font-size: 15px;
+            line-height: 1.62;
+            font-weight: 650;
+        }
+        .flow-arrow {
+            color: var(--gold);
+            text-align: center;
+            font-size: 30px;
+            line-height: 1;
+            opacity: .76;
+        }
+        .ui-card {
+            border: 1px solid rgba(197,160,74,.38);
+            background: var(--panel);
+            box-shadow: 0 24px 70px rgba(0,0,0,.26);
+        }
+        .ui-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 16px 18px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+        .form-ui {
+            display: grid;
+            gap: 12px;
+            padding: 20px;
+        }
+        .form-field {
+            display: grid;
+            gap: 7px;
+        }
+        .form-field span {
+            color: rgba(245,240,223,.46);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+        .form-field div {
+            min-height: 42px;
+            padding: 12px 13px;
+            border: 1px solid rgba(197,160,74,.48);
+            background: rgba(8,8,8,.54);
+            color: rgba(245,240,223,.78);
+            font-size: 12px;
+            font-weight: 800;
+        }
+        .site-mockups-label {
+            display: inline-flex;
+            margin-bottom: 16px;
+            padding: 9px 11px;
+            border: 1px solid rgba(197,160,74,.45);
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+        .athlete-site-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .athlete-site-ui {
+            overflow: hidden;
+        }
+        .browser-top {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            background: rgba(8,8,8,.74);
+        }
+        .browser-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(197,160,74,.7);
+        }
+        .athlete-page {
+            padding: 22px;
+            background:
+                radial-gradient(circle at 78% 16%, rgba(197,160,74,.18), transparent 30%),
+                linear-gradient(145deg, #0b0b0b, #171717);
+        }
+        .profile-eyebrow {
+            color: var(--gold);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+        .athlete-page h4 {
+            margin: 9px 0 6px;
+            color: var(--white);
+            font-family: Oswald, Inter, sans-serif;
+            font-size: clamp(34px, 4vw, 52px);
+            line-height: .9;
+            text-transform: uppercase;
+        }
+        .athlete-page p {
+            color: rgba(245,240,223,.62);
+            font-size: 12px;
+            font-weight: 750;
+        }
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 22px;
+        }
+        .profile-stats div {
+            padding: 12px 10px;
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.035);
+        }
+        .profile-stats strong {
+            display: block;
+            color: var(--white);
+            font-size: 18px;
+            line-height: 1;
+        }
+        .profile-stats span {
+            display: block;
+            margin-top: 6px;
+            color: rgba(245,240,223,.48);
+            font-size: 9px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .profile-cta {
+            display: inline-flex;
+            margin-top: 22px;
+            padding: 11px 13px;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+        .match-table,
+        .deal-table {
+            padding: 10px 18px 18px;
+        }
+        .match-row,
+        .deal-row {
+            display: grid;
+            grid-template-columns: 38px 1fr auto;
+            gap: 12px;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+        .deal-row {
+            grid-template-columns: 1fr 1fr auto;
+        }
+        .match-row:last-child,
+        .deal-row:last-child {
+            border-bottom: 0;
+        }
+        .brand-icon {
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgba(197,160,74,.42);
+            border-radius: 50%;
+            background: rgba(197,160,74,.12);
+        }
+        .match-row strong,
+        .deal-row strong {
+            display: block;
+            color: var(--white);
+            font-size: 13px;
+        }
+        .match-row span,
+        .deal-row span {
+            display: block;
+            margin-top: 4px;
+            color: rgba(245,240,223,.52);
+            font-size: 11px;
+            line-height: 1.35;
+            font-weight: 650;
+        }
+        .badge {
+            padding: 7px 9px;
+            border: 1px solid rgba(255,255,255,.12);
+            color: rgba(245,240,223,.76);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .badge.gold {
+            border-color: rgba(197,160,74,.55);
+            color: var(--gold);
+        }
+        .badge.green {
+            border-color: rgba(85,205,135,.42);
+            color: #71d896;
+        }
+        .email-body {
+            padding: 20px;
+        }
+        .email-meta {
+            display: grid;
+            gap: 10px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            color: rgba(245,240,223,.62);
+            font-size: 12px;
+            font-weight: 750;
+        }
+        .email-meta strong {
+            color: var(--white);
+        }
+        .email-preview {
+            margin-top: 18px;
+            color: rgba(245,240,223,.7);
+            font-size: 14px;
+            line-height: 1.65;
+            font-weight: 650;
+        }
+        .email-stat {
+            margin-top: 18px;
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .walkthrough-close {
+            max-width: 760px;
+            margin: 70px auto 0;
+            text-align: center;
+        }
+        .walkthrough-close h3 {
+            color: var(--white);
+            font-size: clamp(38px, 5.2vw, 74px);
+            line-height: .95;
+        }
+        .walkthrough-close h3 span {
+            display: block;
+            color: var(--gold);
+        }
+        .walkthrough-close .btn {
+            margin-top: 28px;
+        }
+
         .problem-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -395,7 +749,6 @@
             line-height: 1.45;
             font-weight: 650;
         }
-
         .vertical-steps {
             position: relative;
             display: grid;
@@ -403,15 +756,6 @@
             max-width: 960px;
             margin: 0 auto;
             padding-left: 34px;
-        }
-        .vertical-steps::before {
-            content: "";
-            position: absolute;
-            left: 58px;
-            top: 26px;
-            bottom: 26px;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, var(--gold), transparent);
         }
         .work-step {
             position: relative;
@@ -665,11 +1009,20 @@
             .nav-links { display: none; }
             .menu-btn { display: block; }
             .hero-grid,
+            .walk-step,
             .section-head,
             .about-grid,
             .pilot-offer {
                 grid-template-columns: 1fr;
             }
+            .brand-site-mockup {
+                justify-self: stretch;
+                width: 100%;
+                transform: none;
+            }
+            .hero-grid > div:first-child { transform: none; }
+            .brand-site-stack { grid-template-columns: 1fr; }
+            .athlete-site-grid { grid-template-columns: 1fr; }
             .hero { padding-top: 108px; }
             .features { grid-template-columns: repeat(2, 1fr); }
             .problem-grid,
@@ -701,6 +1054,15 @@
             .vertical-steps { padding-left: 0; }
             .vertical-steps::before { display: none; }
             .work-step { grid-template-columns: 1fr; gap: 10px; }
+            .walk-step,
+            .walk-step.featured {
+                padding: 24px;
+            }
+            .match-row,
+            .deal-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
             .pilot-offer { padding: 24px; }
             .footer-grid { flex-direction: column; align-items: flex-start; }
         }
@@ -734,43 +1096,159 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div>
-                    <h1 class="condensed">Your athletes' brand on autopilot. <span>You just close the deals.</span></h1>
-                    <p class="hero-copy">Dropstep is a done-for-you brand management service for NIL agencies. We handle outreach, content, follow-up, athlete websites, and deal tracking for your entire roster.</p>
+                    <h1 class="condensed">Your clients' brands on autopilot. <span>You just close the deals.</span></h1>
+                    <p class="hero-copy">Dropstep is a done-for-you brand management system for agencies. We handle outreach, content, follow-up, talent websites, and deal tracking for your entire roster.</p>
                     <div class="hero-action">
                         <a class="btn gold" href="https://calendly.com/" target="_blank" rel="noreferrer">Book a 15-Min Call</a>
                     </div>
-                    <div class="proof-stats">
-                        <div class="proof-stat">50 Brand Pitches / Month</div>
-                        <div class="proof-stat">Up and Running in 7 Days</div>
-                        <div class="proof-stat">No Deal Dies from Silence</div>
-                    </div>
                 </div>
 
-                <div class="brand-site-mockup" aria-label="Athlete NIL website mockup">
-                    <div class="brand-site-top">
-                        <div class="mockup-label">Athlete Brand Site</div>
-                        <div class="mockup-url">dropstep.io/athlete-profile</div>
-                    </div>
-                    <div class="athlete-preview">
-                        <div class="athlete-panel">
-                            <div class="athlete-photo"></div>
+                <div class="brand-site-mockup" aria-label="Talent brand site preview">
+                    <div class="brand-site-stack">
+                        <div class="brand-site-card">
+                            <img class="brand-site-image" src="assets/athlete-brand-site.png" alt="Example athlete brand site for sponsorships">
                         </div>
-                        <div class="athlete-info">
-                            <h3 class="condensed">Sponsor-ready athlete profile.</h3>
-                            <p>A pitch-ready page that gives brands the stats, story, audience, fit, and contact path they need to take the athlete seriously.</p>
-                            <div class="athlete-metrics">
-                                <div class="athlete-metric"><strong>127K</strong><span>Social Reach</span></div>
-                                <div class="athlete-metric"><strong>78%</strong><span>Local Pull</span></div>
-                                <div class="athlete-metric"><strong>12</strong><span>Brand Fits</span></div>
-                            </div>
-                            <div class="mockup-tags">
-                                <span>Stats</span>
-                                <span>Audience</span>
-                                <span>Brand Fit</span>
-                                <span>Agent Contact</span>
-                            </div>
+                        <div class="brand-site-card">
+                            <img class="brand-site-image" src="assets/talent-brand-site.png" alt="Example creator brand site for sponsorships">
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section build-walkthrough" id="see-it-in-action">
+            <div class="container">
+                <div class="walkthrough-intro">
+                    <span class="kicker">See It In Action</span>
+                    <h2 class="section-title condensed">Here's exactly what your athletes get.</h2>
+                    <p class="walkthrough-subhead">From zero to brand-ready in 7 days.</p>
+                </div>
+
+                <div class="walkthrough-flow">
+                    <article class="walk-step">
+                        <div class="walk-copy">
+                            <span class="step-label">Step 01</span>
+                            <h3 class="condensed">You tell us about your roster.</h3>
+                            <p>Sport, school, audience, interests, and brand goals. Takes 10 minutes.</p>
+                        </div>
+                        <div class="ui-card">
+                            <div class="ui-card-header">Roster Intake</div>
+                            <div class="form-ui">
+                                <div class="form-field"><span>Athlete Name</span><div>Marcus Johnson</div></div>
+                                <div class="form-field"><span>Sport</span><div>Basketball</div></div>
+                                <div class="form-field"><span>School</span><div>Riverdale University</div></div>
+                                <div class="form-field"><span>Social Following</span><div>125K across platforms</div></div>
+                                <div class="form-field"><span>Brand Interests</span><div>Sportswear, gaming, fitness, local restaurants</div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <article class="walk-step featured">
+                        <div class="walk-copy">
+                            <span class="step-label">Step 02</span>
+                            <h3 class="condensed">We build every athlete a professional brand site.</h3>
+                            <p>A personal NIL page built to impress sponsors — stats, audience data, brand fit, and a direct contact form to you.</p>
+                        </div>
+                        <div>
+                            <div class="site-mockups-label">Athlete Brand Sites — Built In 48 Hrs</div>
+                            <div class="athlete-site-grid">
+                                <div class="ui-card athlete-site-ui">
+                                    <div class="browser-top"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                                    <div class="athlete-page">
+                                        <div class="profile-eyebrow">Basketball | Guard | Atlanta, GA</div>
+                                        <h4>Marcus Johnson</h4>
+                                        <p>Built for brands. Backed by performance.</p>
+                                        <div class="profile-stats">
+                                            <div><strong>125K</strong><span>Following</span></div>
+                                            <div><strong>6.8%</strong><span>Engagement</span></div>
+                                            <div><strong>18-24</strong><span>Audience</span></div>
+                                        </div>
+                                        <div class="profile-cta">Work With Marcus</div>
+                                    </div>
+                                </div>
+                                <div class="ui-card athlete-site-ui">
+                                    <div class="browser-top"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
+                                    <div class="athlete-page">
+                                        <div class="profile-eyebrow">Soccer | Midfielder | Austin, TX</div>
+                                        <h4>Taylor Rivers</h4>
+                                        <p>Elite student-athlete with a strong lifestyle audience.</p>
+                                        <div class="profile-stats">
+                                            <div><strong>92K</strong><span>Following</span></div>
+                                            <div><strong>7.4%</strong><span>Engagement</span></div>
+                                            <div><strong>62%</strong><span>Female</span></div>
+                                        </div>
+                                        <div class="profile-cta">Work With Taylor</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <article class="walk-step">
+                        <div class="walk-copy">
+                            <span class="step-label">Step 03</span>
+                            <h3 class="condensed">We find 50 brands that match each athlete.</h3>
+                            <p>AI identifies brand partners by sport, audience, location, and personal interests. No generic outreach — every pitch is matched.</p>
+                        </div>
+                        <div class="ui-card">
+                            <div class="ui-card-header">Brand Matches — Marcus Johnson</div>
+                            <div class="match-table">
+                                <div class="match-row"><div class="brand-icon"></div><div><strong>Sportswear</strong><span>Basketball audience 18-24, male, urban</span></div><div class="badge green">Matched</div></div>
+                                <div class="match-row"><div class="brand-icon"></div><div><strong>Energy Drinks</strong><span>Game-day routine and high-performance content fit</span></div><div class="badge green">Matched</div></div>
+                                <div class="match-row"><div class="brand-icon"></div><div><strong>Gaming</strong><span>Strong Gen Z audience and livestream overlap</span></div><div class="badge green">Matched</div></div>
+                                <div class="match-row"><div class="brand-icon"></div><div><strong>Local Restaurants</strong><span>Atlanta student audience with campus influence</span></div><div class="badge green">Matched</div></div>
+                                <div class="match-row"><div class="brand-icon"></div><div><strong>Fitness Gear</strong><span>Training content and performance positioning</span></div><div class="badge green">Matched</div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <article class="walk-step">
+                        <div class="walk-copy">
+                            <span class="step-label">Step 04</span>
+                            <h3 class="condensed">We send personalized pitches. Automatically.</h3>
+                            <p>50 brand emails go out every month per athlete — written specifically for each brand, sent automatically, followed up until they respond.</p>
+                        </div>
+                        <div class="ui-card">
+                            <div class="ui-card-header">Pitch Preview</div>
+                            <div class="email-body">
+                                <div class="email-meta">
+                                    <div><strong>Subject:</strong> Partnership opportunity — Marcus Johnson x [Brand]</div>
+                                    <div><strong>To:</strong> Brand Partnerships Team</div>
+                                </div>
+                                <p class="email-preview">Marcus is a high-engagement college basketball guard with a strong Atlanta audience and a sponsor-ready profile. Your brand already connects with his core demographic, and a short-form training campaign would be a natural fit.</p>
+                                <div class="email-stat">50 pitches / month / per athlete</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <article class="walk-step">
+                        <div class="walk-copy">
+                            <span class="step-label">Step 05</span>
+                            <h3 class="condensed">Brands respond. You close the deal.</h3>
+                            <p>You get notified the moment a brand replies. Everything else — outreach, follow-up, tracking, content — runs without you.</p>
+                        </div>
+                        <div class="ui-card">
+                            <div class="ui-card-header">Deal Tracker — Your Roster</div>
+                            <div class="deal-table">
+                                <div class="deal-row"><strong>Marcus Johnson</strong><span>Nike</span><div class="badge gold">In Conversation</div></div>
+                                <div class="deal-row"><strong>Taylor Rivers</strong><span>Gatorade</span><div class="badge">Opened</div></div>
+                                <div class="deal-row"><strong>Devon Parks</strong><span>FitTea</span><div class="badge green">Deal Closed ✓</div></div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="walkthrough-close">
+                    <h3 class="condensed">Your athletes pitch brands every single day. <span>You just show up to close.</span></h3>
+                    <a class="btn gold" href="https://calendly.com/" target="_blank" rel="noreferrer">See It For Your Roster</a>
                 </div>
             </div>
         </section>
@@ -782,7 +1260,7 @@
                         <span class="kicker">The Problem</span>
                         <h2 class="section-title condensed">The old way is costing you deals.</h2>
                     </div>
-                    <p class="section-copy">You're busy. Your athletes are busy. And opportunities are slipping through the cracks.</p>
+                    <p class="section-copy">You're busy. Your clients are busy. And brand opportunities are slipping through the cracks.</p>
                 </div>
                 <div class="problem-grid">
                     <article class="problem-card">
@@ -794,8 +1272,8 @@
                         <p>Most deals die in silence because nobody had time to bump the thread.</p>
                     </article>
                     <article class="problem-card">
-                        <h3>Athletes don't have real brand presence.</h3>
-                        <p>Sponsors don't take them seriously when there is nothing polished to review.</p>
+                        <h3>Most clients don't have real brand presence.</h3>
+                        <p>Brands don't take talent seriously when there is nothing polished to review.</p>
                     </article>
                     <article class="problem-card">
                         <h3>There's no system. No tracking. No visibility.</h3>
@@ -814,8 +1292,8 @@
                 <div class="features">
                     <article class="feature">
                         <div class="big-icon">▣</div>
-                        <h3 class="condensed">Athlete NIL Website</h3>
-                        <p>A pitch-ready profile for every athlete, built to impress brands.</p>
+                        <h3 class="condensed">Talent Brand Site</h3>
+                        <p>A pitch-ready profile for every client, built to impress brands.</p>
                     </article>
                     <article class="feature">
                         <div class="big-icon">↗</div>
@@ -855,15 +1333,15 @@
                 <div class="vertical-steps">
                     <article class="work-step">
                         <div class="step-number">01</div>
-                        <div><h3 class="condensed">You Onboard</h3><p>Tell us about your agency and your roster.</p></div>
+                        <div><h3 class="condensed">You Onboard</h3><p>Tell us about your agency, your roster, and who you want brands to take seriously.</p></div>
                     </article>
                     <article class="work-step">
                         <div class="step-number">02</div>
-                        <div><h3 class="condensed">We Build</h3><p>We create every athlete's brand profile and NIL website within 7 days.</p></div>
+                        <div><h3 class="condensed">We Build</h3><p>We create every client's brand profile and sponsor-ready website within 7 days.</p></div>
                     </article>
                     <article class="work-step">
                         <div class="step-number">03</div>
-                        <div><h3 class="condensed">We Launch</h3><p>Outreach campaigns start immediately. 50 pitches per athlete.</p></div>
+                        <div><h3 class="condensed">We Launch</h3><p>Outreach campaigns start immediately. 50 pitches per client.</p></div>
                     </article>
                     <article class="work-step">
                         <div class="step-number">04</div>
@@ -880,12 +1358,12 @@
         <section class="section social-proof-section">
             <div class="container">
                 <div class="stat-grid">
-                    <div class="big-stat"><strong>50+</strong><span>Brand pitches per athlete every month</span></div>
+                    <div class="big-stat"><strong>50+</strong><span>Brand pitches per client every month</span></div>
                     <div class="big-stat"><strong>7 Days</strong><span>From signup to first pitch sent</span></div>
                     <div class="big-stat"><strong>0</strong><span>Deals that die from silence</span></div>
                 </div>
                 <blockquote class="founder-quote">
-                    "Built by a former sports agent who watched deals die from silence for years. Dropstep is the system we wish we had."
+                    "Built by a former agent who watched deals die from silence for years. Dropstep is the system we wish we had."
                     <cite>— Dropstep Founder</cite>
                 </blockquote>
             </div>
@@ -898,15 +1376,15 @@
                     <h2 class="section-title condensed">Simple. Transparent. Built for agencies.</h2>
                 </div>
                 <div class="pricing-grid">
-                    <div class="price-card"><span>1-5 athletes</span><strong>$299</strong><small>per athlete / month</small><p>Includes all 6 Dropstep services</p></div>
-                    <div class="price-card popular"><div class="popular-badge">Most Popular</div><span>6-15 athletes</span><strong>$249</strong><small>per athlete / month</small><p>Includes all 6 Dropstep services</p></div>
-                    <div class="price-card"><span>16-30 athletes</span><strong>$199</strong><small>per athlete / month</small><p>Includes all 6 Dropstep services</p></div>
-                    <div class="price-card"><span>31+ athletes</span><strong>$149</strong><small>per athlete / month</small><p>Includes all 6 Dropstep services</p></div>
+                    <div class="price-card"><span>1-5 clients</span><strong>$299</strong><small>per client / month</small><p>Includes all 6 Dropstep services</p></div>
+                    <div class="price-card popular"><div class="popular-badge">Most Popular</div><span>6-15 clients</span><strong>$249</strong><small>per client / month</small><p>Includes all 6 Dropstep services</p></div>
+                    <div class="price-card"><span>16-30 clients</span><strong>$199</strong><small>per client / month</small><p>Includes all 6 Dropstep services</p></div>
+                    <div class="price-card"><span>31+ clients</span><strong>$149</strong><small>per client / month</small><p>Includes all 6 Dropstep services</p></div>
                 </div>
                 <div class="pilot-offer">
                     <div>
                         <h3 class="condensed">Not ready to commit? Start here.</h3>
-                        <p>$500/month for your first 5 athletes. 60 days. If we don't generate 5 brand conversations — you pay nothing.</p>
+                        <p>$500/month for your first 5 clients. 60 days. If we don't generate 5 brand conversations — you pay nothing.</p>
                     </div>
                     <a class="btn black" href="https://calendly.com/" target="_blank" rel="noreferrer">Start Your Free Pilot</a>
                 </div>
@@ -917,12 +1395,12 @@
             <div class="container about-grid">
                 <div>
                     <span class="kicker">Built by someone who lived it</span>
-                    <h2 class="section-title condensed">Made for the agent with too many athletes and not enough hours.</h2>
+                    <h2 class="section-title condensed">Made for the agency with too many clients and not enough hours.</h2>
                 </div>
                 <div class="founder-card">
                     <div class="quote-mark">“</div>
-                    <p>Dropstep was built by a former sports agent who spent years manually researching brands, writing pitch emails, and watching deals die because there was no time to follow up. We built the system we wish we had.</p>
-                    <div class="signature">— Founder, Dropstep | Former Sports Agent</div>
+                    <p>Dropstep was built by a former agent who spent years manually researching brands, writing pitch emails, and watching deals die because there was no time to follow up. We built the system we wish we had.</p>
+                    <div class="signature">— Founder, Dropstep | Former Agent</div>
                 </div>
             </div>
         </section>
@@ -930,7 +1408,7 @@
         <section class="final">
             <div class="container">
                 <h2 class="condensed">Ready to put your roster on autopilot?</h2>
-                <p>Start with 5 athletes. Free for 30 days if it doesn't work.</p>
+                <p>Start with 5 clients. Free for 30 days if it doesn't work.</p>
                 <a class="btn black" href="https://calendly.com/" target="_blank" rel="noreferrer">Book Your Free Call</a>
             </div>
         </section>
