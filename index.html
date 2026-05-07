@@ -154,13 +154,14 @@
         }
         .hero-grid {
             display: grid;
-            width: min(1420px, calc(100% - 20px));
-            grid-template-columns: .74fr 1.26fr;
-            gap: 22px;
+            width: min(1320px, calc(100% - 40px));
+            margin: 0 auto;
+            grid-template-columns: minmax(0, 0.58fr) minmax(0, 1fr);
+            gap: 10px;
             align-items: center;
         }
         .hero-grid > div:first-child {
-            transform: translateX(-34px);
+            transform: translateX(-6px);
         }
         h1 {
             max-width: 610px;
@@ -203,9 +204,9 @@
         }
         .brand-site-mockup {
             position: relative;
-            justify-self: end;
-            width: min(560px, calc(100% + 80px));
-            transform: translateX(48px);
+            justify-self: center;
+            width: min(520px, 100%);
+            transform: none;
             padding: 8px;
             border: 1px solid rgba(197,160,74,.7);
             background:
@@ -215,9 +216,9 @@
             overflow: hidden;
         }
         .brand-site-stack {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
         .brand-site-card {
             position: relative;
