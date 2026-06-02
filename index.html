@@ -589,8 +589,39 @@
             text-transform: uppercase;
         }
         .match-table,
-        .deal-table {
+        .deal-table,
+        .outreach-table {
             padding: 10px 18px 18px;
+        }
+        .outreach-table-head,
+        .outreach-row {
+            display: grid;
+            grid-template-columns: 1.1fr 1.15fr .9fr .9fr;
+            gap: 10px;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+        .outreach-table-head {
+            padding-top: 4px;
+            color: rgba(245,240,223,.42);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+        .outreach-row:last-child {
+            border-bottom: 0;
+        }
+        .outreach-row strong {
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 800;
+        }
+        .outreach-row span {
+            color: rgba(245,240,223,.58);
+            font-size: 11px;
+            font-weight: 650;
         }
         .match-row,
         .deal-row {
@@ -647,6 +678,18 @@
         .badge.green {
             border-color: rgba(85,205,135,.42);
             color: #71d896;
+        }
+        .badge.blue {
+            border-color: rgba(90,160,255,.42);
+            color: #7eb8ff;
+        }
+        .badge.purple {
+            border-color: rgba(170,120,255,.42);
+            color: #c49bff;
+        }
+        .badge.teal {
+            border-color: rgba(70,200,190,.42);
+            color: #6dd9d0;
         }
         .email-body {
             padding: 20px;
@@ -1018,6 +1061,17 @@
                 grid-template-columns: 1fr;
                 gap: 8px;
             }
+            .outreach-table-head,
+            .outreach-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .outreach-table-head span:nth-child(3),
+            .outreach-table-head span:nth-child(4),
+            .outreach-row span:nth-child(3),
+            .outreach-row span:nth-child(4) {
+                grid-column: 1 / -1;
+            }
             .pilot-offer { padding: 24px; }
             .footer-grid { flex-direction: column; align-items: flex-start; }
         }
@@ -1194,6 +1248,51 @@
                                 <div class="deal-row"><strong>Marcus Johnson</strong><span>Nike</span><div class="badge gold">In Conversation</div></div>
                                 <div class="deal-row"><strong>Taylor Rivers</strong><span>Gatorade</span><div class="badge">Opened</div></div>
                                 <div class="deal-row"><strong>Devon Parks</strong><span>FitTea</span><div class="badge green">Deal Closed ✓</div></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <div class="flow-arrow">↓</div>
+
+                    <article class="walk-step">
+                        <div class="walk-copy">
+                            <span class="step-label">Step 06</span>
+                            <h3 class="condensed">Track every pitch. In real time.</h3>
+                            <p>Every email sent, opened, and replied to is logged automatically. You see exactly where every brand stands — no guessing, no chasing.</p>
+                        </div>
+                        <div class="ui-card">
+                            <div class="ui-card-header">Outreach Dashboard</div>
+                            <div class="outreach-table">
+                                <div class="outreach-table-head">
+                                    <span>Brand</span>
+                                    <span>Status</span>
+                                    <span>Last Contacted</span>
+                                    <span>Next Follow Up</span>
+                                </div>
+                                <div class="outreach-row">
+                                    <strong>Nike Air</strong>
+                                    <div class="badge green">Handed Off</div>
+                                    <span>May 28</span>
+                                    <span>—</span>
+                                </div>
+                                <div class="outreach-row">
+                                    <strong>Gatorade</strong>
+                                    <div class="badge blue">Replied</div>
+                                    <span>May 27</span>
+                                    <span>—</span>
+                                </div>
+                                <div class="outreach-row">
+                                    <strong>FitTea</strong>
+                                    <div class="badge purple">Opened</div>
+                                    <span>May 25</span>
+                                    <span>Jun 1</span>
+                                </div>
+                                <div class="outreach-row">
+                                    <strong>Muscle Milk</strong>
+                                    <div class="badge teal">Initial Outreach</div>
+                                    <span>May 22</span>
+                                    <span>May 29</span>
+                                </div>
                             </div>
                         </div>
                     </article>
