@@ -197,6 +197,42 @@
             font-weight: 650;
         }
         .hero-action { margin-top: 34px; }
+        .audience-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+        .audience-pill {
+            min-height: 42px;
+            padding: 0 16px;
+            border: 1px solid rgba(197,160,74,.4);
+            border-radius: 999px;
+            background: rgba(197,160,74,.06);
+            color: rgba(245,240,223,.82);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background .16s ease, border-color .16s ease, color .16s ease, transform .16s ease;
+        }
+        .audience-pill:hover,
+        .audience-pill.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--black);
+            transform: translateY(-1px);
+        }
+        .audience-note {
+            display: block;
+            margin-top: 16px;
+            color: rgba(245,240,223,.48);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
         .proof-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -216,35 +252,69 @@
             line-height: 1.3;
             text-transform: uppercase;
         }
-        .brand-site-mockup {
+        .audience-preview {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            align-self: stretch;
+        }
+        .audience-card {
             position: relative;
-            justify-self: center;
-            width: min(520px, 100%);
-            transform: none;
-            padding: 8px;
-            border: 1px solid rgba(197,160,74,.7);
+            min-height: 222px;
+            padding: 20px;
+            border: 1px solid rgba(197,160,74,.34);
             background:
-                linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+                radial-gradient(circle at 78% 12%, rgba(197,160,74,.16), transparent 34%),
+                linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015)),
                 var(--panel);
-            box-shadow: 0 34px 110px rgba(0,0,0,.42);
+            box-shadow: 0 22px 70px rgba(0,0,0,.26);
             overflow: hidden;
         }
-        .brand-site-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+        .audience-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -30px -50px auto;
+            width: 140px;
+            height: 140px;
+            border: 1px solid rgba(197,160,74,.18);
+            border-radius: 50%;
         }
-        .brand-site-card {
-            position: relative;
-            min-width: 0;
+        .audience-card .card-type {
+            color: var(--gold);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+        .audience-card h3 {
+            margin-top: 18px;
+            color: var(--white);
+            font-family: Oswald, Inter, sans-serif;
+            font-size: clamp(28px, 3vw, 42px);
+            line-height: .9;
+            text-transform: uppercase;
+        }
+        .audience-card p {
+            margin-top: 12px;
+            color: rgba(245,240,223,.62);
+            font-size: 12px;
+            line-height: 1.5;
+            font-weight: 700;
+        }
+        .audience-card .mini-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .audience-card .mini-stats span {
+            padding: 9px 8px;
             border: 1px solid rgba(255,255,255,.08);
-            background: #050505;
-            overflow: hidden;
-        }
-        .brand-site-image {
-            display: block;
-            width: 100%;
-            height: auto;
+            background: rgba(255,255,255,.035);
+            color: rgba(245,240,223,.74);
+            font-size: 9px;
+            font-weight: 900;
+            text-transform: uppercase;
         }
         .brand-site-top {
             display: flex;
@@ -839,6 +909,66 @@
         .work-step.payoff p {
             color: var(--black);
         }
+        .simple-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 42px;
+        }
+        .simple-step-card {
+            padding: 24px 18px;
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.025);
+        }
+        .simple-icon {
+            display: grid;
+            place-items: center;
+            width: 54px;
+            height: 54px;
+            border: 1px solid rgba(197,160,74,.42);
+            border-radius: 50%;
+            color: var(--gold);
+            font-size: 22px;
+            font-weight: 900;
+        }
+        .simple-step-card h3 {
+            margin-top: 20px;
+            color: var(--white);
+            font-size: 19px;
+            line-height: 1.1;
+        }
+        .simple-step-card p {
+            margin-top: 12px;
+            color: rgba(245,240,223,.62);
+            font-size: 13px;
+            line-height: 1.55;
+            font-weight: 650;
+        }
+        .live-demo-card {
+            padding: 24px;
+            border: 1px solid rgba(197,160,74,.38);
+            background:
+                radial-gradient(circle at 80% 8%, rgba(197,160,74,.15), transparent 32%),
+                var(--panel);
+        }
+        .live-demo-card h4 {
+            margin: 0;
+            color: var(--white);
+            font-family: Oswald, Inter, sans-serif;
+            font-size: 42px;
+            line-height: .92;
+            text-transform: uppercase;
+        }
+        .live-demo-card p {
+            margin-top: 14px;
+            color: rgba(245,240,223,.62);
+            font-size: 13px;
+            line-height: 1.55;
+            font-weight: 650;
+        }
+        .live-demo-card .btn {
+            margin-top: 22px;
+        }
 
         .pricing-grid {
             display: grid;
@@ -916,6 +1046,66 @@
             font-size: 15px;
             line-height: 1.55;
             font-weight: 750;
+        }
+        .credibility-grid,
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 34px;
+        }
+        .credibility-card,
+        .testimonial-card,
+        .size-guidance {
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.025);
+        }
+        .credibility-card,
+        .testimonial-card {
+            padding: 24px;
+        }
+        .credibility-card h3,
+        .testimonial-card h3 {
+            color: var(--white);
+            font-size: 18px;
+            line-height: 1.1;
+        }
+        .credibility-card p,
+        .testimonial-card p {
+            margin-top: 12px;
+            color: rgba(245,240,223,.62);
+            font-size: 13px;
+            line-height: 1.55;
+            font-weight: 650;
+        }
+        .testimonial-card .result-label {
+            display: inline-flex;
+            margin-bottom: 16px;
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+        .size-guidance {
+            margin-top: 36px;
+            padding: 28px;
+            border-color: rgba(197,160,74,.36);
+            background:
+                radial-gradient(circle at 88% 20%, rgba(197,160,74,.12), transparent 30%),
+                rgba(255,255,255,.025);
+            text-align: center;
+        }
+        .size-guidance p {
+            max-width: 820px;
+            margin: 0 auto;
+            color: rgba(245,240,223,.72);
+            font-size: 17px;
+            line-height: 1.55;
+            font-weight: 800;
+        }
+        .size-guidance strong {
+            color: var(--gold);
         }
 
         .about {
@@ -1011,15 +1201,16 @@
             .walk-step,
             .section-head,
             .about-grid,
+            .credibility-grid,
+            .testimonial-grid,
             .pilot-offer {
                 grid-template-columns: 1fr;
             }
-            .brand-site-mockup {
-                justify-self: stretch;
-                width: 100%;
-                transform: none;
-            }
             .hero-grid > div:first-child { transform: none; }
+            .audience-preview,
+            .simple-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
             .athlete-site-grid { grid-template-columns: 1fr; }
             .hero { padding-top: 108px; }
             .features { grid-template-columns: repeat(2, 1fr); }
@@ -1040,6 +1231,8 @@
             .proof-stats,
             .problem-grid,
             .features,
+            .audience-preview,
+            .simple-steps,
             .pricing-grid,
             .stat-grid {
                 grid-template-columns: 1fr;
@@ -1103,93 +1296,92 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div>
-                    <h1 class="condensed">Your talent's brand on autopilot. <span>You just close the deals.</span></h1>
-                    <p class="hero-copy">Dropstep is a done-for-you brand management system for agencies, athletes, creators, and influencers. We handle outreach, content, follow-up, talent websites, and deal tracking — for your entire roster or just yourself.</p>
+                    <h1 class="condensed" id="hero-headline">Your next brand deal is already out there. <span>We go get it.</span></h1>
+                    <div class="audience-selector" aria-label="Choose your Dropstep path">
+                        <button class="audience-pill" type="button" data-audience="agency">I'm an Agency</button>
+                        <button class="audience-pill" type="button" data-audience="athlete">I'm an Athlete</button>
+                        <button class="audience-pill" type="button" data-audience="creator">I'm a Creator</button>
+                        <button class="audience-pill" type="button" data-audience="influencer">I'm an Influencer</button>
+                    </div>
+                    <p class="hero-copy" id="hero-copy">Dropstep builds your brand profile and automatically pitches matched companies every month — until you get a yes.</p>
+                    <span class="audience-note" id="audience-note">Built for agencies managing a roster, athletes chasing NIL, creators selling UGC, and influencers landing paid partnerships.</span>
                     <div class="hero-action">
                         <a class="btn gold" href="/start/">Start With Dropstep</a>
                     </div>
                 </div>
 
-                <div class="brand-site-mockup" aria-label="Talent brand site preview">
-                    <div class="brand-site-stack">
-                        <div class="brand-site-card">
-                            <img class="brand-site-image" src="assets/athlete-brand-site.png" alt="Example talent brand site for sponsorships">
-                        </div>
-                        <div class="brand-site-card">
-                            <img class="brand-site-image" src="assets/talent-brand-site.png" alt="Example creator brand site for sponsorships">
-                        </div>
-                    </div>
+                <div class="audience-preview" aria-label="Brand deal examples">
+                    <article class="audience-card">
+                        <div class="card-type">College Athlete</div>
+                        <h3 data-example-name="0">Jordan Price</h3>
+                        <p data-example-copy="0">NIL-ready basketball guard matched with sportswear, recovery, and local food brands.</p>
+                        <div class="mini-stats"><span>18K IG</span><span>6.2% ER</span><span>NIL</span></div>
+                    </article>
+                    <article class="audience-card">
+                        <div class="card-type">UGC Creator</div>
+                        <h3 data-example-name="1">Mia Santos</h3>
+                        <p data-example-copy="1">Short-form product demos pitched to wellness, beauty, and app brands.</p>
+                        <div class="mini-stats"><span>TikTok</span><span>Reels</span><span>UGC</span></div>
+                    </article>
+                    <article class="audience-card">
+                        <div class="card-type">Lifestyle Influencer</div>
+                        <h3 data-example-name="2">Ava Monroe</h3>
+                        <p data-example-copy="2">Lifestyle audience packaged for fashion, travel, and daily-routine partnerships.</p>
+                        <div class="mini-stats"><span>82K</span><span>3.9% ER</span><span>Paid</span></div>
+                    </article>
+                    <article class="audience-card">
+                        <div class="card-type">Agency Roster</div>
+                        <h3 data-example-name="3">12 Talent Pipeline</h3>
+                        <p data-example-copy="3">One dashboard for roster profiles, matched brand lists, outreach, follow-up, and handoffs.</p>
+                        <div class="mini-stats"><span>Roster</span><span>50/mo</span><span>CRM</span></div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section class="section build-walkthrough" id="see-it-in-action">
+        <section class="section build-walkthrough" id="how-it-works">
             <div class="container">
                 <div class="walkthrough-intro">
-                    <span class="kicker">See It In Action</span>
-                    <h2 class="section-title condensed">Here's exactly what your talent gets.</h2>
-                    <p class="walkthrough-subhead">From zero to brand-ready in 7 days.</p>
+                    <span class="kicker">How It Works</span>
+                    <h2 class="section-title condensed">Four simple steps. No brand-deal jargon.</h2>
+                    <p class="walkthrough-subhead" id="workflow-subhead">Whether you're managing talent or building your own audience, Dropstep turns your profile into monthly brand outreach.</p>
                 </div>
 
-                <div class="walkthrough-flow">
-                    <article class="walk-step">
-                        <div class="walk-copy">
-                            <span class="step-label">Step 01</span>
-                            <h3 class="condensed">You tell us about your talent.</h3>
-                            <p>Sport, niche, audience, interests, and brand goals. Takes 10 minutes.</p>
-                        </div>
-                        <div class="ui-card">
-                            <div class="ui-card-header">Roster Intake</div>
-                            <div class="form-ui">
-                                <div class="form-field"><span>Talent Name</span><div>Marcus Johnson</div></div>
-                                <div class="form-field"><span>Category</span><div>Basketball, Lifestyle, Gaming, Fitness</div></div>
-                                <div class="form-field"><span>School</span><div>Riverdale University</div></div>
-                                <div class="form-field"><span>Social Following</span><div>125K across platforms</div></div>
-                                <div class="form-field"><span>Brand Interests</span><div>Sportswear, gaming, fitness, local restaurants</div></div>
-                            </div>
-                        </div>
+                <div class="simple-steps">
+                    <article class="simple-step-card">
+                        <div class="simple-icon">01</div>
+                        <h3 class="condensed">You tell us about yourself.</h3>
+                        <p>Sport, niche, following, goals, audience, and the kinds of brands you want to work with.</p>
                     </article>
+                    <article class="simple-step-card">
+                        <div class="simple-icon">02</div>
+                        <h3 class="condensed">We build your brand profile page.</h3>
+                        <p>A pitch-ready page brands can review fast: who you are, who you reach, and why the partnership makes sense.</p>
+                    </article>
+                    <article class="simple-step-card">
+                        <div class="simple-icon">03</div>
+                        <h3 class="condensed">We pitch 50 matched brands every month.</h3>
+                        <p>We find companies that fit your sport, niche, audience, location, and content style.</p>
+                    </article>
+                    <article class="simple-step-card">
+                        <div class="simple-icon">04</div>
+                        <h3 class="condensed">Brands reply. You close the deal.</h3>
+                        <p>We handle outreach, tracking, and follow-up. You step in when a real opportunity is ready.</p>
+                    </article>
+                </div>
 
-                    <div class="flow-arrow">↓</div>
-
+                <div class="walkthrough-flow" style="margin-top: 44px;">
                     <article class="walk-step featured">
                         <div class="walk-copy">
-                            <span class="step-label">Step 02</span>
-                            <h3 class="condensed">We build every talent a professional brand site.</h3>
-                            <p>A personal brand page built to impress sponsors — stats, audience data, brand fit, and a direct contact form to you.</p>
+                            <span class="step-label">Brand Profile Page</span>
+                            <h3 class="condensed">A real page brands can click, review, and trust.</h3>
+                            <p>Dropstep turns your story, audience, content, stats, and goals into a sponsor-ready profile page. No more sending a random Instagram link and hoping it feels professional.</p>
                         </div>
-                        <div>
-                            <div class="site-mockups-label">Talent Brand Sites — Built In 48 Hrs</div>
-                            <div class="athlete-site-grid">
-                                <div class="ui-card athlete-site-ui">
-                                    <div class="browser-top"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
-                                    <div class="athlete-page">
-                                        <div class="profile-eyebrow">Basketball | Guard | Atlanta, GA</div>
-                                        <h4>Marcus Johnson</h4>
-                                        <p>Built for brands. Backed by performance.</p>
-                                        <div class="profile-stats">
-                                            <div><strong>125K</strong><span>Following</span></div>
-                                            <div><strong>6.8%</strong><span>Engagement</span></div>
-                                            <div><strong>18-24</strong><span>Audience</span></div>
-                                        </div>
-                                        <div class="profile-cta">Work With Marcus</div>
-                                    </div>
-                                </div>
-                                <div class="ui-card athlete-site-ui">
-                                    <div class="browser-top"><span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span></div>
-                                    <div class="athlete-page">
-                                        <div class="profile-eyebrow">Soccer | Midfielder | Austin, TX</div>
-                                        <h4>Taylor Rivers</h4>
-                                        <p>Standout talent with a strong lifestyle audience.</p>
-                                        <div class="profile-stats">
-                                            <div><strong>92K</strong><span>Following</span></div>
-                                            <div><strong>7.4%</strong><span>Engagement</span></div>
-                                            <div><strong>62%</strong><span>Female</span></div>
-                                        </div>
-                                        <div class="profile-cta">Work With Taylor</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="live-demo-card">
+                            <div class="site-mockups-label">Live Brand Site Example</div>
+                            <h4>Jon Seaton</h4>
+                            <p>See how a live Dropstep profile packages a real person for brand partners with a clean story, proof, audience context, and a clear call to action.</p>
+                            <a class="btn gold" href="https://jonseaton.dropstep.io" target="_blank" rel="noreferrer">See a live example →</a>
                         </div>
                     </article>
 
@@ -1197,18 +1389,17 @@
 
                     <article class="walk-step">
                         <div class="walk-copy">
-                            <span class="step-label">Step 03</span>
-                            <h3 class="condensed">We find 50 brands that match each talent.</h3>
-                            <p>AI identifies brand partners by niche, audience, location, and personal interests. No generic outreach — every match is intentional.</p>
+                            <span class="step-label">Matched Outreach</span>
+                            <h3 class="condensed">The brands are picked for your audience.</h3>
+                            <p id="match-copy">Dropstep finds companies that already care about the people you reach, then turns that fit into personalized monthly outreach.</p>
                         </div>
                         <div class="ui-card">
-                            <div class="ui-card-header">Brand Matches — Marcus Johnson</div>
+                            <div class="ui-card-header" id="match-header">Brand Matches — Mixed Pipeline</div>
                             <div class="match-table">
-                                <div class="match-row"><div class="brand-icon"></div><div><strong>Sportswear</strong><span>Basketball audience 18-24, male, urban</span></div><div class="badge green">Matched</div></div>
-                                <div class="match-row"><div class="brand-icon"></div><div><strong>Energy Drinks</strong><span>Game-day routine and high-performance content fit</span></div><div class="badge green">Matched</div></div>
-                                <div class="match-row"><div class="brand-icon"></div><div><strong>Gaming</strong><span>Strong Gen Z audience and livestream overlap</span></div><div class="badge green">Matched</div></div>
-                                <div class="match-row"><div class="brand-icon"></div><div><strong>Local Restaurants</strong><span>Atlanta student audience with campus influence</span></div><div class="badge green">Matched</div></div>
-                                <div class="match-row"><div class="brand-icon"></div><div><strong>Fitness Gear</strong><span>Training content and performance positioning</span></div><div class="badge green">Matched</div></div>
+                                <div class="match-row"><div class="brand-icon"></div><div><strong data-match-brand="0">Sportswear</strong><span data-match-fit="0">College athlete audience and performance content fit</span></div><div class="badge green">Matched</div></div>
+                                <div class="match-row"><div class="brand-icon"></div><div><strong data-match-brand="1">Wellness App</strong><span data-match-fit="1">UGC hooks and short-form product demo fit</span></div><div class="badge green">Matched</div></div>
+                                <div class="match-row"><div class="brand-icon"></div><div><strong data-match-brand="2">Travel Brand</strong><span data-match-fit="2">Lifestyle audience and creator-led storytelling fit</span></div><div class="badge green">Matched</div></div>
+                                <div class="match-row"><div class="brand-icon"></div><div><strong data-match-brand="3">Local Sponsor</strong><span data-match-fit="3">Roster geography and community audience fit</span></div><div class="badge green">Matched</div></div>
                             </div>
                         </div>
                     </article>
@@ -1217,46 +1408,7 @@
 
                     <article class="walk-step">
                         <div class="walk-copy">
-                            <span class="step-label">Step 04</span>
-                            <h3 class="condensed">We send personalized pitches. Automatically.</h3>
-                            <p>50 brand emails go out every month per talent — written specifically for each brand, sent automatically.</p>
-                        </div>
-                        <div class="ui-card">
-                            <div class="ui-card-header">Pitch Preview</div>
-                            <div class="email-body">
-                                <div class="email-meta">
-                                    <div><strong>Subject:</strong> Partnership opportunity — Marcus Johnson x [Brand]</div>
-                                    <div><strong>To:</strong> Brand Partnerships Team</div>
-                                </div>
-                                <p class="email-preview">Marcus is a high-engagement college basketball guard with a strong Atlanta audience and a sponsor-ready profile. Your brand already connects with his core demographic, and a short-form training campaign would be a natural fit.</p>
-                                <div class="email-stat">50 pitches / month / per talent</div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <div class="flow-arrow">↓</div>
-
-                    <article class="walk-step">
-                        <div class="walk-copy">
-                            <span class="step-label">Step 05</span>
-                            <h3 class="condensed">Brands respond. You close the deal.</h3>
-                            <p>You get notified the moment a brand replies. Everything else — outreach, follow-up, tracking, content — runs without you.</p>
-                        </div>
-                        <div class="ui-card">
-                            <div class="ui-card-header">Deal Tracker — Your Roster</div>
-                            <div class="deal-table">
-                                <div class="deal-row"><strong>Marcus Johnson</strong><span>Nike</span><div class="badge gold">In Conversation</div></div>
-                                <div class="deal-row"><strong>Taylor Rivers</strong><span>Gatorade</span><div class="badge">Opened</div></div>
-                                <div class="deal-row"><strong>Devon Parks</strong><span>FitTea</span><div class="badge green">Deal Closed ✓</div></div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <div class="flow-arrow">↓</div>
-
-                    <article class="walk-step">
-                        <div class="walk-copy">
-                            <span class="step-label">Step 06</span>
+                            <span class="step-label">Tracking</span>
                             <h3 class="condensed">Track every pitch. In real time.</h3>
                             <p>Every email sent, opened, and replied to is logged automatically. You see exactly where every brand stands — no guessing, no chasing.</p>
                         </div>
@@ -1308,24 +1460,24 @@
                         <span class="kicker">The Problem</span>
                         <h2 class="section-title condensed">The old way is costing you deals.</h2>
                     </div>
-                    <p class="section-copy">You're busy. Your talent is busy. And brand opportunities are slipping through the cracks.</p>
+                    <p class="section-copy">Whether you're an agency, athlete, creator, or influencer, brand opportunities usually disappear because there is no system behind them.</p>
                 </div>
                 <div class="problem-grid">
                     <article class="problem-card">
-                        <h3>You're pitching brands manually, one email at a time.</h3>
-                        <p>It works, but you can't scale it across a full roster.</p>
+                        <h3>You are pitching brands manually, one email at a time.</h3>
+                        <p>It works until your roster, class schedule, content calendar, or inbox gets busy.</p>
                     </article>
                     <article class="problem-card">
                         <h3>Follow-ups fall through the cracks.</h3>
-                        <p>Most deals die in silence because nobody had time to bump the thread.</p>
+                        <p>Most deals die in silence because nobody had time to bump the thread at the right moment.</p>
                     </article>
                     <article class="problem-card">
-                        <h3>Most talent doesn't have real brand presence.</h3>
-                        <p>Brands don't take athletes, creators, or influencers seriously when there's nothing polished to review.</p>
+                        <h3>Your brand presence is scattered.</h3>
+                        <p>Brands need a clean profile, audience proof, content fit, and a clear reason to say yes.</p>
                     </article>
                     <article class="problem-card">
                         <h3>There's no system. No tracking. No visibility.</h3>
-                        <p>You don't know what's working or what's not.</p>
+                        <p>You should know what was sent, who opened, who replied, and what happens next.</p>
                     </article>
                 </div>
             </div>
@@ -1340,8 +1492,8 @@
                 <div class="features">
                     <article class="feature">
                         <div class="big-icon">▣</div>
-                        <h3 class="condensed">Talent Brand Site</h3>
-                        <p>A pitch-ready profile for every client — athlete, creator, or influencer — built to impress brands.</p>
+                        <h3 class="condensed">Brand Profile Page</h3>
+                        <p>A pitch-ready profile for an agency roster, college athlete, UGC creator, or influencer — built to impress brands.</p>
                     </article>
                     <article class="feature">
                         <div class="big-icon">↗</div>
@@ -1351,7 +1503,7 @@
                     <article class="feature">
                         <div class="big-icon">✉</div>
                         <h3 class="condensed">Automated Follow-Up</h3>
-                        <p>Every warm lead gets followed up every 5-7 days until they reply or opt out.</p>
+                        <p>Follow-ups go out on days 3, 7, 12, and 18 so warm leads do not disappear.</p>
                     </article>
                     <article class="feature">
                         <div class="big-icon">▥</div>
@@ -1361,43 +1513,67 @@
                     <article class="feature">
                         <div class="big-icon">30</div>
                         <h3 class="condensed">Monthly Content Calendar</h3>
-                        <p>30 days of content ideas, captions, and hooks ready to post — tailored to each talent's niche.</p>
+                        <p>We create 30 days of platform-specific content ideas each month — formatted for TikTok, Instagram Reels, and YouTube Shorts — so you stay consistent and attractive to brands.</p>
                     </article>
                     <article class="feature">
                         <div class="big-icon">▱</div>
                         <h3 class="condensed">Weekly Briefing</h3>
-                        <p>Every Monday, one email with everything you need across your entire roster.</p>
+                        <p>One email with outreach progress, replies, warm leads, and next moves.</p>
+                    </article>
+                </div>
+                <div class="size-guidance" id="pricing">
+                    <p><strong>Dropstep works for creators and athletes at any stage</strong> — whether you have 5,000 followers or 500,000. If brands would pay to reach your audience, we can pitch them for you.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section charcoal" id="outreach">
+            <div class="container">
+                <div class="center" style="margin-bottom: 44px;">
+                    <span class="kicker">How Outreach Works</span>
+                    <h2 class="section-title condensed">Professional outreach, without you touching it.</h2>
+                </div>
+                <div class="credibility-grid">
+                    <article class="credibility-card">
+                        <h3 class="condensed">Verified brand contacts</h3>
+                        <p>We find verified brand partnership contacts using professional tools, then organize them by fit, category, and relevance.</p>
+                    </article>
+                    <article class="credibility-card">
+                        <h3 class="condensed">Dedicated email outreach</h3>
+                        <p>Personalized pitches are sent from a dedicated email so every conversation feels clean, consistent, and trackable.</p>
+                    </article>
+                    <article class="credibility-card">
+                        <h3 class="condensed">Timed follow-up system</h3>
+                        <p>We follow up automatically on days 3, 7, 12, and 18. You never touch it until a brand is ready to talk.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="section charcoal" id="how-it-works">
+        <section class="section black">
             <div class="container">
-                <div class="center" style="margin-bottom: 44px;">
-                    <span class="kicker">How it works</span>
-                    <h2 class="section-title condensed">We handle it. You close it.</h2>
+                <div class="section-head">
+                    <div>
+                        <span class="kicker">Early results from beta users</span>
+                        <h2 class="section-title condensed">Real signals from early Dropstep users.</h2>
+                    </div>
+                    <p class="section-copy">These are early beta-style result snapshots while Dropstep continues onboarding more agencies, athletes, creators, and influencers.</p>
                 </div>
-                <div class="vertical-steps">
-                    <article class="work-step">
-                        <div class="step-number">01</div>
-                        <div><h3 class="condensed">You Onboard</h3><p>Tell us about your agency, your talent, and who you want brands to take seriously.</p></div>
+                <div class="testimonial-grid">
+                    <article class="testimonial-card">
+                        <span class="result-label">Beta Agency</span>
+                        <h3 class="condensed">“We finally had visibility across the whole roster.”</h3>
+                        <p>Outreach, follow-ups, replies, and handoffs moved into one system instead of separate inboxes and spreadsheets.</p>
                     </article>
-                    <article class="work-step">
-                        <div class="step-number">02</div>
-                        <div><h3 class="condensed">We Build</h3><p>We create every client's brand profile and sponsor-ready website within 7 days — for athletes, creators, and influencers.</p></div>
+                    <article class="testimonial-card">
+                        <span class="result-label">Beta Athlete</span>
+                        <h3 class="condensed">“Brands had a real NIL page to review.”</h3>
+                        <p>The profile made outreach feel more legitimate than sending a social link and a short bio.</p>
                     </article>
-                    <article class="work-step">
-                        <div class="step-number">03</div>
-                        <div><h3 class="condensed">We Launch</h3><p>Outreach campaigns start immediately. 50 pitches per client.</p></div>
-                    </article>
-                    <article class="work-step">
-                        <div class="step-number">04</div>
-                        <div><h3 class="condensed">We Automate</h3><p>Follow-up, content, tracking, and reporting all run on autopilot.</p></div>
-                    </article>
-                    <article class="work-step payoff">
-                        <div class="step-number">05</div>
-                        <div><h3 class="condensed">You Close</h3><p>Brands respond. Deals get done. You get paid.</p></div>
+                    <article class="testimonial-card">
+                        <span class="result-label">Beta Creator</span>
+                        <h3 class="condensed">“The pitches sounded like my content, not a template.”</h3>
+                        <p>Matched brands received specific angles tied to audience, niche, and content style.</p>
                     </article>
                 </div>
             </div>
@@ -1407,11 +1583,11 @@
             <div class="container about-grid">
                 <div>
                     <span class="kicker">Built by someone who lived it</span>
-                    <h2 class="section-title condensed">Made for the agency — and the talent — with too many opportunities and not enough hours.</h2>
+                    <h2 class="section-title condensed">Made for anyone with an audience — and not enough time to chase every brand.</h2>
                 </div>
                 <div class="founder-card">
                     <div class="quote-mark">“</div>
-                    <p>Dropstep was built by a former agent who managed athletes, creators, and influencers — and saw the same problem everywhere. Great talent went unnoticed by brands because outreach never scaled.</p>
+                    <p>Dropstep was built by a former agent who managed athletes, creators, and influencers — and saw the same problem everywhere. Great talent and great audiences went unnoticed by brands because outreach never scaled.</p>
                     <div class="signature">— Founder, Dropstep | Former Agent</div>
                 </div>
             </div>
@@ -1419,7 +1595,7 @@
 
         <section class="final">
             <div class="container">
-                <h2 class="condensed">Ready to stop leaving brand deals on the table?</h2>
+                <h2 class="condensed">Ready to turn your audience into brand deals?</h2>
                 <a class="btn black" href="/start/">Start With Dropstep</a>
             </div>
         </section>
@@ -1444,6 +1620,122 @@
             link.addEventListener('click', () => {
                 menu.classList.remove('open');
                 button.textContent = '+';
+            });
+        });
+
+        const audienceCopy = {
+            agency: {
+                heroCopy: 'Dropstep builds brand profiles for every person on your roster, then automatically pitches matched companies every month so your pipeline stays moving.',
+                note: 'Roster pages, matched brand lists, outreach tracking, follow-up, and handoffs built for agencies.',
+                workflow: 'Built for roster scale: every athlete, creator, or influencer gets a profile, monthly outreach, and a visible deal pipeline.',
+                matchHeader: 'Brand Matches — Agency Roster',
+                matchCopy: 'Dropstep finds sponsor fits across the whole roster and keeps every pitch, reply, and handoff visible.',
+                examples: [
+                    ['Taylor Rivers', 'Soccer athlete matched with sports drink, footwear, local business, and recovery brands.'],
+                    ['Mia Santos', 'UGC creator pitched to wellness, beauty, and app brands for product demos.'],
+                    ['Ava Monroe', 'Influencer campaign pipeline for lifestyle, travel, and fashion partners.'],
+                    ['12 Talent Pipeline', 'Roster view with profile status, matched brands, outreach stage, and next follow-up for every client.']
+                ],
+                matches: [
+                    ['Nike Air', 'Basketball and training audience across the roster'],
+                    ['Gatorade', 'Performance, hydration, and game-day content fit'],
+                    ['Local Restaurant Group', 'Campus and city-specific audience fit'],
+                    ['Recovery Tech', 'Athlete wellness and post-training content fit']
+                ]
+            },
+            athlete: {
+                heroCopy: 'Dropstep builds your NIL-ready brand profile and pitches matched companies every month — until brands start replying.',
+                note: 'For college athletes who want NIL opportunities without chasing every brand themselves.',
+                workflow: 'Built for NIL: we package your sport, stats, audience, content, and goals into monthly sponsor outreach.',
+                matchHeader: 'Brand Matches — College Athlete',
+                matchCopy: 'Dropstep finds NIL-friendly brands that fit your sport, school, city, audience, and content style.',
+                examples: [
+                    ['Jordan Price', 'NIL-ready basketball guard matched with sportswear, recovery, food, and local sponsor brands.'],
+                    ['Training Clips', 'Short-form practice, recovery, and product demo ideas brands can sponsor.'],
+                    ['Game-Day Lifestyle', 'Student life and performance content packaged for apparel and food partners.'],
+                    ['NIL Pipeline', 'Every NIL pitch, open, reply, and follow-up tracked in one place.']
+                ],
+                matches: [
+                    ['Sportswear', 'Basketball audience, training content, and athlete credibility fit'],
+                    ['Energy Drinks', 'Game-day routine and student audience fit'],
+                    ['Local Sponsor', 'Campus reach and city-specific audience fit'],
+                    ['Recovery Gear', 'Performance and post-practice content fit']
+                ]
+            },
+            creator: {
+                heroCopy: 'Dropstep packages your UGC offer, builds a brand-ready profile, and pitches companies that need content every month.',
+                note: 'For UGC creators who want paid product videos, demos, testimonials, and short-form content deals.',
+                workflow: 'Built for UGC: we turn your niche, content style, proof, and portfolio into targeted brand outreach.',
+                matchHeader: 'Brand Matches — UGC Creator',
+                matchCopy: 'Dropstep finds brands that need short-form content and pitches them with angles based on your niche and style.',
+                examples: [
+                    ['Creator Athlete', 'Sports and fitness UGC pitched to recovery, apparel, and supplement brands.'],
+                    ['Mia Santos', 'Short-form product demos pitched to wellness, beauty, and app brands.'],
+                    ['Beauty Routine', 'Creator-led hooks, before-and-after demos, and paid usage-rights angles.'],
+                    ['Content Pipeline', 'Every brand pitch, open, reply, and follow-up tracked in one place.']
+                ],
+                matches: [
+                    ['Wellness App', 'Short-form product demo and testimonial fit'],
+                    ['Skincare Brand', 'Routine-led UGC and before/after content fit'],
+                    ['Creator Tool', 'Tutorial, review, and pain-point content fit'],
+                    ['Subscription Box', 'Unboxing and reaction-style UGC fit']
+                ]
+            },
+            influencer: {
+                heroCopy: 'Dropstep turns your audience into a polished brand profile and pitches matched partners every month for paid collaborations.',
+                note: 'For influencers ready to move from inbound maybes to consistent outbound brand-deal opportunities.',
+                workflow: 'Built for influence: we match your audience, niche, content themes, and platform reach with brands that should care.',
+                matchHeader: 'Brand Matches — Lifestyle Influencer',
+                matchCopy: 'Dropstep finds partners that fit your audience and sends personalized pitches around real campaign angles.',
+                examples: [
+                    ['Wellness Athlete', 'Training, recovery, and routine content packaged for performance brands.'],
+                    ['Food + Fitness', 'Influencer profile built around weekly content themes and an engaged local audience.'],
+                    ['Ava Monroe', 'Lifestyle audience packaged for fashion, travel, and daily-routine partnerships.'],
+                    ['Travel Series', 'Campaign angles for hotels, luggage, wellness, and experience brands.'],
+                ],
+                matches: [
+                    ['Fashion Label', 'Lifestyle audience and outfit content fit'],
+                    ['Travel Brand', 'Storytelling, trip content, and aspirational audience fit'],
+                    ['Meal Delivery', 'Routine, wellness, and weekly creator content fit'],
+                    ['Fitness App', 'Audience interest and recurring content series fit']
+                ]
+            }
+        };
+
+        const heroCopyEl = document.querySelector('#hero-copy');
+        const audienceNoteEl = document.querySelector('#audience-note');
+        const workflowSubheadEl = document.querySelector('#workflow-subhead');
+        const matchCopyEl = document.querySelector('#match-copy');
+        const matchHeaderEl = document.querySelector('#match-header');
+        const exampleNameEls = Array.from(document.querySelectorAll('[data-example-name]'));
+        const exampleCopyEls = Array.from(document.querySelectorAll('[data-example-copy]'));
+        const matchBrandEls = Array.from(document.querySelectorAll('[data-match-brand]'));
+        const matchFitEls = Array.from(document.querySelectorAll('[data-match-fit]'));
+
+        document.querySelectorAll('.audience-pill').forEach((pill) => {
+            pill.addEventListener('click', () => {
+                const copy = audienceCopy[pill.dataset.audience];
+                if (!copy) return;
+
+                document.querySelectorAll('.audience-pill').forEach((btn) => {
+                    btn.classList.toggle('active', btn === pill);
+                });
+
+                heroCopyEl.textContent = copy.heroCopy;
+                audienceNoteEl.textContent = copy.note;
+                workflowSubheadEl.textContent = copy.workflow;
+                matchCopyEl.textContent = copy.matchCopy;
+                matchHeaderEl.textContent = copy.matchHeader;
+
+                copy.examples.forEach(([name, text], index) => {
+                    if (exampleNameEls[index]) exampleNameEls[index].textContent = name;
+                    if (exampleCopyEls[index]) exampleCopyEls[index].textContent = text;
+                });
+
+                copy.matches.forEach(([brand, fit], index) => {
+                    if (matchBrandEls[index]) matchBrandEls[index].textContent = brand;
+                    if (matchFitEls[index]) matchFitEls[index].textContent = fit;
+                });
             });
         });
     </script>
