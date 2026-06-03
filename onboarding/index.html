@@ -62,18 +62,6 @@
         button, input, textarea, select { font: inherit; }
         .condensed { font-family: Oswald, Inter, sans-serif; text-transform: uppercase; }
 
-        .logo {
-            position: fixed;
-            left: 32px;
-            top: 26px;
-            z-index: 5;
-        }
-        .logo img {
-            width: 154px;
-            height: auto;
-            display: block;
-        }
-
         .page {
             position: relative;
             z-index: 1;
@@ -373,13 +361,6 @@
         }
 
         @media (max-width: 760px) {
-            .logo {
-                position: static;
-                display: block;
-                width: fit-content;
-                margin: 22px auto 0;
-            }
-            .logo img { width: 132px; }
             .page {
                 width: min(100% - 28px, 1040px);
                 padding-top: 48px;
@@ -396,8 +377,6 @@
     </style>
 </head>
 <body>
-    <a class="logo" href="/" aria-label="Dropstep home"><img src="../assets/logo.png" alt="Dropstep"></a>
-
     <main class="page">
         <section class="intro" id="form-intro">
             <span class="kicker">Dropstep onboarding</span>
