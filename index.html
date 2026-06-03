@@ -216,35 +216,167 @@
             line-height: 1.3;
             text-transform: uppercase;
         }
-        .brand-site-mockup {
+        .campaign-dashboard {
             position: relative;
-            justify-self: center;
-            width: min(520px, 100%);
+            justify-self: stretch;
+            width: min(780px, 100%);
             transform: none;
-            padding: 8px;
-            border: 1px solid rgba(197,160,74,.7);
+            padding: 18px;
+            border: 1px solid rgba(197,160,74,.48);
             background:
-                linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+                radial-gradient(circle at 82% 12%, rgba(197,160,74,.16), transparent 30%),
+                linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)),
                 var(--panel);
-            box-shadow: 0 34px 110px rgba(0,0,0,.42);
+            box-shadow: 0 34px 110px rgba(0,0,0,.46);
             overflow: hidden;
         }
-        .brand-site-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+        .campaign-dashboard::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: .08;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px);
+            background-size: 32px 32px;
         }
-        .brand-site-card {
+        .dashboard-header,
+        .campaign-row,
+        .live-feed {
             position: relative;
-            min-width: 0;
+            z-index: 1;
+        }
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+        .dashboard-title {
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 10px;
+            border: 1px solid rgba(85,205,135,.32);
+            background: rgba(85,205,135,.08);
+            color: #71d896;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #71d896;
+            box-shadow: 0 0 16px rgba(113,216,150,.9);
+        }
+        .campaign-list {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .campaign-row {
+            display: grid;
+            grid-template-columns: 1fr 130px 1.5fr;
+            gap: 16px;
+            align-items: center;
+            padding: 14px;
             border: 1px solid rgba(255,255,255,.08);
-            background: #050505;
+            background: rgba(8,8,8,.56);
+        }
+        .talent-name {
+            display: block;
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: -.01em;
+        }
+        .talent-niche {
+            display: block;
+            margin-top: 4px;
+            color: rgba(245,240,223,.48);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+        }
+        .pitch-progress {
+            display: grid;
+            gap: 7px;
+        }
+        .pitch-count {
+            color: rgba(245,240,223,.76);
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+        .progress-track {
+            height: 7px;
+            border: 1px solid rgba(197,160,74,.24);
+            background: rgba(255,255,255,.05);
             overflow: hidden;
         }
-        .brand-site-image {
+        .progress-fill {
             display: block;
-            width: 100%;
-            height: auto;
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), rgba(197,160,74,.52));
+        }
+        .brand-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 7px;
+        }
+        .brand-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 8px;
+            border: 1px solid rgba(255,255,255,.1);
+            background: rgba(255,255,255,.035);
+            color: rgba(245,240,223,.78);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .brand-pill .badge {
+            padding: 3px 5px;
+            font-size: 7px;
+            letter-spacing: .06em;
+        }
+        .live-feed {
+            display: grid;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 14px;
+            border: 1px solid rgba(197,160,74,.24);
+            background: rgba(197,160,74,.055);
+        }
+        .feed-item {
+            color: rgba(245,240,223,.72);
+            font-size: 11px;
+            line-height: 1.35;
+            font-weight: 750;
+        }
+        .feed-item strong {
+            color: var(--cream);
         }
         .brand-site-top {
             display: flex;
@@ -1136,10 +1268,17 @@
             .pilot-offer {
                 grid-template-columns: 1fr;
             }
-            .brand-site-mockup {
+            .campaign-dashboard {
                 justify-self: stretch;
                 width: 100%;
                 transform: none;
+            }
+            .campaign-row {
+                grid-template-columns: 1fr;
+                align-items: stretch;
+            }
+            .brand-pills {
+                justify-content: flex-start;
             }
             .hero-grid > div:first-child { transform: none; }
             .simple-steps {
@@ -1236,14 +1375,66 @@
                     </div>
                 </div>
 
-                <div class="brand-site-mockup" aria-label="Talent brand site preview">
-                    <div class="brand-site-stack">
-                        <div class="brand-site-card">
-                            <img class="brand-site-image" src="assets/athlete-brand-site.png" alt="Example talent brand site for sponsorships">
+                <div class="campaign-dashboard" aria-label="Live outreach command center dashboard">
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">Active Campaigns — 3 Talents</div>
+                        <div class="live-indicator"><span class="live-dot"></span>Live</div>
+                    </div>
+
+                    <div class="campaign-list">
+                        <div class="campaign-row">
+                            <div>
+                                <span class="talent-name">Marcus Johnson</span>
+                                <span class="talent-niche">Basketball</span>
+                            </div>
+                            <div class="pitch-progress">
+                                <span class="pitch-count">38 / 50 sent</span>
+                                <span class="progress-track"><span class="progress-fill" style="width: 76%;"></span></span>
+                            </div>
+                            <div class="brand-pills">
+                                <span class="brand-pill">Nike <span class="badge green">Interested</span></span>
+                                <span class="brand-pill">Gatorade <span class="badge blue">Replied</span></span>
+                                <span class="brand-pill">PSD Underwear <span class="badge teal">Sent</span></span>
+                            </div>
                         </div>
-                        <div class="brand-site-card">
-                            <img class="brand-site-image" src="assets/talent-brand-site.png" alt="Example creator brand site for sponsorships">
+
+                        <div class="campaign-row">
+                            <div>
+                                <span class="talent-name">Maya Carter</span>
+                                <span class="talent-niche">Lifestyle Creator</span>
+                            </div>
+                            <div class="pitch-progress">
+                                <span class="pitch-count">22 / 50 sent</span>
+                                <span class="progress-track"><span class="progress-fill" style="width: 44%;"></span></span>
+                            </div>
+                            <div class="brand-pills">
+                                <span class="brand-pill">FitTea <span class="badge purple">Opened</span></span>
+                                <span class="brand-pill">Gymshark <span class="badge purple">Opened</span></span>
+                                <span class="brand-pill">MVMT <span class="badge teal">Sent</span></span>
+                            </div>
                         </div>
+
+                        <div class="campaign-row">
+                            <div>
+                                <span class="talent-name">Tyler Reed</span>
+                                <span class="talent-niche">Football</span>
+                            </div>
+                            <div class="pitch-progress">
+                                <span class="pitch-count">47 / 50 sent</span>
+                                <span class="progress-track"><span class="progress-fill" style="width: 94%;"></span></span>
+                            </div>
+                            <div class="brand-pills">
+                                <span class="brand-pill">Raising Canes <span class="badge green">Interested</span></span>
+                                <span class="brand-pill">Bang Energy <span class="badge blue">Replied</span></span>
+                                <span class="brand-pill">Nike <span class="badge teal">Sent</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="live-feed" aria-label="Recent outreach activity">
+                        <div class="feed-item">🟢 <strong>Gatorade replied</strong> to Marcus Johnson — 2 min ago</div>
+                        <div class="feed-item">👁 <strong>Gymshark opened</strong> Maya Carter's pitch — 14 min ago</div>
+                        <div class="feed-item">📤 <strong>47 pitches sent</strong> for Tyler Reed this month</div>
                     </div>
                 </div>
             </div>
