@@ -418,6 +418,12 @@
                     <div class="field"><label for="city">City and state *</label><input id="city" name="cityState" required></div>
                     <div class="field full"><label for="profile-photo">Profile photo upload *</label><input id="profile-photo" name="profilePhoto" type="file" accept=".jpg,.jpeg,.png,.webp" required></div>
                     <div class="field full"><label for="short-bio">How would you describe yourself to a brand? *</label><textarea id="short-bio" name="shortBio" required placeholder="2-3 sentences about who you are, what you create or compete in, and why brands should care."></textarea></div>
+                    <div class="field full">
+                        <span class="section-kicker">Your Story</span>
+                        <h2 class="condensed">What should brands know?</h2>
+                    </div>
+                    <div class="field full"><label for="standout-story">What makes you stand out to brands?</label><textarea id="standout-story" name="standoutStory" placeholder="Tell us your wins, your audience, your energy. What would make a brand excited to work with you? (e.g. I have a highly engaged mom audience in the Southeast, I've done 3 paid campaigns with baby product brands, my videos average 50K views...)"></textarea></div>
+                    <div class="field full"><label for="past-brand-deals">Past brand deals or partnerships</label><textarea id="past-brand-deals" name="pastBrandDeals" placeholder="List any brands you've worked with before, even gifted ones. Leave blank if none."></textarea></div>
                     <div class="field">
                         <label for="monthly-rate">Monthly rate range *</label>
                         <select id="monthly-rate" name="monthlyRateRange" required>
@@ -429,16 +435,16 @@
                         </select>
                     </div>
                     <div class="field full">
-                        <div class="field-label">Types of deals you're open to *</div>
+                        <div class="field-label">Types of deals you're open to</div>
                         <div class="choice-grid">
-                            <label class="option checkbox"><input type="checkbox" name="dealTypes" value="Paid posts"><span>Paid posts</span></label>
-                            <label class="option checkbox"><input type="checkbox" name="dealTypes" value="UGC only — no posting required"><span>UGC only — no posting required</span></label>
-                            <label class="option checkbox"><input type="checkbox" name="dealTypes" value="Brand ambassador"><span>Brand ambassador</span></label>
-                            <label class="option checkbox"><input type="checkbox" name="dealTypes" value="Gifted/product exchange"><span>Gifted/product exchange</span></label>
+                            <label class="option checkbox"><input type="checkbox" name="dealTypes" value="Paid Social Posts (I post on my channels)"><span>Paid Social Posts (I post on my channels)</span></label>
+                            <label class="option checkbox"><input type="checkbox" name="dealTypes" value="UGC Content Only (I film content for brands but don't post it myself)"><span>UGC Content Only (I film content for brands but don't post it myself)</span></label>
+                            <label class="option checkbox"><input type="checkbox" name="dealTypes" value="Brand Ambassador (longer term partnership)"><span>Brand Ambassador (longer term partnership)</span></label>
+                            <label class="option checkbox"><input type="checkbox" name="dealTypes" value="Gifted / Product Exchange (no cash, just free product)"><span>Gifted / Product Exchange (no cash, just free product)</span></label>
                         </div>
                     </div>
                     <div class="field full"><label for="dream-brands">Brands you'd love to work with *</label><textarea id="dream-brands" name="dreamBrands" required placeholder="List specific brands, categories, or dream partners."></textarea></div>
-                    <div class="field full"><label for="blocked-brands">Brands you do NOT want to be contacted about *</label><textarea id="blocked-brands" name="blockedBrands" required placeholder="List brands, categories, competitors, or anything off-limits. Write none if there are no restrictions."></textarea></div>
+                    <div class="field full"><label for="blocked-brands">Brands you do NOT want to be contacted about</label><textarea id="blocked-brands" name="blockedBrands" placeholder="Optional — list any brands, categories, or competitors you'd like us to avoid."></textarea></div>
                 </div>
             </section>
 
@@ -526,15 +532,16 @@
             <section class="form-section">
                 <span class="section-kicker">Social profiles</span>
                 <h2 class="condensed">Show us your reach.</h2>
+                <p class="section-copy">Add whichever platforms you're active on. At least one is required.</p>
                 <div class="field-grid">
-                    <div class="field"><label for="instagram">Instagram handle *</label><input id="instagram" name="instagramHandle" required placeholder="@username"></div>
-                    <div class="field"><label for="instagram-count">Instagram follower count *</label><input id="instagram-count" name="instagramFollowerCount" type="number" min="0" required></div>
-                    <div class="field"><label for="tiktok">TikTok handle *</label><input id="tiktok" name="tiktokHandle" required placeholder="@username"></div>
-                    <div class="field"><label for="tiktok-count">TikTok follower count *</label><input id="tiktok-count" name="tiktokFollowerCount" type="number" min="0" required></div>
-                    <div class="field"><label for="youtube">YouTube channel URL</label><input id="youtube" name="youtubeChannelUrl" type="url" placeholder="https://youtube.com/@yourchannel"></div>
-                    <div class="field"><label for="youtube-count">YouTube subscriber count</label><input id="youtube-count" name="youtubeSubscriberCount" type="number" min="0"></div>
-                    <div class="field"><label for="twitter">Twitter/X handle</label><input id="twitter" name="twitterHandle" placeholder="@username"></div>
-                    <div class="field"><label for="engagement-rate">Engagement rate if known</label><input id="engagement-rate" name="engagementRate" placeholder="e.g. 4.8%"></div>
+                    <div class="field"><label for="instagram">Instagram handle</label><input id="instagram" name="instagramHandle" placeholder="@username"></div>
+                    <div class="field"><label for="instagram-count">Instagram follower count</label><input id="instagram-count" name="instagramFollowerCount" type="number" min="0"></div>
+                    <div class="field"><label for="tiktok">TikTok handle</label><input id="tiktok" name="tiktokHandle" placeholder="@username"></div>
+                    <div class="field"><label for="tiktok-count">TikTok follower count</label><input id="tiktok-count" name="tiktokFollowerCount" type="number" min="0"></div>
+                    <div class="field"><label for="youtube">YouTube channel URL (optional)</label><input id="youtube" name="youtubeChannelUrl" type="url" placeholder="https://youtube.com/@yourchannel"></div>
+                    <div class="field"><label for="youtube-count">YouTube subscriber count (optional)</label><input id="youtube-count" name="youtubeSubscriberCount" type="number" min="0"></div>
+                    <div class="field"><label for="twitter">Twitter/X handle (optional)</label><input id="twitter" name="twitterHandle" placeholder="@username"></div>
+                    <div class="field"><label for="engagement-rate">Engagement rate if known (optional)</label><input id="engagement-rate" name="engagementRate" placeholder="e.g. 4.8%"></div>
                 </div>
             </section>
 
@@ -588,8 +595,10 @@
             });
         }
 
-        function dealTypesAreValid() {
-            return Array.from(document.querySelectorAll('input[name="dealTypes"]')).some((input) => input.checked);
+        function hasRequiredSocialProfile() {
+            const instagram = document.querySelector('#instagram').value.trim();
+            const tiktok = document.querySelector('#tiktok').value.trim();
+            return Boolean(instagram || tiktok);
         }
 
         function focusFirstInvalidField() {
@@ -638,10 +647,10 @@
                 return;
             }
 
-            if (!dealTypesAreValid()) {
+            if (!hasRequiredSocialProfile()) {
                 submitError.hidden = false;
-                submitError.textContent = 'Choose at least one type of deal you are open to.';
-                document.querySelector('input[name="dealTypes"]').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                submitError.textContent = 'Add at least one social profile: Instagram or TikTok.';
+                document.querySelector('#instagram').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
 
