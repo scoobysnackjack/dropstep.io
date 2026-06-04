@@ -242,8 +242,7 @@
             background-size: 32px 32px;
         }
         .dashboard-header,
-        .campaign-row,
-        .live-feed {
+        .campaign-row {
             position: relative;
             z-index: 1;
         }
@@ -261,26 +260,6 @@
             font-weight: 900;
             letter-spacing: .16em;
             text-transform: uppercase;
-        }
-        .live-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 7px 10px;
-            border: 1px solid rgba(85,205,135,.32);
-            background: rgba(85,205,135,.08);
-            color: #71d896;
-            font-size: 9px;
-            font-weight: 900;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-        .live-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #71d896;
-            box-shadow: 0 0 16px rgba(113,216,150,.9);
         }
         .campaign-list {
             position: relative;
@@ -360,23 +339,6 @@
             padding: 3px 5px;
             font-size: 7px;
             letter-spacing: .06em;
-        }
-        .live-feed {
-            display: grid;
-            gap: 8px;
-            margin-top: 16px;
-            padding: 14px;
-            border: 1px solid rgba(197,160,74,.24);
-            background: rgba(197,160,74,.055);
-        }
-        .feed-item {
-            color: rgba(245,240,223,.72);
-            font-size: 11px;
-            line-height: 1.35;
-            font-weight: 750;
-        }
-        .feed-item strong {
-            color: var(--cream);
         }
         .brand-site-top {
             display: flex;
@@ -1378,7 +1340,6 @@
                 <div class="campaign-dashboard" aria-label="Live outreach command center dashboard">
                     <div class="dashboard-header">
                         <div class="dashboard-title">Active Campaigns — 3 Talents</div>
-                        <div class="live-indicator"><span class="live-dot"></span>Live</div>
                     </div>
 
                     <div class="campaign-list">
@@ -1431,11 +1392,6 @@
                         </div>
                     </div>
 
-                    <div class="live-feed" aria-label="Recent outreach activity">
-                        <div class="feed-item">🟢 <strong>Gatorade replied</strong> to Marcus Johnson — 2 min ago</div>
-                        <div class="feed-item">👁 <strong>Gymshark opened</strong> Maya Carter's pitch — 14 min ago</div>
-                        <div class="feed-item">📤 <strong>47 pitches sent</strong> for Tyler Reed this month</div>
-                    </div>
                 </div>
             </div>
         </section>
