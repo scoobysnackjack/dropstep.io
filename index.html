@@ -829,25 +829,78 @@
             color: var(--black);
         }
         .simple-steps {
+            position: relative;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-top: 42px;
+            gap: 26px;
+            max-width: 1060px;
+            margin: 42px auto 0;
+            padding: 10px 0;
+        }
+        .simple-steps::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, var(--gold), transparent);
+            box-shadow: 0 0 24px rgba(197,160,74,.38);
+            transform: translateX(-50%);
         }
         .simple-step-card {
-            padding: 24px 18px;
+            position: relative;
+            width: calc(50% - 44px);
+            padding: 24px;
             border: 1px solid rgba(255,255,255,.08);
+            border-left: 3px solid var(--gold);
             background: rgba(255,255,255,.025);
+            box-shadow: 0 22px 70px rgba(0,0,0,.24);
+        }
+        .simple-step-card:nth-child(odd) {
+            justify-self: start;
+        }
+        .simple-step-card:nth-child(even) {
+            justify-self: end;
+        }
+        .simple-step-card::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            background: var(--black);
+            box-shadow: 0 0 18px rgba(197,160,74,.55);
+        }
+        .simple-step-card:nth-child(odd)::before {
+            right: -53px;
+        }
+        .simple-step-card:nth-child(even)::before {
+            left: -53px;
+        }
+        .step-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+        .simple-number {
+            color: var(--gold);
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: -.035em;
         }
         .simple-icon {
             display: grid;
             place-items: center;
-            width: 54px;
-            height: 54px;
+            width: 46px;
+            height: 46px;
             border: 1px solid rgba(197,160,74,.42);
             border-radius: 50%;
+            background: rgba(197,160,74,.08);
             color: var(--gold);
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
         }
         .simple-step-card h3 {
@@ -1132,7 +1185,22 @@
             }
             .hero-grid > div:first-child { transform: none; }
             .simple-steps {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
+                padding-left: 30px;
+            }
+            .simple-steps::before {
+                left: 8px;
+            }
+            .simple-step-card,
+            .simple-step-card:nth-child(odd),
+            .simple-step-card:nth-child(even) {
+                width: 100%;
+                justify-self: stretch;
+            }
+            .simple-step-card:nth-child(odd)::before,
+            .simple-step-card:nth-child(even)::before {
+                left: -29px;
+                right: auto;
             }
             .athlete-site-grid { grid-template-columns: 1fr; }
             .hero { padding-top: 108px; }
@@ -1235,29 +1303,73 @@
             <div class="container">
                 <div class="walkthrough-intro">
                     <span class="kicker">HOW IT WORKS</span>
-                    <h2 class="section-title condensed">HERE'S EXACTLY WHAT HAPPENS WHEN YOU SIGN UP.</h2>
+                    <h2 class="section-title condensed">FROM SIGN UP TO BRAND DEAL — HERE'S EVERY STEP.</h2>
                 </div>
 
                 <div class="simple-steps">
                     <article class="simple-step-card">
-                        <div class="simple-icon">01</div>
-                        <h3 class="condensed">YOU FILL OUT A QUICK FORM.</h3>
-                        <p>Tell us your name, what you post about, your social handles, and the kinds of brands you want to work with. Takes 5 minutes.</p>
+                        <div class="step-top">
+                            <div class="simple-number">01</div>
+                            <div class="simple-icon" aria-hidden="true">🖱️</div>
+                        </div>
+                        <h3 class="condensed">CLICK 'START WITH DROPSTEP'</h3>
+                        <p>Hit the button, pick the plan that's right for you, and check out. Takes 60 seconds.</p>
                     </article>
                     <article class="simple-step-card">
-                        <div class="simple-icon">02</div>
-                        <h3 class="condensed">WE BUILD YOUR BRAND PAGE.</h3>
-                        <p>We create a professional page at yourname.dropstep.io. It shows brands who you are, who you reach, and why they should work with you.</p>
+                        <div class="step-top">
+                            <div class="simple-number">02</div>
+                            <div class="simple-icon" aria-hidden="true">📋</div>
+                        </div>
+                        <h3 class="condensed">FILL OUT YOUR QUICK ONBOARDING FORM</h3>
+                        <p>Tell us your name, what you create, your social handles, and the kinds of brands you want to work with.</p>
                     </article>
                     <article class="simple-step-card">
-                        <div class="simple-icon">03</div>
-                        <h3 class="condensed">WE EMAIL 100 BRANDS FOR YOU EVERY MONTH.</h3>
-                        <p>We find the right contact at each brand — usually their partnerships manager — and send them a personalized email about you. If they don't reply, we follow up 4 more times automatically.</p>
+                        <div class="step-top">
+                            <div class="simple-number">03</div>
+                            <div class="simple-icon" aria-hidden="true">⏳</div>
+                        </div>
+                        <h3 class="condensed">WAIT 48 HOURS</h3>
+                        <p>We get to work building everything. You don't have to do anything.</p>
                     </article>
                     <article class="simple-step-card">
-                        <div class="simple-icon">04</div>
-                        <h3 class="condensed">A BRAND SAYS YES. WE TELL YOU.</h3>
-                        <p>When a brand replies and says they're interested, we send you their info immediately. You reach out and close the deal. We never take a cut.</p>
+                        <div class="step-top">
+                            <div class="simple-number">04</div>
+                            <div class="simple-icon" aria-hidden="true">🌐</div>
+                        </div>
+                        <h3 class="condensed">YOUR BRAND PAGE GOES LIVE</h3>
+                        <p>You get an email with your personal brand page at yourname.dropstep.io and a login to your deal tracking dashboard.</p>
+                    </article>
+                    <article class="simple-step-card">
+                        <div class="step-top">
+                            <div class="simple-number">05</div>
+                            <div class="simple-icon" aria-hidden="true">🔍</div>
+                        </div>
+                        <h3 class="condensed">WE SCAN YOUR PROFILE</h3>
+                        <p>We analyze your content, audience, niche, and engagement to understand exactly what brands should be pitching you.</p>
+                    </article>
+                    <article class="simple-step-card">
+                        <div class="step-top">
+                            <div class="simple-number">06</div>
+                            <div class="simple-icon" aria-hidden="true">🎯</div>
+                        </div>
+                        <h3 class="condensed">WE FIND 100+ BRANDS THAT FIT YOU</h3>
+                        <p>We identify the right contact at each brand — usually their partnerships or marketing manager — and build your outreach list.</p>
+                    </article>
+                    <article class="simple-step-card">
+                        <div class="step-top">
+                            <div class="simple-number">07</div>
+                            <div class="simple-icon" aria-hidden="true">📨</div>
+                        </div>
+                        <h3 class="condensed">WE SEND 100+ PERSONALIZED EMAILS</h3>
+                        <p>Every email is written specifically for you and the brand. If they don't reply, we follow up automatically 4 more times.</p>
+                    </article>
+                    <article class="simple-step-card">
+                        <div class="step-top">
+                            <div class="simple-number">08</div>
+                            <div class="simple-icon" aria-hidden="true">🤝</div>
+                        </div>
+                        <h3 class="condensed">BRAND SAYS YES — WE LOOP YOU IN</h3>
+                        <p>The moment a brand replies with interest, we forward you the conversation. You close the deal. We never take a cut of anything.</p>
                     </article>
                 </div>
 
