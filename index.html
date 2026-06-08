@@ -710,74 +710,73 @@
             letter-spacing: .12em;
             text-transform: uppercase;
         }
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-        .problem-card {
-            min-height: 220px;
-            padding: 24px;
-            border: 1px solid rgba(255,255,255,.06);
-            border-left: 2px solid var(--gold);
-            background: var(--panel);
-        }
-        .problem-card h3 {
-            color: var(--white);
-            font-size: 18px;
-            font-weight: 900;
-        }
-        .problem-card p {
-            margin-top: 14px;
-            color: rgba(245,240,223,.6);
-            font-size: 13px;
-            line-height: 1.55;
-            font-weight: 650;
-        }
-
-        .solution-card {
-            padding: 42px 30px 36px;
-            border: 1px solid rgba(255,255,255,.08);
-            background: var(--black);
-        }
         .center { text-align: center; }
         .center .section-title { max-width: 780px; margin: 0 auto; }
         .center .section-title span { color: var(--gold); display: block; }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 18px;
-            margin-top: 44px;
+        .comparison-section {
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            background:
+                radial-gradient(circle at 74% 18%, rgba(197,160,74,.12), transparent 28%),
+                var(--black);
         }
-        .feature {
-            padding: 22px 16px;
-            border: 1px solid rgba(255,255,255,.08);
-            background: rgba(255,255,255,.025);
+        .comparison-title {
+            max-width: 920px;
+            margin: 0 auto 42px;
             text-align: center;
         }
-        .feature .big-icon {
-            width: 52px;
-            height: 52px;
+        .comparison-grid {
             display: grid;
-            place-items: center;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            max-width: 1060px;
             margin: 0 auto;
-            border: 1px solid rgba(197,160,74,.35);
-            border-radius: 50%;
-            color: var(--gold);
-            font-weight: 900;
         }
-        .feature h3 {
-            margin-top: 18px;
-            color: var(--white);
+        .comparison-column {
+            padding: clamp(24px, 3vw, 34px);
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.025);
+        }
+        .comparison-column.old-way {
+            border-color: rgba(255,85,85,.18);
+            background:
+                linear-gradient(135deg, rgba(95,12,12,.26), rgba(255,255,255,.018)),
+                var(--black);
+        }
+        .comparison-column.dropstep-way {
+            border-color: rgba(197,160,74,.3);
+            background:
+                linear-gradient(135deg, rgba(197,160,74,.16), rgba(255,255,255,.018)),
+                var(--black);
+        }
+        .comparison-column h3 {
+            margin-bottom: 22px;
+            font-size: clamp(28px, 3vw, 42px);
+            line-height: .95;
+            letter-spacing: -.03em;
+        }
+        .old-way h3 { color: #ff5656; }
+        .dropstep-way h3 { color: var(--gold); }
+        .comparison-list {
+            display: grid;
+            gap: 14px;
+            padding: 0;
+            list-style: none;
+        }
+        .comparison-list li {
+            display: grid;
+            grid-template-columns: 24px 1fr;
+            gap: 10px;
+            align-items: start;
+            color: rgba(255,255,255,.84);
             font-size: 15px;
-            line-height: 1.05;
-        }
-        .feature p {
-            margin-top: 10px;
-            color: rgba(255,255,255,.62);
-            font-size: 11px;
             line-height: 1.45;
-            font-weight: 650;
+            font-weight: 800;
+        }
+        .comparison-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: 34px;
         }
         .live-example {
             overflow: hidden;
@@ -1352,9 +1351,8 @@
             }
             .athlete-site-grid { grid-template-columns: 1fr; }
             .hero { padding-top: 108px; }
-            .features { grid-template-columns: repeat(2, 1fr); }
+            .comparison-grid { grid-template-columns: 1fr; }
             .browser-frame { height: 520px; }
-            .problem-grid,
             .pricing-grid,
             .stat-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1369,8 +1367,6 @@
             .brand img { width: 128px; }
             h1 { font-size: 54px; }
             .proof-stats,
-            .problem-grid,
-            .features,
             .simple-steps,
             .pricing-grid,
             .stat-grid {
@@ -1535,76 +1531,33 @@
             </div>
         </section>
 
-        <section class="section black problem">
+        <section class="section comparison-section" id="what-you-get">
             <div class="container">
-                <div class="section-head">
-                    <div>
-                        <span class="kicker">The Problem</span>
-                        <h2 class="section-title condensed">The old way is costing you deals.</h2>
-                    </div>
-                    <p class="section-copy">Whether you're an agency, athlete, creator, or influencer, brand opportunities usually disappear because there is no system behind them.</p>
-                </div>
-                <div class="problem-grid">
-                    <article class="problem-card">
-                        <h3>You are pitching brands manually, one email at a time.</h3>
-                        <p>It works until your roster, class schedule, content calendar, or inbox gets busy.</p>
+                <h2 class="section-title condensed comparison-title">Why creators switch to Dropstep.</h2>
+                <div class="comparison-grid">
+                    <article class="comparison-column old-way">
+                        <h3 class="condensed">The Old Way</h3>
+                        <ul class="comparison-list">
+                            <li><span>❌</span><span>Manually emailing brands one at a time</span></li>
+                            <li><span>❌</span><span>Forgetting to follow up and losing the deal</span></li>
+                            <li><span>❌</span><span>Sending brands your Instagram link and hoping for the best</span></li>
+                            <li><span>❌</span><span>No idea who opened your pitch or what happens next</span></li>
+                            <li><span>❌</span><span>Spending hours on outreach instead of creating</span></li>
+                        </ul>
                     </article>
-                    <article class="problem-card">
-                        <h3>Follow-ups fall through the cracks.</h3>
-                        <p>Most deals die in silence because nobody had time to bump the thread at the right moment.</p>
-                    </article>
-                    <article class="problem-card">
-                        <h3>Your brand presence is scattered.</h3>
-                        <p>Brands need a clean profile, audience proof, content fit, and a clear reason to say yes.</p>
-                    </article>
-                    <article class="problem-card">
-                        <h3>There's no system. No tracking. No visibility.</h3>
-                        <p>You should know what was sent, who opened, who replied, and what happens next.</p>
+                    <article class="comparison-column dropstep-way">
+                        <h3 class="condensed">The Dropstep Way</h3>
+                        <ul class="comparison-list">
+                            <li><span>✅</span><span>100-300 personalized brand pitches sent every month automatically</span></li>
+                            <li><span>✅</span><span>Automatic follow ups on days 3, 7, 12, and 18</span></li>
+                            <li><span>✅</span><span>A professional brand page brands can actually click and review</span></li>
+                            <li><span>✅</span><span>Real-time dashboard showing every open, reply, and interested brand</span></li>
+                            <li><span>✅</span><span>You focus on creating — we handle everything else</span></li>
+                        </ul>
                     </article>
                 </div>
-            </div>
-        </section>
-
-        <section class="section black" id="what-you-get">
-            <div class="container solution-card">
-                <div class="center">
-                    <span class="kicker">The Dropstep Solution</span>
-                    <h2 class="section-title condensed">We run the whole operation. <span>You get the results.</span></h2>
-                </div>
-                <div class="features">
-                    <article class="feature">
-                        <div class="big-icon">▣</div>
-                        <h3 class="condensed">Brand Profile Page</h3>
-                        <p>A pitch-ready profile for an agency roster, college athlete, UGC creator, or influencer — built to impress brands.</p>
-                    </article>
-                    <article class="feature">
-                        <div class="big-icon">↗</div>
-                        <h3 class="condensed">100+ Brand Pitches / Month</h3>
-                        <p>We find the right brands, write every pitch, and send them automatically.</p>
-                    </article>
-                    <article class="feature">
-                        <div class="big-icon">✉</div>
-                        <h3 class="condensed">Automated Follow-Up</h3>
-                        <p>Follow-ups go out on days 3, 7, 12, and 18 so warm leads do not disappear.</p>
-                    </article>
-                    <article class="feature">
-                        <div class="big-icon">▥</div>
-                        <h3 class="condensed">Deal Tracking Dashboard</h3>
-                        <p>See every pitch, open, reply, and deal in one clean dashboard.</p>
-                    </article>
-                    <article class="feature">
-                        <div class="big-icon">30</div>
-                        <h3 class="condensed">Monthly Content Calendar</h3>
-                        <p>We create 30 days of platform-specific content ideas each month — formatted for TikTok, Instagram Reels, and YouTube Shorts — so you stay consistent and attractive to brands.</p>
-                    </article>
-                    <article class="feature">
-                        <div class="big-icon">▱</div>
-                        <h3 class="condensed">Weekly Briefing</h3>
-                        <p>One email with outreach progress, replies, warm leads, and next moves.</p>
-                    </article>
-                </div>
-                <div class="size-guidance" id="pricing">
-                    <p><strong>Dropstep works for creators and athletes at any stage</strong> — whether you have 5,000 followers or 500,000. If brands would pay to reach your audience, we can pitch them for you.</p>
+                <div class="comparison-cta">
+                    <a class="btn gold" href="/start/">Start With Dropstep →</a>
                 </div>
             </div>
         </section>
