@@ -1181,7 +1181,7 @@
             text-align: center;
         }
         .founder-head .section-title {
-            max-width: 920px;
+            max-width: 980px;
             margin: 0 auto;
         }
         .founder-stats {
@@ -1191,65 +1191,34 @@
             margin-top: 38px;
         }
         .founder-stat {
-            padding: 28px;
+            padding: clamp(24px, 3vw, 34px);
             border: 1px solid rgba(255,255,255,.08);
             border-top: 3px solid var(--gold);
             background:
                 radial-gradient(circle at 86% 0%, rgba(197,160,74,.12), transparent 34%),
                 rgba(255,255,255,.025);
         }
-        .founder-stat strong {
+        .founder-stat h3 {
+            margin: 0;
             display: block;
             color: var(--gold);
             font-family: Oswald, Inter, sans-serif;
-            font-size: clamp(54px, 7vw, 92px);
-            line-height: .88;
-            letter-spacing: -.05em;
-        }
-        .founder-stat span {
-            display: block;
-            margin-top: 12px;
-            color: var(--white);
-            font-size: 13px;
-            font-weight: 950;
-            letter-spacing: .09em;
+            font-size: clamp(30px, 3.6vw, 50px);
+            line-height: .95;
+            letter-spacing: -.035em;
             text-transform: uppercase;
         }
         .founder-stat p {
-            margin-top: 9px;
-            color: rgba(245,240,223,.62);
-            font-size: 14px;
-            line-height: 1.5;
-            font-weight: 700;
-        }
-        .founder-card {
-            margin-top: 18px;
-            padding: clamp(28px, 4vw, 42px);
-            border: 1px solid rgba(255,255,255,.08);
-            background:
-                linear-gradient(135deg, rgba(197,160,74,.08), rgba(255,255,255,.018)),
-                var(--panel);
-        }
-        .quote-mark {
-            color: var(--gold);
-            font-size: 86px;
-            line-height: .7;
-            font-weight: 900;
-        }
-        .founder-card p {
-            margin-top: 22px;
-            color: rgba(245,240,223,.7);
-            font-size: clamp(18px, 2vw, 24px);
-            line-height: 1.65;
+            margin-top: 14px;
+            color: rgba(255,255,255,.82);
+            font-size: 15px;
+            line-height: 1.55;
             font-weight: 750;
         }
-        .signature {
-            margin-top: 28px;
-            color: var(--gold);
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: .08em;
-            text-transform: uppercase;
+        .founder-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: 34px;
         }
 
         .final {
@@ -1596,25 +1565,28 @@
         <section class="section about" id="about">
             <div class="container founder-wrap">
                 <div class="founder-head">
-                    <span class="kicker">Built by someone who lived it</span>
-                    <h2 class="section-title condensed">Former agent. Built this because it didn't exist.</h2>
+                    <h2 class="section-title condensed">Every day without Dropstep is a brand deal you didn't get.</h2>
                 </div>
                 <div class="founder-stats">
                     <article class="founder-stat">
-                        <strong>20+</strong>
-                        <span>Athletes Repped</span>
-                        <p>As a working sports agent</p>
+                        <h3>Brands can't pay you if they don't know you exist.</h3>
+                        <p>Most creators never pitch a single brand. They wait. Waiting doesn't pay.</p>
                     </article>
                     <article class="founder-stat">
-                        <strong>1</strong>
-                        <span>Problem Everywhere</span>
-                        <p>Great talent going unnoticed by brands</p>
+                        <h3>Deals go to whoever shows up first.</h3>
+                        <p>Not the most talented. Not the most followed. The one who reached out.</p>
+                    </article>
+                    <article class="founder-stat">
+                        <h3>Your agent closes deals. We find them.</h3>
+                        <p>Dropstep works alongside your agent or manager — we handle outreach, they handle closing. More leads for everyone.</p>
+                    </article>
+                    <article class="founder-stat">
+                        <h3>Other tools make you wait for brands to find you.</h3>
+                        <p>We go out and find them for you. 100-300 personalized pitches every month, automatically.</p>
                     </article>
                 </div>
-                <div class="founder-card">
-                    <div class="quote-mark">“</div>
-                    <p>Dropstep was built by a former agent who managed athletes, creators, and influencers — and saw the same problem everywhere. Great talent and great audiences went unnoticed by brands because outreach never scaled.</p>
-                    <div class="signature">— Founder, Dropstep | Former Agent</div>
+                <div class="founder-cta">
+                    <a class="btn gold" href="/start/">Start With Dropstep →</a>
                 </div>
             </div>
         </section>
