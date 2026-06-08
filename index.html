@@ -1166,94 +1166,82 @@
             line-height: 1.55;
             font-weight: 750;
         }
-        .credibility-grid,
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-top: 34px;
-        }
-        .credibility-card,
-        .testimonial-card,
-        .size-guidance {
-            border: 1px solid rgba(255,255,255,.08);
-            background: rgba(255,255,255,.025);
-        }
-        .credibility-card,
-        .testimonial-card {
-            padding: 24px;
-        }
-        .credibility-card h3,
-        .testimonial-card h3 {
-            color: var(--white);
-            font-size: 18px;
-            line-height: 1.1;
-        }
-        .credibility-card p,
-        .testimonial-card p {
-            margin-top: 12px;
-            color: rgba(245,240,223,.62);
-            font-size: 13px;
-            line-height: 1.55;
-            font-weight: 650;
-        }
-        .testimonial-card .result-label {
-            display: inline-flex;
-            margin-bottom: 16px;
-            color: var(--gold);
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-        }
-        .size-guidance {
-            margin-top: 36px;
-            padding: 28px;
-            border-color: rgba(197,160,74,.36);
+        .about {
             background:
-                radial-gradient(circle at 88% 20%, rgba(197,160,74,.12), transparent 30%),
-                rgba(255,255,255,.025);
+                radial-gradient(circle at 22% 16%, rgba(197,160,74,.14), transparent 28%),
+                var(--black);
+            color: var(--white);
+            border-top: 1px solid var(--line);
+        }
+        .founder-wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        .founder-head {
             text-align: center;
         }
-        .size-guidance p {
-            max-width: 820px;
+        .founder-head .section-title {
+            max-width: 920px;
             margin: 0 auto;
-            color: rgba(245,240,223,.72);
-            font-size: 17px;
-            line-height: 1.55;
-            font-weight: 800;
         }
-        .size-guidance strong {
-            color: var(--gold);
-        }
-
-        .about {
-            background: var(--black);
-            color: var(--white);
-        }
-        .about-grid {
+        .founder-stats {
             display: grid;
-            grid-template-columns: .92fr 1.08fr;
-            gap: 54px;
-            align-items: center;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 38px;
+        }
+        .founder-stat {
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-top: 3px solid var(--gold);
+            background:
+                radial-gradient(circle at 86% 0%, rgba(197,160,74,.12), transparent 34%),
+                rgba(255,255,255,.025);
+        }
+        .founder-stat strong {
+            display: block;
+            color: var(--gold);
+            font-family: Oswald, Inter, sans-serif;
+            font-size: clamp(54px, 7vw, 92px);
+            line-height: .88;
+            letter-spacing: -.05em;
+        }
+        .founder-stat span {
+            display: block;
+            margin-top: 12px;
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 950;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+        }
+        .founder-stat p {
+            margin-top: 9px;
+            color: rgba(245,240,223,.62);
+            font-size: 14px;
+            line-height: 1.5;
+            font-weight: 700;
         }
         .founder-card {
-            padding: 36px;
+            margin-top: 18px;
+            padding: clamp(28px, 4vw, 42px);
             border: 1px solid rgba(255,255,255,.08);
-            background: var(--panel);
+            background:
+                linear-gradient(135deg, rgba(197,160,74,.08), rgba(255,255,255,.018)),
+                var(--panel);
         }
         .quote-mark {
             color: var(--gold);
-            font-size: 76px;
+            font-size: 86px;
             line-height: .7;
             font-weight: 900;
         }
         .founder-card p {
             margin-top: 22px;
             color: rgba(245,240,223,.7);
-            font-size: 17px;
+            font-size: clamp(18px, 2vw, 24px);
             line-height: 1.65;
-            font-weight: 650;
+            font-weight: 750;
         }
         .signature {
             margin-top: 28px;
@@ -1319,9 +1307,7 @@
             .hero-grid,
             .walk-step,
             .section-head,
-            .about-grid,
-            .credibility-grid,
-            .testimonial-grid,
+            .founder-stats,
             .pilot-offer {
                 grid-template-columns: 1fr;
             }
@@ -1607,63 +1593,23 @@
             </div>
         </section>
 
-        <section class="section charcoal" id="outreach">
-            <div class="container">
-                <div class="center" style="margin-bottom: 44px;">
-                    <span class="kicker">How Outreach Works</span>
-                    <h2 class="section-title condensed">Professional outreach, without you touching it.</h2>
-                </div>
-                <div class="credibility-grid">
-                    <article class="credibility-card">
-                        <h3 class="condensed">Verified brand contacts</h3>
-                        <p>We find verified brand partnership contacts using professional tools, then organize them by fit, category, and relevance.</p>
-                    </article>
-                    <article class="credibility-card">
-                        <h3 class="condensed">Dedicated email outreach</h3>
-                        <p>Personalized pitches are sent from a dedicated email so every conversation feels clean, consistent, and trackable.</p>
-                    </article>
-                    <article class="credibility-card">
-                        <h3 class="condensed">Timed follow-up system</h3>
-                        <p>We follow up automatically on days 3, 7, 12, and 18. You never touch it until a brand is ready to talk.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section black">
-            <div class="container">
-                <div class="section-head">
-                    <div>
-                        <span class="kicker">Early results from beta users</span>
-                        <h2 class="section-title condensed">Real signals from early Dropstep users.</h2>
-                    </div>
-                    <p class="section-copy">These are early beta-style result snapshots while Dropstep continues onboarding more agencies, athletes, creators, and influencers.</p>
-                </div>
-                <div class="testimonial-grid">
-                    <article class="testimonial-card">
-                        <span class="result-label">Beta Agency</span>
-                        <h3 class="condensed">“We finally had visibility across the whole roster.”</h3>
-                        <p>Outreach, follow-ups, replies, and handoffs moved into one system instead of separate inboxes and spreadsheets.</p>
-                    </article>
-                    <article class="testimonial-card">
-                        <span class="result-label">Beta Athlete</span>
-                        <h3 class="condensed">“Brands had a real NIL page to review.”</h3>
-                        <p>The profile made outreach feel more legitimate than sending a social link and a short bio.</p>
-                    </article>
-                    <article class="testimonial-card">
-                        <span class="result-label">Beta Creator</span>
-                        <h3 class="condensed">“The pitches sounded like my content, not a template.”</h3>
-                        <p>Matched brands received specific angles tied to audience, niche, and content style.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
         <section class="section about" id="about">
-            <div class="container about-grid">
-                <div>
+            <div class="container founder-wrap">
+                <div class="founder-head">
                     <span class="kicker">Built by someone who lived it</span>
-                    <h2 class="section-title condensed">Made for anyone with an audience — and not enough time to chase every brand.</h2>
+                    <h2 class="section-title condensed">Former agent. Built this because it didn't exist.</h2>
+                </div>
+                <div class="founder-stats">
+                    <article class="founder-stat">
+                        <strong>20+</strong>
+                        <span>Athletes Repped</span>
+                        <p>As a working sports agent</p>
+                    </article>
+                    <article class="founder-stat">
+                        <strong>1</strong>
+                        <span>Problem Everywhere</span>
+                        <p>Great talent going unnoticed by brands</p>
+                    </article>
                 </div>
                 <div class="founder-card">
                     <div class="quote-mark">“</div>
