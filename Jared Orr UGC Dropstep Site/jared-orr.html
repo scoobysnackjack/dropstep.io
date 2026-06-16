@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jared Orr creator brand page for men's personal growth, optimism, faith, and creator culture partnerships.">
+  <title>Jared Orr | Creator & Community Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --black: #070707;
+      --surface: #101010;
+      --surface2: #161616;
+      --border: #242424;
+      --text: #F0EDE8;
+      --text-secondary: #888;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top, rgba(201, 168, 76, 0.22), transparent 34rem),
+        linear-gradient(180deg, #0c0c0c 0%, var(--black) 42%, #050505 100%);
+      color: var(--text);
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(4rem, 18vw, 8.5rem);
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(2.3rem, 9vw, 4.5rem);
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 1.45rem;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border: 1px solid rgba(201, 168, 76, 0.55);
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.95), rgba(201, 168, 76, 0.7));
+      color: #080808;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      box-shadow: 0 0 28px rgba(201, 168, 76, 0.24);
+      transform: translateY(-2px);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .hero {
+      display: grid;
+      gap: 28px;
+      min-height: 88vh;
+      align-items: center;
+      padding: 24px 0 48px;
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 20px;
+    }
+
+    .tagline {
+      color: var(--text);
+      font-size: clamp(1.35rem, 5vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .intro {
+      max-width: 690px;
+      color: #c9c3ba;
+      font-size: clamp(1rem, 3.7vw, 1.25rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .hero-media {
+      position: relative;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+      overflow: hidden;
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -34% 16%;
+      height: 45%;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.32), transparent 68%);
+      pointer-events: none;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      min-height: 430px;
+      border: 1px dashed rgba(201, 168, 76, 0.42);
+      border-radius: 18px;
+      background:
+        linear-gradient(rgba(16, 16, 16, 0.7), rgba(16, 16, 16, 0.82)),
+        linear-gradient(135deg, rgba(201, 168, 76, 0.2), rgba(255, 255, 255, 0.04));
+      color: rgba(240, 237, 232, 0.72);
+      object-fit: cover;
+    }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .section-heading p {
+      max-width: 740px;
+      color: #b9b2a8;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)), var(--surface);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+    }
+
+    .stat-card {
+      display: grid;
+      gap: 8px;
+      padding: 22px;
+    }
+
+    .stat-value {
+      color: var(--text);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .stat-label {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .audience-note,
+    .brand-note,
+    .quote-card,
+    .cta-card {
+      padding: 24px;
+      background: var(--surface2);
+    }
+
+    .audience-note {
+      display: grid;
+      gap: 10px;
+      border-color: rgba(201, 168, 76, 0.38);
+    }
+
+    .audience-note strong,
+    .brand-note strong {
+      color: var(--text);
+    }
+
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .deliverables {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .deliverables li,
+    .category {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #d7d0c6;
+      font-weight: 600;
+    }
+
+    .deliverables li::before,
+    .category::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 16px rgba(201, 168, 76, 0.35);
+    }
+
+    .feature-card {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 0;
+      align-self: start;
+      color: inherit;
+      overflow: hidden;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at top left, rgba(201, 168, 76, 0.14), transparent 18rem),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+        var(--surface);
+      transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .feature-card:hover,
+    .feature-card:focus-visible {
+      border-color: rgba(201, 168, 76, 0.62);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34), 0 0 34px rgba(201, 168, 76, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .post-thumb {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background:
+        linear-gradient(180deg, rgba(7, 7, 7, 0), rgba(7, 7, 7, 0.68)),
+        #080808;
+    }
+
+    .post-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 240ms ease, filter 240ms ease;
+    }
+
+    .feature-card:hover .post-thumb img,
+    .feature-card:focus-visible .post-thumb img {
+      filter: saturate(1.08) contrast(1.04);
+      transform: scale(1.045);
+    }
+
+    .post-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(7, 7, 7, 0.78));
+      pointer-events: none;
+    }
+
+    .likes-badge {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border: 1px solid rgba(201, 168, 76, 0.48);
+      border-radius: 999px;
+      background: rgba(7, 7, 7, 0.76);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .feature-body {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      padding: 22px;
+    }
+
+    .feature-meta {
+      color: var(--gold);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .feature-caption {
+      color: var(--text);
+      font-family: "Rajdhani", sans-serif;
+      font-size: clamp(1.45rem, 4vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .post-stats {
+      color: #a79f93;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .post-cta {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 15px;
+      border: 1px solid rgba(201, 168, 76, 0.55);
+      border-radius: 999px;
+      color: var(--gold);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .brand-note {
+      display: grid;
+      gap: 18px;
+    }
+
+    .categories {
+      display: grid;
+      gap: 12px;
+    }
+
+    .quote-card {
+      position: relative;
+      overflow: hidden;
+      border-color: rgba(201, 168, 76, 0.38);
+    }
+
+    .quote-card::before {
+      content: "“";
+      position: absolute;
+      top: -18px;
+      right: 18px;
+      color: rgba(201, 168, 76, 0.22);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 9rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .quote-card blockquote {
+      position: relative;
+      margin: 0;
+      color: var(--text);
+      font-family: "Rajdhani", sans-serif;
+      font-size: clamp(2rem, 8vw, 4.4rem);
+      font-weight: 700;
+      line-height: 0.98;
+      text-transform: uppercase;
+    }
+
+    .cta-card {
+      display: grid;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .cta-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .placeholder-note {
+      margin-top: 12px;
+      color: #766f65;
+      font-size: 0.78rem;
+    }
+
+    footer {
+      padding: 18px 0 0;
+      color: #68625b;
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    @media (min-width: 720px) {
+      .page {
+        width: min(1120px, calc(100% - 56px));
+        padding-top: 42px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.72fr);
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .content-grid,
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .brand-note {
+        grid-template-columns: 0.85fr 1.15fr;
+      }
+
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cta-card {
+        grid-template-columns: 1fr auto;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .section {
+        padding: 56px 0;
+      }
+
+      .hero-media {
+        transform: rotate(1.2deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div>
+          <h1 id="hero-title">Jared Orr</h1>
+        </div>
+        <p class="tagline">Optimist ⚡️ Creator &amp; Community Builder</p>
+        <p class="intro">Men's personal growth, optimism, faith, and creator culture with a self-aware humor layer that keeps the message human.</p>
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button" href="mailto:jaredcollabs@gmail.com">Work with me</a>
+          <a class="button secondary" href="https://www.instagram.com/jaredorr_ugc/" target="_blank" rel="noopener">@jaredorr_ugc</a>
+        </div>
+        <p class="placeholder-note">Confirm preferred handle and current Instagram Insights before publishing.</p>
+      </div>
+      <div class="hero-media" aria-label="Jared Orr headshot">
+        <img class="image-placeholder" src="assets/jared-orr-headshot.png" alt="Headshot of Jared Orr">
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="audience-title">
+      <div class="section-heading">
+        <p class="eyebrow">Audience Snapshot</p>
+        <h2 id="audience-title">Built For A Specific Male Audience</h2>
+        <p>Jared's value is audience fit and content quality: a clear voice for men who care about self-improvement, entrepreneurship, faith, and showing up online with more authenticity.</p>
+      </div>
+      <div class="grid stats-grid">
+        <article class="card stat-card">
+          <span class="stat-label">Followers</span>
+          <strong class="stat-value">15K</strong>
+          <p>Instagram audience size. Confirm with current Insights before publishing.</p>
+        </article>
+        <article class="card stat-card">
+          <span class="stat-label">Engaged Niche</span>
+          <strong class="stat-value">25-45</strong>
+          <p>Engaged male audience interested in growth, faith, entrepreneurship, and creator culture.</p>
+        </article>
+        <article class="card stat-card">
+          <span class="stat-label">Platform</span>
+          <strong class="stat-value">IG</strong>
+          <p>Short-form reels, personality-led posts, and community engagement on Instagram.</p>
+        </article>
+      </div>
+      <div class="card audience-note" style="margin-top: 14px;">
+        <strong>Audience quality over raw reach.</strong>
+        <p>His engagement is spiky, with a ceiling around 1,100 likes on a creator-tagged motivational reel and lower everyday post ranges. That makes the strongest pitch content fit, trust, and audience alignment.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="create-title">
+      <div class="section-heading">
+        <p class="eyebrow">What I Create</p>
+        <h2 id="create-title">Authentic Short-Form Content</h2>
+        <p>Short-form talking-head and text-overlay reels centered on optimism, men's growth, faith, humor, and lo-fi creator culture.</p>
+      </div>
+      <div class="grid content-grid">
+        <article class="card stat-card">
+          <h3>UGC Video</h3>
+          <p>Native-feeling videos brands can use across organic social, paid creative, or landing pages.</p>
+        </article>
+        <article class="card stat-card">
+          <h3>Branded Reels</h3>
+          <p>Instagram-ready reels that connect the product to Jared's personal-growth and optimism lane.</p>
+        </article>
+        <article class="card stat-card">
+          <h3>Community Posts</h3>
+          <p>Endorsements, comment-forward posts, and community engagement with a grounded human tone.</p>
+        </article>
+      </div>
+      <ul class="deliverables" aria-label="Available deliverables">
+        <li>UGC video</li>
+        <li>Branded reels</li>
+        <li>Talking-head endorsements</li>
+        <li>Community-engagement posts</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="featured-title">
+      <div class="section-heading">
+        <p class="eyebrow">Featured Content</p>
+        <h2 id="featured-title">Top Posts</h2>
+        <p>Creator-forward reels from @jaredorr_ with clear audience proof and direct links to watch on Instagram.</p>
+      </div>
+      <div class="grid features-grid">
+        <a class="card feature-card" href="https://www.instagram.com/p/DXKLeXkkm5m/" target="_blank" rel="noopener" aria-label="Watch Jared Orr reel about leaving corporate America on Instagram">
+          <div class="post-thumb">
+            <img src="https://scontent-dfw5-2.cdninstagram.com/v/t51.71878-15/671136057_967798372641701_4363984660996754338_n.jpg?stp=cmp1_dst-jpg_e35_s640x640_tt6&amp;_nc_cat=107&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&amp;_nc_ohc=EKZ4sZhvRsQQ7kNvwH-UzcV&amp;_nc_oc=Ado934licfrCHCk_naGqmrwxCPfkgZvJb1vIqsC9hGiEulb1S6t2ePef2lPwIBec_h0&amp;_nc_zt=23&amp;_nc_ht=scontent-dfw5-2.cdninstagram.com&amp;_nc_gid=gPuyo6yXo2pkk0_Jed6HkA&amp;_nc_ss=7060f&amp;oh=00_Af9iC5ZX1SDw65mVF0vzFjpdjwFHJBFrcxvfK54_mPWO0A&amp;oe=6A362F1E" alt="Thumbnail for Jared Orr reel about leaving corporate America">
+            <span class="likes-badge">24K Likes</span>
+          </div>
+          <div class="feature-body">
+            <span class="feature-meta">Career Pivot Reel</span>
+            <p class="feature-caption">Leaving corporate America to pursue a creative career path is one of the best decisions I've ever made</p>
+            <p class="post-stats">24K likes · 750 comments · 508 shares</p>
+            <span class="post-cta">Watch on Instagram</span>
+          </div>
+        </a>
+        <a class="card feature-card" href="https://www.instagram.com/p/DZYMRp6ybNm/" target="_blank" rel="noopener" aria-label="Watch Jared Orr reel captioned I got nothing on Instagram">
+          <div class="post-thumb">
+            <img src="https://scontent-dfw6-1.cdninstagram.com/v/t51.82787-15/719992799_18029511038816180_3662255021471404564_n.jpg?stp=cmp1_dst-jpg_e35_s640x640_tt6&amp;_nc_cat=102&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&amp;_nc_ohc=KhBe3PMJsSoQ7kNvwF4zSQp&amp;_nc_oc=AdqimgeBP2JmCuFSjpkdwikzdYVeGxvYYtC2Q4cuDV5BGvmbk6rR2s5da0g46-kfu90&amp;_nc_zt=23&amp;_nc_ht=scontent-dfw6-1.cdninstagram.com&amp;_nc_gid=v6yjV1b8IlGDRwcQrMz_TQ&amp;_nc_ss=7060f&amp;oh=00_Af86u-i6_b3vALoPALOLbCnzYXXstJxr-B5rKMl_ZDhAVg&amp;oe=6A360024" alt="Thumbnail for Jared Orr reel captioned I got nothing">
+            <span class="likes-badge">6.3K Likes</span>
+          </div>
+          <div class="feature-body">
+            <span class="feature-meta">Humor Reel</span>
+            <p class="feature-caption">I got nothing...</p>
+            <p class="post-stats">6.3K likes · 228 comments · 157 shares</p>
+            <span class="post-cta">Watch on Instagram</span>
+          </div>
+        </a>
+        <a class="card feature-card" href="https://www.instagram.com/p/DZAiOcIy-XO/" target="_blank" rel="noopener" aria-label="Watch Jared Orr reel about men optimistically building a better world on Instagram">
+          <div class="post-thumb">
+            <img src="https://scontent-dfw6-1.cdninstagram.com/v/t51.71878-15/709101478_1518258173040720_2348133927335414597_n.jpg?stp=cmp1_dst-jpg_e35_s640x640_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&amp;_nc_ohc=GF-u92KZW3wQ7kNvwGrYbkb&amp;_nc_oc=AdpX8SXUl066A95CEM27op97Q_Uuim602h2LYKWY9b3hBy8yJ3a9G_FysBg1PfVqWlg&amp;_nc_zt=23&amp;_nc_ht=scontent-dfw6-1.cdninstagram.com&amp;_nc_gid=08xMlvFnCb2FmF6IGZq_fw&amp;_nc_ss=7060f&amp;oh=00_Af-tDFey1jmprVsRC5MjhvjCjDSdFYh3kHtWNd3x414V9g&amp;oe=6A362F66" alt="Thumbnail for Jared Orr reel about men optimistically building a better world">
+            <span class="likes-badge">1.1K Likes</span>
+          </div>
+          <div class="feature-body">
+            <span class="feature-meta">Optimism Reel</span>
+            <p class="feature-caption">The world needs more men who can optimistically look to the future and build a better world</p>
+            <p class="post-stats">1.1K likes</p>
+            <span class="post-cta">Watch on Instagram</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="brands-title">
+      <div class="section-heading">
+        <p class="eyebrow">Brand Fit</p>
+        <h2 id="brands-title">For Brands Built Around Better Men</h2>
+      </div>
+      <div class="card brand-note">
+        <div>
+          <h3>Past Work</h3>
+          <p><strong>Nico's Barbershop</strong> in East Valley, AZ. Add additional approved brand work here once confirmed.</p>
+        </div>
+        <div class="categories" aria-label="Ideal brand categories">
+          <span class="category">Men's grooming</span>
+          <span class="category">Fitness &amp; supplements</span>
+          <span class="category">Faith-based brands</span>
+          <span class="category">Men's apparel</span>
+          <span class="category">Creator &amp; productivity tools</span>
+          <span class="category">Books &amp; courses</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Pull quote">
+      <div class="card quote-card">
+        <blockquote>I'm just a dude with a sign, begging you to stop using AI to write your content. You're way more creative than you think.</blockquote>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="contact-title">
+      <div class="card cta-card">
+        <div>
+          <p class="eyebrow">Contact / Booking</p>
+          <h2 id="contact-title">Work With Me</h2>
+          <p>For UGC, branded reels, talking-head endorsements, and community-focused creator posts.</p>
+        </div>
+        <div class="cta-links">
+          <a class="button" href="mailto:jaredcollabs@gmail.com">jaredcollabs@gmail.com</a>
+          <a class="button secondary" href="https://www.instagram.com/jaredorr_ugc/" target="_blank" rel="noopener">@jaredorr_ugc</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Jared Orr creator page. Replace placeholders and verify stats before publishing.</p>
+    </footer>
+  </main>
+</body>
+</html>
