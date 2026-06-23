@@ -24,7 +24,7 @@
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=3" sizes="180x180">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #080808;
@@ -41,23 +41,107 @@
         html { scroll-behavior: smooth; }
         body {
             margin: 0;
-            background: var(--black);
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse 120% 80% at 50% -20%, rgba(197,160,74,.04), transparent 52%),
+                linear-gradient(180deg, #030303 0%, #070707 28%, #0a0a0a 58%, #060606 100%);
             color: var(--white);
             font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-        body::before {
-            content: "";
+        main {
+            position: relative;
+            z-index: 1;
+        }
+        .page-atmosphere {
             position: fixed;
             inset: 0;
-            z-index: 99;
+            z-index: 0;
             pointer-events: none;
-            opacity: .055;
+            overflow: hidden;
+        }
+        .page-atmosphere__grid {
+            position: absolute;
+            inset: 0;
+            opacity: .028;
             background-image:
-                linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
-            background-size: 42px 42px;
+                linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.14) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        .page-atmosphere__noise {
+            position: absolute;
+            inset: 0;
+            opacity: .042;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 220px 220px;
+        }
+        .page-atmosphere__vignette {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 88% 72% at 50% 46%, transparent 36%, rgba(0,0,0,.42) 100%),
+                linear-gradient(180deg, rgba(0,0,0,.28) 0%, transparent 18%, transparent 82%, rgba(0,0,0,.34) 100%);
+        }
+        .page-atmosphere__ambient {
+            position: absolute;
+            inset: -18%;
+            opacity: .9;
+            background:
+                radial-gradient(circle at 24% 18%, rgba(197,160,74,.055), transparent 46%),
+                radial-gradient(circle at 78% 62%, rgba(197,160,74,.04), transparent 42%);
+            animation: ambientDrift 32s ease-in-out infinite alternate;
+        }
+        .page-atmosphere__glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            will-change: transform, opacity;
+        }
+        .page-atmosphere__glow--a {
+            width: min(980px, 92vw);
+            height: min(980px, 92vw);
+            top: -18%;
+            right: -14%;
+            background: radial-gradient(circle, rgba(197,160,74,.14) 0%, rgba(197,160,74,.04) 38%, transparent 68%);
+            animation: glowDriftA 26s ease-in-out infinite;
+        }
+        .page-atmosphere__glow--b {
+            width: min(1100px, 105vw);
+            height: min(1100px, 105vw);
+            top: 34%;
+            left: -24%;
+            background: radial-gradient(circle, rgba(197,160,74,.1) 0%, rgba(197,160,74,.03) 42%, transparent 70%);
+            animation: glowDriftB 34s ease-in-out infinite;
+        }
+        .page-atmosphere__glow--c {
+            width: min(860px, 88vw);
+            height: min(860px, 88vw);
+            bottom: -8%;
+            right: 8%;
+            background: radial-gradient(circle, rgba(197,160,74,.09) 0%, rgba(197,160,74,.025) 40%, transparent 68%);
+            animation: glowDriftC 30s ease-in-out infinite;
+        }
+        @keyframes ambientDrift {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(2.5%, -1.5%, 0) scale(1.04); }
+        }
+        @keyframes glowDriftA {
+            0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: .62; }
+            50% { transform: translate3d(-2.5%, 3%, 0) scale(1.07); opacity: .88; }
+        }
+        @keyframes glowDriftB {
+            0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: .5; }
+            50% { transform: translate3d(3%, -2%, 0) scale(1.05); opacity: .72; }
+        }
+        @keyframes glowDriftC {
+            0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: .48; }
+            50% { transform: translate3d(-2%, 2.5%, 0) scale(1.06); opacity: .68; }
+        }
+        main > section + section {
+            border-top: 1px solid rgba(255,255,255,.06);
         }
         a { color: inherit; text-decoration: none; }
         p, h1, h2, h3 { margin: 0; }
@@ -87,9 +171,30 @@
             border-color: rgba(255,255,255,.22);
         }
         .btn.gold {
-            background: var(--gold);
-            border-color: var(--gold);
+            min-height: 56px;
+            padding: 0 32px;
+            border-radius: 999px;
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 12px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #f2dd92, var(--gold) 50%, #9a7727);
+            border-color: transparent;
             color: var(--black);
+            box-shadow:
+                0 18px 46px rgba(197,160,74,.26),
+                inset 0 1px 0 rgba(255,255,255,.45);
+            transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease, filter .2s ease;
+        }
+        .btn.gold:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #f2dd92, var(--gold) 50%, #9a7727);
+            border-color: transparent;
+            color: var(--black);
+            box-shadow:
+                0 26px 64px rgba(197,160,74,.4),
+                inset 0 1px 0 rgba(255,255,255,.6);
+            filter: saturate(1.06) brightness(1.03);
         }
         .btn.black {
             background: var(--black);
@@ -226,44 +331,106 @@
         }
 
         .hero {
-            padding: 132px 0 86px;
-            background:
-                radial-gradient(circle at 78% 22%, rgba(197,160,74,.18), transparent 28%),
-                radial-gradient(circle at 16% 10%, rgba(255,255,255,.07), transparent 24%),
-                linear-gradient(180deg, #050505 0%, #111111 58%, #080808 100%);
-            border-bottom: 1px solid var(--line);
+            position: relative;
+            padding: 152px 0 116px;
+            background: transparent;
+            overflow: hidden;
         }
         .hero-grid {
             display: grid;
-            width: min(1420px, calc(100% - 40px));
+            width: min(1440px, calc(100% - 40px));
             margin: 0 auto;
-            grid-template-columns: minmax(0, 0.58fr) minmax(0, 1fr);
-            gap: 10px;
+            grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+            gap: clamp(30px, 4.5vw, 88px);
             align-items: center;
         }
-        .hero-grid > div:first-child {
-            transform: translateX(-6px);
-        }
-        h1 {
-            max-width: 610px;
+        .hero-title {
+            max-width: 13ch;
+            margin: 0;
             color: var(--white);
-            font-size: clamp(56px, 7.1vw, 102px);
-            line-height: .9;
-            letter-spacing: 0;
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            font-weight: 700;
+            font-size: clamp(60px, 7.7vw, 126px);
+            line-height: .88;
+            letter-spacing: -.045em;
         }
-        h1 span {
+        .hero-title .line {
             display: block;
+            overflow: hidden;
+            padding-bottom: .04em;
+        }
+        .hero-title .line > span {
+            display: block;
+        }
+        .hero-title .gold {
             color: var(--gold);
+            text-shadow: 0 0 42px rgba(197,160,74,.28);
         }
-        .hero-copy {
+        .hero-checklist {
+            display: grid;
+            gap: 14px;
             max-width: 520px;
-            margin-top: 24px;
-            color: rgba(255,255,255,.72);
-            font-size: 15px;
-            line-height: 1.65;
-            font-weight: 650;
+            margin: 28px 0 0;
+            padding: 0;
+            list-style: none;
         }
-        .hero-action { margin-top: 34px; }
+        .hero-check {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+            color: rgba(245,240,223,.88);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: clamp(15px, 1.15vw, 17px);
+            font-weight: 500;
+            line-height: 1.45;
+            letter-spacing: -.01em;
+        }
+        .hero-check:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+        .hero-check::after {
+            content: "✓";
+            flex-shrink: 0;
+            color: var(--gold);
+            font-size: 15px;
+            font-weight: 700;
+            text-shadow: 0 0 16px rgba(197,160,74,.45);
+        }
+        .hero-action {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .hero-action .btn.gold {
+            min-height: 56px;
+            padding: 0 32px;
+        }
+        .hero-action .btn.gold:hover {
+            transform: translateY(-3px);
+        }
+        .hero-trust {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(245,240,223,.56);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .hero-trust::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #74dc9a;
+            box-shadow: 0 0 10px rgba(116,220,154,.8);
+        }
         .proof-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -283,24 +450,286 @@
             line-height: 1.3;
             text-transform: uppercase;
         }
-        .campaign-dashboard {
+        .hero-visual {
             position: relative;
             justify-self: stretch;
-            width: min(900px, 100%);
-            transform: translateX(8px);
-            padding: 0;
-            border: 1px solid rgba(197,160,74,.48);
-            background:
-                radial-gradient(circle at 82% 12%, rgba(197,160,74,.16), transparent 30%),
-                linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)),
-                var(--panel);
-            box-shadow: 0 34px 110px rgba(0,0,0,.46);
-            overflow: hidden;
+            transform: translate3d(var(--px, 0px), var(--py, 0px), 0);
+            transition: transform .3s cubic-bezier(.2,.8,.2,1);
+            will-change: transform;
         }
-        .campaign-dashboard img {
+        .hero-visual-glow {
+            position: absolute;
+            inset: -14% -10%;
+            z-index: 0;
+            background: radial-gradient(circle at 58% 40%, rgba(197,160,74,.22), transparent 60%);
+            filter: blur(46px);
+            pointer-events: none;
+        }
+        .console {
+            position: relative;
+            z-index: 1;
+            padding: clamp(22px, 2.3vw, 32px);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 26px;
+            background:
+                linear-gradient(150deg, rgba(255,255,255,.1), rgba(255,255,255,.02) 46%),
+                rgba(11,11,11,.72);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            box-shadow:
+                0 50px 130px rgba(0,0,0,.62),
+                inset 0 1px 0 rgba(255,255,255,.12);
+            overflow: hidden;
+            animation: floatPanel 7s ease-in-out infinite;
+        }
+        .console-sheen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 65%;
+            height: 100%;
+            background: linear-gradient(105deg, transparent 32%, rgba(255,236,180,.16) 50%, transparent 68%);
+            transform: translateX(-170%);
+            pointer-events: none;
+            animation: sheen 7s ease 1.1s infinite;
+        }
+        .console-header {
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+        .console-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(245,240,223,.78);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .04em;
+        }
+        .console-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 0 0 rgba(197,160,74,.55);
+            animation: pulseDot 2.4s ease-out infinite;
+        }
+        .flow-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            padding: 12px 14px;
+            border: 1px solid rgba(116,220,154,.22);
+            border-radius: 12px;
+            background: rgba(116,220,154,.06);
+            color: rgba(245,240,223,.88);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            animation: heroFade .65s ease .42s both;
+        }
+        .flow-profile-icon {
+            display: grid;
+            place-items: center;
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: rgba(116,220,154,.16);
+            color: #74dc9a;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .flow-steps {
+            display: grid;
+            gap: 12px;
+            margin-top: 18px;
+            position: relative;
+            padding-left: 4px;
+        }
+        .flow-steps::before {
+            content: "";
+            position: absolute;
+            left: 19px;
+            top: 18px;
+            bottom: 18px;
+            width: 1px;
+            background: linear-gradient(180deg, rgba(197,160,74,.45), rgba(197,160,74,.08));
+            pointer-events: none;
+        }
+        .flow-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 14px;
+            align-items: start;
+            padding: 16px 16px 16px 14px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px;
+            background:
+                linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.015)),
+                rgba(10,10,10,.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+        }
+        .flow-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(197,160,74,.32);
+            box-shadow: 0 16px 40px rgba(0,0,0,.32);
+        }
+        .flow-card:nth-child(1) { animation: heroFade .65s ease .52s both; }
+        .flow-card:nth-child(2) { animation: heroFade .65s ease .62s both; }
+        .flow-card:nth-child(3) { animation: heroFade .65s ease .72s both; }
+        .flow-step {
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            flex-shrink: 0;
+            border: 1px solid rgba(197,160,74,.38);
+            border-radius: 10px;
+            background: rgba(197,160,74,.08);
+            color: var(--gold);
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            z-index: 1;
+        }
+        .flow-card-body strong {
             display: block;
-            width: 100%;
-            height: auto;
+            color: var(--white);
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: -.01em;
+        }
+        .flow-card-body span {
+            display: block;
+            margin-top: 5px;
+            color: rgba(245,240,223,.58);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1.45;
+        }
+        .flow-card-icon {
+            display: grid;
+            place-items: center;
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: rgba(197,160,74,.12);
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 700;
+            text-shadow: 0 0 12px rgba(197,160,74,.4);
+        }
+        .flow-foot {
+            margin: 20px 0 0;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            color: rgba(245,240,223,.72);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.5;
+            animation: heroFade .65s ease .84s both;
+        }
+        .flow-foot em {
+            color: var(--gold);
+            font-style: normal;
+            font-weight: 600;
+        }
+        .float-chip {
+            position: absolute;
+            z-index: 2;
+            top: clamp(-16px, -1vw, -6px);
+            right: clamp(-18px, -1.4vw, -8px);
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 17px;
+            border: 1px solid rgba(197,160,74,.3);
+            border-radius: 14px;
+            background:
+                linear-gradient(140deg, rgba(255,255,255,.12), rgba(255,255,255,.03)),
+                rgba(9,9,9,.84);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 24px 60px rgba(0,0,0,.52);
+            color: var(--white);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            animation: fadeOnly .7s ease 1s both, floatChip 6s ease-in-out 1.6s infinite;
+        }
+        .float-chip-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #74dc9a;
+            box-shadow: 0 0 12px rgba(116,220,154,.85);
+        }
+
+        /* ---- Hero entrance + ambient motion ---- */
+        .hero-title .line-1 > span { animation: heroRise .75s cubic-bezier(.2,.8,.2,1) .08s both; }
+        .hero-title .line-2 > span { animation: heroRise .75s cubic-bezier(.2,.8,.2,1) .18s both; }
+        .hero-title .line-3 > span { animation: heroRise .75s cubic-bezier(.2,.8,.2,1) .28s both; }
+        .hero-check:nth-child(1) { animation: heroFade .65s ease .38s both; }
+        .hero-check:nth-child(2) { animation: heroFade .65s ease .48s both; }
+        .hero-check:nth-child(3) { animation: heroFade .65s ease .58s both; }
+        .hero-action { animation: heroFade .7s ease .72s both; }
+        .hero-visual { animation: fadeOnly .9s ease .3s both; }
+        @keyframes heroRise {
+            from { opacity: 0; transform: translateY(115%); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heroFade {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeOnly {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes floatPanel {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        @keyframes floatChip {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-9px); }
+        }
+        @keyframes sheen {
+            0% { transform: translateX(-170%); }
+            22%, 100% { transform: translateX(220%); }
+        }
+        @keyframes pulseDot {
+            0% { box-shadow: 0 0 0 0 rgba(197,160,74,.5); }
+            70% { box-shadow: 0 0 0 10px rgba(197,160,74,0); }
+            100% { box-shadow: 0 0 0 0 rgba(197,160,74,0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-title .line > span,
+            .hero-check,
+            .hero-action,
+            .flow-profile,
+            .flow-card,
+            .flow-foot,
+            .hero-visual,
+            .console,
+            .console-sheen,
+            .float-chip,
+            .console-pulse,
+            .page-atmosphere__ambient,
+            .page-atmosphere__glow {
+                animation: none !important;
+            }
+            .hero-visual { transform: none !important; }
         }
         .brand-site-top {
             display: flex;
@@ -401,9 +830,9 @@
             text-transform: uppercase;
         }
 
-        .section { position: relative; padding: 86px 0; }
-        .black { background: var(--black); color: var(--white); }
-        .charcoal { background: var(--charcoal); color: var(--white); }
+        .section { position: relative; padding: 86px 0; background: transparent; }
+        .black { background: transparent; color: var(--white); }
+        .charcoal { background: transparent; color: var(--white); }
         .cream { background: var(--cream); color: var(--black); }
         .section-head {
             display: grid;
@@ -428,31 +857,80 @@
             display: inline-flex;
             margin-bottom: 14px;
             color: var(--gold);
+            font-family: 'Sora', Inter, sans-serif;
             font-size: 10px;
-            font-weight: 900;
-            letter-spacing: .16em;
+            font-weight: 600;
+            letter-spacing: .18em;
             text-transform: uppercase;
+        }
+        .section-intro,
+        .why-intro {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .premium-headline,
+        .why-headline {
+            margin: 0;
+            color: var(--white);
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            font-size: clamp(38px, 4.8vw, 62px);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -.035em;
+        }
+        .premium-headline em,
+        .why-headline em {
+            color: var(--gold);
+            font-style: normal;
+            text-shadow: 0 0 36px rgba(197,160,74,.22);
+        }
+        .premium-copy,
+        .why-copy {
+            max-width: 640px;
+            margin: 22px auto 0;
+            color: rgba(245,240,223,.72);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: clamp(16px, 1.2vw, 18px);
+            line-height: 1.72;
+            font-weight: 400;
+        }
+        main .btn:not(.gold) {
+            min-height: 52px;
+            padding: 0 28px;
+            border-radius: 999px;
+            border-color: rgba(255,255,255,.12);
+            background:
+                linear-gradient(140deg, rgba(255,255,255,.08), rgba(255,255,255,.02)),
+                rgba(10,10,10,.42);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .05em;
+        }
+        main .btn:not(.gold):hover {
+            transform: translateY(-2px);
+            border-color: rgba(197,160,74,.28);
+            background:
+                linear-gradient(140deg, rgba(255,255,255,.12), rgba(255,255,255,.03)),
+                rgba(10,10,10,.52);
+            box-shadow: 0 16px 40px rgba(0,0,0,.28);
         }
 
         .build-walkthrough {
-            background: var(--black);
+            background: transparent;
             color: var(--white);
-            border-bottom: 1px solid var(--line);
         }
         .walkthrough-intro {
             max-width: 820px;
             margin: 0 auto 64px;
             text-align: center;
         }
-        .walkthrough-intro .section-title {
-            margin: 0 auto;
+        .walkthrough-intro .premium-headline {
             max-width: 760px;
-        }
-        .walkthrough-subhead {
-            margin-top: 18px;
-            color: rgba(245,240,223,.64);
-            font-size: 18px;
-            font-weight: 750;
+            margin: 0 auto;
         }
         .walkthrough-flow {
             display: grid;
@@ -780,49 +1258,127 @@
         .center { text-align: center; }
         .center .section-title { max-width: 780px; margin: 0 auto; }
         .center .section-title span { color: var(--gold); display: block; }
-        .comparison-section {
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
+        .why-section {
+            background: transparent;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 48px;
+        }
+        .why-card {
+            padding: 28px 24px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-top: 2px solid rgba(197,160,74,.55);
+            border-radius: 18px;
             background:
-                radial-gradient(circle at 74% 18%, rgba(197,160,74,.12), transparent 28%),
-                var(--black);
+                linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.015)),
+                rgba(10,10,10,.52);
+            backdrop-filter: blur(14px);
+            box-shadow:
+                0 24px 60px rgba(0,0,0,.34),
+                inset 0 1px 0 rgba(255,255,255,.06);
+            transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+        }
+        .why-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(197,160,74,.28);
+            box-shadow:
+                0 28px 70px rgba(0,0,0,.42),
+                0 0 32px rgba(197,160,74,.08);
+        }
+        .why-card:nth-child(2).fade-up { transition-delay: .1s; }
+        .why-card:nth-child(3).fade-up { transition-delay: .2s; }
+        .comparison-column:nth-child(2).fade-up { transition-delay: .12s; }
+        .founder-stat:nth-child(2).fade-up { transition-delay: .08s; }
+        .founder-stat:nth-child(3).fade-up { transition-delay: .16s; }
+        .founder-stat:nth-child(4).fade-up { transition-delay: .24s; }
+        .why-card-num {
+            display: inline-flex;
+            margin-bottom: 18px;
+            color: var(--gold);
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+        .why-card h3 {
+            margin: 0;
+            color: var(--white);
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            font-size: clamp(20px, 1.6vw, 24px);
+            font-weight: 600;
+            letter-spacing: -.02em;
+            line-height: 1.15;
+        }
+        .why-card p {
+            margin-top: 12px;
+            color: rgba(245,240,223,.62);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        .comparison-section {
+            background: transparent;
         }
         .comparison-title {
             max-width: 920px;
             margin: 0 auto 42px;
-            text-align: center;
         }
         .comparison-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
+            gap: 16px;
             max-width: 1060px;
             margin: 0 auto;
         }
         .comparison-column {
-            padding: clamp(24px, 3vw, 34px);
+            padding: clamp(28px, 3vw, 36px);
             border: 1px solid rgba(255,255,255,.08);
-            background: rgba(255,255,255,.025);
+            border-radius: 18px;
+            background:
+                linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.012)),
+                rgba(10,10,10,.52);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow:
+                0 24px 60px rgba(0,0,0,.34),
+                inset 0 1px 0 rgba(255,255,255,.05);
+            transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+        }
+        .comparison-column:hover {
+            transform: translateY(-3px);
         }
         .comparison-column.old-way {
-            border-color: rgba(255,85,85,.18);
+            border-top: 2px solid rgba(255,86,86,.45);
+            border-color: rgba(255,255,255,.08);
             background:
-                linear-gradient(135deg, rgba(95,12,12,.26), rgba(255,255,255,.018)),
-                var(--black);
+                linear-gradient(160deg, rgba(255,86,86,.08), rgba(255,255,255,.012)),
+                rgba(10,10,10,.52);
         }
         .comparison-column.dropstep-way {
-            border-color: rgba(197,160,74,.3);
+            border-top: 2px solid rgba(197,160,74,.55);
+            border-color: rgba(255,255,255,.08);
             background:
-                linear-gradient(135deg, rgba(197,160,74,.16), rgba(255,255,255,.018)),
-                var(--black);
+                linear-gradient(160deg, rgba(197,160,74,.1), rgba(255,255,255,.012)),
+                rgba(10,10,10,.52);
+            box-shadow:
+                0 24px 60px rgba(0,0,0,.34),
+                0 0 32px rgba(197,160,74,.06),
+                inset 0 1px 0 rgba(255,255,255,.05);
         }
         .comparison-column h3 {
             margin-bottom: 22px;
-            font-size: clamp(28px, 3vw, 42px);
-            line-height: .95;
-            letter-spacing: -.03em;
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            font-size: clamp(22px, 2.2vw, 28px);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -.02em;
+            text-transform: none;
         }
-        .old-way h3 { color: #ff5656; }
+        .old-way h3 { color: #ff7a7a; }
         .dropstep-way h3 { color: var(--gold); }
         .comparison-list {
             display: grid;
@@ -832,13 +1388,21 @@
         }
         .comparison-list li {
             display: grid;
-            grid-template-columns: 24px 1fr;
-            gap: 10px;
+            grid-template-columns: 22px 1fr;
+            gap: 12px;
             align-items: start;
-            color: rgba(255,255,255,.84);
-            font-size: 15px;
-            line-height: 1.45;
-            font-weight: 800;
+            color: rgba(245,240,223,.78);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 14px;
+            line-height: 1.55;
+            font-weight: 400;
+        }
+        .comparison-list li span:first-child {
+            color: rgba(245,240,223,.42);
+            font-size: 13px;
+        }
+        .dropstep-way .comparison-list li span:first-child {
+            color: var(--gold);
         }
         .comparison-cta {
             display: flex;
@@ -847,59 +1411,80 @@
         }
         .live-example {
             overflow: hidden;
-            background:
-                radial-gradient(circle at 50% 0%, rgba(197,160,74,.12), transparent 34%),
-                var(--black);
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
+            background: transparent;
         }
         .live-example-copy {
             max-width: 820px;
             margin: 0 auto 34px;
             text-align: center;
         }
-        .live-example-copy .section-title {
+        .live-example-copy .premium-headline {
             max-width: 760px;
             margin: 0 auto;
         }
         .live-example-subhead {
             margin-top: 16px;
             color: var(--gold);
-            font-size: clamp(18px, 2vw, 26px);
-            font-weight: 900;
-            letter-spacing: -.02em;
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: clamp(16px, 1.4vw, 20px);
+            font-weight: 500;
+            letter-spacing: -.01em;
+            text-shadow: 0 0 24px rgba(197,160,74,.18);
         }
         .live-example-copy p {
             max-width: 680px;
             margin: 16px auto 0;
-            color: rgba(255,255,255,.72);
-            font-size: 16px;
+            color: rgba(245,240,223,.68);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: clamp(15px, 1.1vw, 17px);
             line-height: 1.65;
-            font-weight: 700;
+            font-weight: 400;
         }
         .demo-badge {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
+            width: fit-content;
             margin: 0 auto 14px;
-            padding: 8px 12px;
-            border: 1px solid rgba(42,163,111,.5);
+            padding: 9px 14px;
+            border: 1px solid rgba(116,220,154,.28);
             border-radius: 999px;
-            background: rgba(42,163,111,.12);
-            color: #2aa36f;
+            background:
+                linear-gradient(140deg, rgba(116,220,154,.12), rgba(255,255,255,.02)),
+                rgba(10,10,10,.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #74dc9a;
+            font-family: 'Sora', Inter, sans-serif;
             font-size: 10px;
-            font-weight: 950;
-            letter-spacing: .12em;
+            font-weight: 600;
+            letter-spacing: .14em;
             text-transform: uppercase;
+        }
+        .demo-badge::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #74dc9a;
+            box-shadow: 0 0 10px rgba(116,220,154,.8);
         }
         .browser-mockup {
             max-width: 1000px;
             margin: 0 auto;
             overflow: hidden;
-            border: 1px solid rgba(197,160,74,.34);
-            border-radius: 12px;
-            background: #0b0b0b;
-            box-shadow: 0 0 0 1px rgba(255,255,255,.04), 0 26px 90px rgba(0,0,0,.48), 0 0 46px rgba(197,160,74,.12);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 26px;
+            background:
+                linear-gradient(150deg, rgba(255,255,255,.08), rgba(255,255,255,.02) 46%),
+                rgba(11,11,11,.72);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+            box-shadow:
+                0 50px 130px rgba(0,0,0,.62),
+                0 0 48px rgba(197,160,74,.1),
+                inset 0 1px 0 rgba(255,255,255,.1);
         }
         .browser-chrome {
             display: grid;
@@ -929,9 +1514,10 @@
             border: 1px solid rgba(255,255,255,.08);
             border-radius: 999px;
             background: rgba(0,0,0,.34);
-            color: rgba(245,240,223,.78);
+            color: rgba(245,240,223,.72);
+            font-family: 'Sora', Inter, sans-serif;
             font-size: 12px;
-            font-weight: 800;
+            font-weight: 500;
             letter-spacing: .02em;
             white-space: nowrap;
             overflow: hidden;
@@ -957,9 +1543,10 @@
         }
         .demo-note {
             margin-top: 14px;
-            color: rgba(245,240,223,.58);
+            color: rgba(245,240,223,.52);
+            font-family: 'Sora', Inter, sans-serif;
             font-size: 13px;
-            font-weight: 750;
+            font-weight: 400;
             text-align: center;
         }
         .fade-up {
@@ -1023,90 +1610,86 @@
         .simple-steps {
             position: relative;
             display: grid;
-            gap: 26px;
-            max-width: 1060px;
-            margin: 42px auto 0;
-            padding: 10px 0;
+            gap: 20px;
+            max-width: 860px;
+            margin: 48px auto 0;
+            padding: 0;
         }
         .simple-steps::before {
             content: "";
             position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 2px;
-            background: linear-gradient(180deg, transparent, var(--gold), transparent);
-            box-shadow: 0 0 24px rgba(197,160,74,.38);
-            transform: translateX(-50%);
+            top: 24px;
+            bottom: 24px;
+            left: 19px;
+            width: 1px;
+            background: linear-gradient(180deg, rgba(197,160,74,.45), rgba(197,160,74,.08));
+            pointer-events: none;
         }
         .simple-step-card {
             position: relative;
-            width: calc(50% - 44px);
-            padding: 24px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 18px;
+            align-items: start;
+            width: 100%;
+            padding: 22px 22px 22px 18px;
             border: 1px solid rgba(255,255,255,.08);
-            border-left: 3px solid var(--gold);
-            background: rgba(255,255,255,.025);
-            box-shadow: 0 22px 70px rgba(0,0,0,.24);
+            border-radius: 18px;
+            background:
+                linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.015)),
+                rgba(10,10,10,.52);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow:
+                0 24px 60px rgba(0,0,0,.34),
+                inset 0 1px 0 rgba(255,255,255,.06);
+            transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
         }
-        .simple-step-card:nth-child(odd) {
-            justify-self: start;
-        }
-        .simple-step-card:nth-child(even) {
-            justify-self: end;
+        .simple-step-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(197,160,74,.24);
+            box-shadow:
+                0 28px 70px rgba(0,0,0,.42),
+                0 0 28px rgba(197,160,74,.06);
         }
         .simple-step-card::before {
-            content: "";
-            position: absolute;
-            top: 30px;
-            width: 14px;
-            height: 14px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            background: var(--black);
-            box-shadow: 0 0 18px rgba(197,160,74,.55);
-        }
-        .simple-step-card:nth-child(odd)::before {
-            right: -53px;
-        }
-        .simple-step-card:nth-child(even)::before {
-            left: -53px;
-        }
-        .step-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
+            display: none;
         }
         .simple-number {
-            color: var(--gold);
-            font-size: 38px;
-            font-weight: 900;
-            letter-spacing: -.035em;
-        }
-        .simple-icon {
             display: grid;
             place-items: center;
-            width: 46px;
-            height: 46px;
-            border: 1px solid rgba(197,160,74,.42);
-            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            border: 1px solid rgba(197,160,74,.38);
+            border-radius: 12px;
             background: rgba(197,160,74,.08);
             color: var(--gold);
-            font-size: 20px;
-            font-weight: 900;
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            z-index: 1;
+        }
+        .simple-step-body {
+            min-width: 0;
         }
         .simple-step-card h3 {
-            margin-top: 20px;
+            margin: 0;
             color: var(--white);
-            font-size: 19px;
-            line-height: 1.1;
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            font-size: clamp(18px, 1.5vw, 22px);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -.02em;
+            text-transform: none;
         }
         .simple-step-card p {
-            margin-top: 12px;
+            margin-top: 10px;
             color: rgba(245,240,223,.62);
-            font-size: 13px;
-            line-height: 1.55;
-            font-weight: 650;
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 400;
         }
         .live-demo-card {
             padding: 24px;
@@ -1212,11 +1795,8 @@
             font-weight: 750;
         }
         .about {
-            background:
-                radial-gradient(circle at 22% 16%, rgba(197,160,74,.14), transparent 28%),
-                var(--black);
+            background: transparent;
             color: var(--white);
-            border-top: 1px solid var(--line);
         }
         .founder-wrap {
             max-width: 1120px;
@@ -1225,7 +1805,7 @@
         .founder-head {
             text-align: center;
         }
-        .founder-head .section-title {
+        .founder-head .premium-headline {
             max-width: 980px;
             margin: 0 auto;
         }
@@ -1240,25 +1820,32 @@
             border: 1px solid rgba(255,255,255,.08);
             border-top: 3px solid var(--gold);
             background:
-                radial-gradient(circle at 86% 0%, rgba(197,160,74,.12), transparent 34%),
-                #161616;
+                radial-gradient(circle at 86% 0%, rgba(197,160,74,.1), transparent 34%),
+                linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.012)),
+                rgba(10,10,10,.58);
+            backdrop-filter: blur(14px);
+            box-shadow:
+                0 24px 60px rgba(0,0,0,.28),
+                inset 0 1px 0 rgba(255,255,255,.05);
         }
         .founder-stat h3 {
             margin: 0;
             display: block;
             color: var(--white);
-            font-family: Oswald, Inter, sans-serif;
-            font-size: clamp(25px, 2.9vw, 40px);
-            line-height: .95;
-            letter-spacing: -.035em;
-            text-transform: uppercase;
+            font-family: 'Space Grotesk', Inter, sans-serif;
+            font-size: clamp(20px, 2vw, 26px);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -.02em;
+            text-transform: none;
         }
         .founder-stat p {
             margin-top: 14px;
-            color: rgba(255,255,255,.82);
-            font-size: 15px;
-            line-height: 1.55;
-            font-weight: 750;
+            color: rgba(245,240,223,.62);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 400;
         }
         .founder-cta {
             display: flex;
@@ -1268,33 +1855,53 @@
 
         .final {
             padding: 86px 0;
-            background: var(--gold);
-            color: var(--black);
+            background: transparent;
+            color: var(--white);
             text-align: center;
         }
-        .final h2 {
-            max-width: 820px;
+        .final-panel {
+            max-width: 920px;
             margin: 0 auto;
-            font-size: clamp(46px, 6vw, 86px);
-            line-height: .92;
-            letter-spacing: -.045em;
+            padding: clamp(42px, 5vw, 64px) clamp(28px, 4vw, 48px);
+            border: 1px solid rgba(197,160,74,.22);
+            border-radius: 26px;
+            background:
+                linear-gradient(150deg, rgba(255,255,255,.08), rgba(255,255,255,.02) 46%),
+                rgba(10,10,10,.58);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow:
+                0 40px 100px rgba(0,0,0,.48),
+                0 0 60px rgba(197,160,74,.08),
+                inset 0 1px 0 rgba(255,255,255,.08);
+        }
+        .final .premium-headline {
+            max-width: 760px;
+            margin: 0 auto;
         }
         .final p {
             max-width: 620px;
             margin: 18px auto 0;
-            font-size: 18px;
-            line-height: 1.45;
-            font-weight: 800;
+            color: rgba(245,240,223,.62);
+            font-family: 'Sora', Inter, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            font-weight: 400;
         }
         .final .btn { margin-top: 30px; }
 
         footer {
+            position: relative;
+            z-index: 1;
             padding: 28px 0;
-            border-top: 1px solid rgba(8,8,8,.1);
-            background: var(--white);
-            color: rgba(8,8,8,.58);
+            border-top: 1px solid rgba(255,255,255,.06);
+            background: rgba(4,4,4,.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: rgba(245,240,223,.42);
+            font-family: 'Sora', Inter, sans-serif;
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 400;
         }
         .footer-grid {
             display: flex;
@@ -1313,6 +1920,8 @@
             width: 152px;
             height: auto;
             display: block;
+            filter: brightness(0) invert(1);
+            opacity: .72;
         }
 
         @media (max-width: 980px) {
@@ -1325,33 +1934,34 @@
             .pilot-offer {
                 grid-template-columns: 1fr;
             }
-            .campaign-dashboard {
+            .hero-visual {
                 justify-self: stretch;
                 width: 100%;
+                margin-top: 12px;
                 transform: none;
+                animation: none;
+            }
+            .console { animation: none; }
+            .float-chip {
+                left: auto;
+                right: 12px;
+                top: -12px;
+                bottom: auto;
             }
             .hero-grid > div:first-child { transform: none; }
             .simple-steps {
-                grid-template-columns: 1fr;
-                padding-left: 30px;
+                padding-left: 0;
             }
             .simple-steps::before {
-                left: 8px;
+                left: 19px;
             }
-            .simple-step-card,
-            .simple-step-card:nth-child(odd),
-            .simple-step-card:nth-child(even) {
+            .simple-step-card {
                 width: 100%;
-                justify-self: stretch;
-            }
-            .simple-step-card:nth-child(odd)::before,
-            .simple-step-card:nth-child(even)::before {
-                left: -29px;
-                right: auto;
             }
             .athlete-site-grid { grid-template-columns: 1fr; }
             .hero { padding-top: 108px; }
             .comparison-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
             .browser-frame { height: 520px; }
             .pricing-grid,
             .stat-grid {
@@ -1365,7 +1975,13 @@
             .container { width: min(100% - 28px, 1180px); }
             .nav-inner { height: 66px; }
             .brand img { width: 128px; }
-            h1 { font-size: 54px; }
+            .hero-title { font-size: 56px; }
+            .console {
+                padding: 18px;
+                border-radius: 20px;
+            }
+            .flow-steps::before { display: none; }
+            .float-chip { display: none; }
             .proof-stats,
             .simple-steps,
             .pricing-grid,
@@ -1413,6 +2029,15 @@
     </style>
 </head>
 <body>
+    <div class="page-atmosphere" aria-hidden="true">
+        <div class="page-atmosphere__grid"></div>
+        <div class="page-atmosphere__noise"></div>
+        <div class="page-atmosphere__ambient"></div>
+        <div class="page-atmosphere__glow page-atmosphere__glow--a"></div>
+        <div class="page-atmosphere__glow page-atmosphere__glow--b"></div>
+        <div class="page-atmosphere__glow page-atmosphere__glow--c"></div>
+        <div class="page-atmosphere__vignette"></div>
+    </div>
     <div class="intro-overlay" aria-hidden="true">
         <img class="intro-logo" src="assets/intro-logo-3d.png" alt="">
     </div>
@@ -1424,7 +2049,7 @@
                 <a href="#about">About</a>
                 <a href="#live-example">See Example</a>
                 <a href="#what-you-get">What You Get</a>
-                <a class="btn" href="/start/">Start With Dropstep</a>
+                <a class="btn" href="/start/">Apply For Dropstep</a>
             </div>
             <button class="menu-btn" type="button" aria-label="Open menu">+</button>
         </div>
@@ -1434,7 +2059,7 @@
                 <a href="#about">About</a>
                 <a href="#live-example">See Example</a>
                 <a href="#what-you-get">What You Get</a>
-                <a href="/start/">Start With Dropstep</a>
+                <a href="/start/">Apply For Dropstep</a>
             </div>
         </div>
     </nav>
@@ -1443,90 +2068,165 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div>
-                    <h1 class="condensed"><span>Brand outreach</span><span>sucks.</span> Dropstep does it for you.</h1>
-                    <p class="hero-copy">Cold emailing brands, following up, getting ghosted — it's exhausting. Dropstep handles all of it automatically so you can focus on creating.</p>
+                    <h1 class="hero-title">
+                        <span class="line line-1"><span class="gold">The Team</span></span>
+                        <span class="line line-2"><span>You Never</span></span>
+                        <span class="line line-3"><span>Had.</span></span>
+                    </h1>
+                    <ul class="hero-checklist">
+                        <li class="hero-check">Your Own Professional Website</li>
+                        <li class="hero-check">100+ Brands Pitched for You Every Month</li>
+                        <li class="hero-check">Your Daily Work: Nothing at All</li>
+                    </ul>
                     <div class="hero-action">
-                        <a class="btn gold" href="/start/">Start With Dropstep</a>
+                        <a class="btn gold" href="/start/">Apply For Dropstep</a>
+                        <span class="hero-trust">No commission. Ever.</span>
                     </div>
                 </div>
 
-                <div class="campaign-dashboard" aria-label="Live outreach command center dashboard">
-                    <img src="assets/hero-dashboard.png" alt="Dropstep outreach dashboard showing pitch stats, brand replies, outreach log, and live activity">
+                <div class="hero-visual" aria-label="Dropstep working behind the scenes">
+                    <div class="hero-visual-glow" aria-hidden="true"></div>
+                    <div class="console">
+                        <div class="console-sheen" aria-hidden="true"></div>
+
+                        <div class="console-header">
+                            <span class="console-brand"><span class="console-pulse" aria-hidden="true"></span>Dropstep · Working Behind the Scenes</span>
+                        </div>
+
+                        <div class="flow-profile">
+                            <span class="flow-profile-icon" aria-hidden="true">✓</span>
+                            Athlete profile built
+                        </div>
+
+                        <div class="flow-steps">
+                            <div class="flow-card">
+                                <span class="flow-step">1</span>
+                                <div class="flow-card-body">
+                                    <strong>Website Ready</strong>
+                                    <span>A clean page brands can review</span>
+                                </div>
+                                <span class="flow-card-icon" aria-hidden="true">✓</span>
+                            </div>
+                            <div class="flow-card">
+                                <span class="flow-step">2</span>
+                                <div class="flow-card-body">
+                                    <strong>100+ Brands Pitched</strong>
+                                    <span>Matched to your sport, audience, and interests</span>
+                                </div>
+                                <span class="flow-card-icon" aria-hidden="true">✓</span>
+                            </div>
+                            <div class="flow-card">
+                                <span class="flow-step">3</span>
+                                <div class="flow-card-body">
+                                    <strong>Follow-Ups Handled</strong>
+                                    <span>We keep brands moving without you chasing</span>
+                                </div>
+                                <span class="flow-card-icon" aria-hidden="true">✓</span>
+                            </div>
+                        </div>
+
+                        <p class="flow-foot"><em>You step in</em> when a brand is interested.</p>
+                    </div>
+
+                    <div class="float-chip">
+                        <span class="float-chip-dot" aria-hidden="true"></span>
+                        New brand match
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section why-section" id="why-dropstep">
+            <div class="container">
+                <div class="why-intro fade-up">
+                    <span class="kicker">Why Dropstep</span>
+                    <h2 class="why-headline">If brands don't know you, <em>they can't pay you.</em></h2>
+                    <p class="why-copy">Most athletes are waiting for opportunities to come to them. Dropstep puts you in front of brands instead — with a professional website, 100+ monthly pitches, and follow-ups handled behind the scenes.</p>
+                </div>
+
+                <div class="why-grid">
+                    <article class="why-card fade-up">
+                        <span class="why-card-num">01</span>
+                        <h3>Look brand-ready</h3>
+                        <p>A professional website gives brands something clean to review.</p>
+                    </article>
+                    <article class="why-card fade-up">
+                        <span class="why-card-num">02</span>
+                        <h3>Get put in front of brands</h3>
+                        <p>We pitch 100+ companies every month that actually make sense for you.</p>
+                    </article>
+                    <article class="why-card fade-up">
+                        <span class="why-card-num">03</span>
+                        <h3>Stop chasing</h3>
+                        <p>We handle the emails and follow-ups until there's real interest.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
         <section class="section build-walkthrough" id="how-it-works">
             <div class="container">
-                <div class="walkthrough-intro">
-                    <span class="kicker">HOW IT WORKS</span>
-                    <h2 class="section-title condensed">FROM SIGN UP TO BRAND DEAL — HERE'S EVERY STEP.</h2>
+                <div class="walkthrough-intro fade-up">
+                    <span class="kicker">How It Works</span>
+                    <h2 class="premium-headline">From sign up to brand deal — <em>here's every step.</em></h2>
                 </div>
 
                 <div class="simple-steps">
-                    <article class="simple-step-card">
-                        <div class="step-top">
-                            <div class="simple-number">01</div>
-                            <div class="simple-icon" aria-hidden="true">🖱️</div>
+                    <article class="simple-step-card fade-up">
+                        <div class="simple-number">01</div>
+                        <div class="simple-step-body">
+                            <h3>Apply for Dropstep</h3>
+                            <p>Hit the button, pick the plan that's right for you, and check out. Takes 60 seconds.</p>
                         </div>
-                        <h3 class="condensed">CLICK 'START WITH DROPSTEP'</h3>
-                        <p>Hit the button, pick the plan that's right for you, and check out. Takes 60 seconds.</p>
                     </article>
-                    <article class="simple-step-card">
-                        <div class="step-top">
-                            <div class="simple-number">02</div>
-                            <div class="simple-icon" aria-hidden="true">📋</div>
+                    <article class="simple-step-card fade-up">
+                        <div class="simple-number">02</div>
+                        <div class="simple-step-body">
+                            <h3>Fill out your quick onboarding form</h3>
+                            <p>Tell us your name, what you create, your social handles, and the kinds of brands you want to work with.</p>
                         </div>
-                        <h3 class="condensed">FILL OUT YOUR QUICK ONBOARDING FORM</h3>
-                        <p>Tell us your name, what you create, your social handles, and the kinds of brands you want to work with.</p>
                     </article>
-                    <article class="simple-step-card">
-                        <div class="step-top">
-                            <div class="simple-number">03</div>
-                            <div class="simple-icon" aria-hidden="true">⏳</div>
+                    <article class="simple-step-card fade-up">
+                        <div class="simple-number">03</div>
+                        <div class="simple-step-body">
+                            <h3>Wait 48 hours</h3>
+                            <p>We get to work building everything. You don't have to do anything.</p>
                         </div>
-                        <h3 class="condensed">WAIT 48 HOURS</h3>
-                        <p>We get to work building everything. You don't have to do anything.</p>
                     </article>
-                    <article class="simple-step-card">
-                        <div class="step-top">
-                            <div class="simple-number">04</div>
-                            <div class="simple-icon" aria-hidden="true">🌐</div>
+                    <article class="simple-step-card fade-up">
+                        <div class="simple-number">04</div>
+                        <div class="simple-step-body">
+                            <h3>Your brand page goes live</h3>
+                            <p>You get an email with your personal brand page at yourname.dropstep.io and a login to your deal tracking dashboard.</p>
                         </div>
-                        <h3 class="condensed">YOUR BRAND PAGE GOES LIVE</h3>
-                        <p>You get an email with your personal brand page at yourname.dropstep.io and a login to your deal tracking dashboard.</p>
                     </article>
-                    <article class="simple-step-card">
-                        <div class="step-top">
-                            <div class="simple-number">05</div>
-                            <div class="simple-icon" aria-hidden="true">🔍</div>
+                    <article class="simple-step-card fade-up">
+                        <div class="simple-number">05</div>
+                        <div class="simple-step-body">
+                            <h3>We scan your profile</h3>
+                            <p>We analyze your content, audience, niche, and engagement to understand exactly what brands should be pitching you.</p>
                         </div>
-                        <h3 class="condensed">WE SCAN YOUR PROFILE</h3>
-                        <p>We analyze your content, audience, niche, and engagement to understand exactly what brands should be pitching you.</p>
                     </article>
-                    <article class="simple-step-card">
-                        <div class="step-top">
-                            <div class="simple-number">06</div>
-                            <div class="simple-icon" aria-hidden="true">🎯</div>
+                    <article class="simple-step-card fade-up">
+                        <div class="simple-number">06</div>
+                        <div class="simple-step-body">
+                            <h3>We find 100+ brands that fit you</h3>
+                            <p>We identify the right contact at each brand — usually their partnerships or marketing manager — and build your outreach list.</p>
                         </div>
-                        <h3 class="condensed">WE FIND 100+ BRANDS THAT FIT YOU</h3>
-                        <p>We identify the right contact at each brand — usually their partnerships or marketing manager — and build your outreach list.</p>
                     </article>
-                    <article class="simple-step-card">
-                        <div class="step-top">
-                            <div class="simple-number">07</div>
-                            <div class="simple-icon" aria-hidden="true">📨</div>
+                    <article class="simple-step-card fade-up">
+                        <div class="simple-number">07</div>
+                        <div class="simple-step-body">
+                            <h3>We send 100+ personalized emails</h3>
+                            <p>Every email is written specifically for you and the brand. If they don't reply, we follow up automatically 4 more times.</p>
                         </div>
-                        <h3 class="condensed">WE SEND 100+ PERSONALIZED EMAILS</h3>
-                        <p>Every email is written specifically for you and the brand. If they don't reply, we follow up automatically 4 more times.</p>
                     </article>
-                    <article class="simple-step-card">
-                        <div class="step-top">
-                            <div class="simple-number">08</div>
-                            <div class="simple-icon" aria-hidden="true">🤝</div>
+                    <article class="simple-step-card fade-up">
+                        <div class="simple-number">08</div>
+                        <div class="simple-step-body">
+                            <h3>Brand says yes — we loop you in</h3>
+                            <p>The moment a brand replies with interest, we forward you the conversation. You close the deal. We never take a cut of anything.</p>
                         </div>
-                        <h3 class="condensed">BRAND SAYS YES — WE LOOP YOU IN</h3>
-                        <p>The moment a brand replies with interest, we forward you the conversation. You close the deal. We never take a cut of anything.</p>
                     </article>
                 </div>
 
@@ -1535,31 +2235,34 @@
 
         <section class="section comparison-section" id="what-you-get">
             <div class="container">
-                <h2 class="section-title condensed comparison-title">Why creators switch to Dropstep.</h2>
+                <div class="section-intro comparison-title fade-up">
+                    <span class="kicker">What You Get</span>
+                    <h2 class="premium-headline">Why creators switch to <em>Dropstep.</em></h2>
+                </div>
                 <div class="comparison-grid">
-                    <article class="comparison-column old-way">
-                        <h3 class="condensed">The Old Way</h3>
+                    <article class="comparison-column old-way fade-up">
+                        <h3>The old way</h3>
                         <ul class="comparison-list">
-                            <li><span>❌</span><span>Manually emailing brands one at a time</span></li>
-                            <li><span>❌</span><span>Forgetting to follow up and losing the deal</span></li>
-                            <li><span>❌</span><span>Sending brands your Instagram link and hoping for the best</span></li>
-                            <li><span>❌</span><span>No idea who opened your pitch or what happens next</span></li>
-                            <li><span>❌</span><span>Spending hours on outreach instead of creating</span></li>
+                            <li><span>×</span><span>Manually emailing brands one at a time</span></li>
+                            <li><span>×</span><span>Forgetting to follow up and losing the deal</span></li>
+                            <li><span>×</span><span>Sending brands your Instagram link and hoping for the best</span></li>
+                            <li><span>×</span><span>No idea who opened your pitch or what happens next</span></li>
+                            <li><span>×</span><span>Spending hours on outreach instead of creating</span></li>
                         </ul>
                     </article>
-                    <article class="comparison-column dropstep-way">
-                        <h3 class="condensed">The Dropstep Way</h3>
+                    <article class="comparison-column dropstep-way fade-up">
+                        <h3>The Dropstep way</h3>
                         <ul class="comparison-list">
-                            <li><span>✅</span><span>100-300 personalized brand pitches sent every month automatically</span></li>
-                            <li><span>✅</span><span>Automatic follow ups on days 3, 7, 12, and 18</span></li>
-                            <li><span>✅</span><span>A professional brand page brands can actually click and review</span></li>
-                            <li><span>✅</span><span>Real-time dashboard showing every open, reply, and interested brand</span></li>
-                            <li><span>✅</span><span>You focus on creating — we handle everything else</span></li>
+                            <li><span>✓</span><span>100-300 personalized brand pitches sent every month automatically</span></li>
+                            <li><span>✓</span><span>Automatic follow ups on days 3, 7, 12, and 18</span></li>
+                            <li><span>✓</span><span>A professional brand page brands can actually click and review</span></li>
+                            <li><span>✓</span><span>Real-time dashboard showing every open, reply, and interested brand</span></li>
+                            <li><span>✓</span><span>You focus on creating — we handle everything else</span></li>
                         </ul>
                     </article>
                 </div>
-                <div class="comparison-cta">
-                    <a class="btn gold" href="/start/">Start With Dropstep →</a>
+                <div class="comparison-cta fade-up">
+                    <a class="btn gold" href="/start/">Apply For Dropstep →</a>
                 </div>
             </div>
         </section>
@@ -1568,7 +2271,7 @@
             <div class="container">
                 <div class="live-example-copy fade-up">
                     <span class="kicker">See What You Get</span>
-                    <h2 class="section-title condensed">This is your brand page.</h2>
+                    <h2 class="premium-headline">This is <em>your brand page.</em></h2>
                     <div class="live-example-subhead">Built, live, and pitching brands in 48 hours.</div>
                     <p>Every Dropstep client gets a professional brand page like this one — built for you, ready to send to any brand in the world.</p>
                 </div>
@@ -1595,7 +2298,7 @@
                 </div>
 
                 <div class="live-example-cta fade-up">
-                    <a class="btn gold" href="/start/">Start With Dropstep</a>
+                    <a class="btn gold" href="/start/">Apply For Dropstep</a>
                     <a class="btn" href="https://billyburns.dropstep.io/" target="_blank" rel="noopener">View Full Demo →</a>
                 </div>
                 <p class="demo-note fade-up">Your page is built for you — no design work needed.</p>
@@ -1604,37 +2307,38 @@
 
         <section class="section about" id="about">
             <div class="container founder-wrap">
-                <div class="founder-head">
-                    <h2 class="section-title condensed">Every day without Dropstep is a brand deal you didn't get.</h2>
+                <div class="founder-head fade-up">
+                    <span class="kicker">The Cost of Waiting</span>
+                    <h2 class="premium-headline">Every day without Dropstep is a <em>brand deal you didn't get.</em></h2>
                 </div>
                 <div class="founder-stats">
-                    <article class="founder-stat">
+                    <article class="founder-stat fade-up">
                         <h3>Brands can't pay you if they don't know you exist.</h3>
                         <p>Most creators never pitch a single brand. They wait. Waiting doesn't pay.</p>
                     </article>
-                    <article class="founder-stat">
+                    <article class="founder-stat fade-up">
                         <h3>Deals go to whoever shows up first.</h3>
                         <p>Not the most talented. Not the most followed. The one who reached out.</p>
                     </article>
-                    <article class="founder-stat">
+                    <article class="founder-stat fade-up">
                         <h3>Your agent closes deals. We find them.</h3>
                         <p>Dropstep works alongside your agent or manager — we handle outreach, they handle closing. More leads for everyone.</p>
                     </article>
-                    <article class="founder-stat">
+                    <article class="founder-stat fade-up">
                         <h3>Other tools make you wait for brands to find you.</h3>
                         <p>We go out and find them for you. 100-300 personalized pitches every month, automatically.</p>
                     </article>
                 </div>
-                <div class="founder-cta">
-                    <a class="btn gold" href="/start/">Start With Dropstep →</a>
+                <div class="founder-cta fade-up">
+                    <a class="btn gold" href="/start/">Apply For Dropstep →</a>
                 </div>
             </div>
         </section>
 
         <section class="final">
-            <div class="container">
-                <h2 class="condensed">Ready to turn your audience into brand deals?</h2>
-                <a class="btn black" href="/start/">Start With Dropstep</a>
+            <div class="container final-panel fade-up">
+                <h2 class="premium-headline">Ready to turn your audience into <em>brand deals?</em></h2>
+                <a class="btn gold" href="/start/">Apply For Dropstep</a>
             </div>
         </section>
     </main>
@@ -1677,6 +2381,54 @@
             fadeItems.forEach((item) => item.classList.add('is-visible'));
         }
 
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const counters = document.querySelectorAll('[data-count]');
+        const runCounter = (el) => {
+            const target = parseFloat(el.dataset.count || '0');
+            const suffix = el.dataset.suffix || '';
+            if (prefersReducedMotion || target === 0) {
+                el.textContent = target + suffix;
+                return;
+            }
+            const duration = 1100;
+            const startTime = performance.now();
+            const step = (now) => {
+                const progress = Math.min((now - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.round(target * eased) + suffix;
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.textContent = target + suffix;
+                }
+            };
+            requestAnimationFrame(step);
+        };
+        counters.forEach((el) => setTimeout(() => runCounter(el), 520));
+
+        const heroVisual = document.querySelector('.hero-visual');
+        const heroSection = document.querySelector('.hero');
+        const canParallax = heroVisual && heroSection && !prefersReducedMotion
+            && window.matchMedia('(pointer: fine)').matches;
+        if (canParallax) {
+            let frame = null;
+            heroSection.addEventListener('mousemove', (event) => {
+                if (frame) return;
+                frame = requestAnimationFrame(() => {
+                    const rect = heroSection.getBoundingClientRect();
+                    const relX = (event.clientX - rect.left) / rect.width - 0.5;
+                    const relY = (event.clientY - rect.top) / rect.height - 0.5;
+                    heroVisual.style.setProperty('--px', (relX * 18).toFixed(1) + 'px');
+                    heroVisual.style.setProperty('--py', (relY * 18).toFixed(1) + 'px');
+                    frame = null;
+                });
+            });
+            heroSection.addEventListener('mouseleave', () => {
+                heroVisual.style.setProperty('--px', '0px');
+                heroVisual.style.setProperty('--py', '0px');
+            });
+        }
     </script>
 </body>
 </html>
