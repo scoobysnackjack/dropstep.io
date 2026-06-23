@@ -112,26 +112,43 @@
             justify-content: space-between;
         }
         .brand {
-            position: relative;
             display: inline-flex;
-            overflow: hidden;
-            animation: logoIntro .42s ease-out both;
-        }
-        .brand::after {
-            content: "";
-            position: absolute;
-            inset: -30% -55%;
-            background: linear-gradient(105deg, transparent 38%, rgba(197,160,74,.72) 50%, transparent 62%);
-            transform: translateX(-70%);
-            animation: logoGoldSweep .5s ease-out .34s both;
-            pointer-events: none;
         }
         .brand img {
             width: 166px;
             height: auto;
             display: block;
         }
-        @keyframes logoIntro {
+        .intro-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 44%, rgba(245,215,138,.96), rgba(197,160,74,.62) 26%, rgba(8,8,8,.96) 66%),
+                linear-gradient(135deg, #050505, #18130a 46%, #050505);
+            pointer-events: none;
+            animation: introExit .22s ease-out .78s both;
+        }
+        .intro-overlay::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 38%, rgba(255,236,174,.42) 50%, transparent 62%);
+            transform: translateX(-90%);
+            animation: introSweep .44s ease-out .28s both;
+        }
+        .intro-logo {
+            position: relative;
+            z-index: 1;
+            width: min(430px, 74vw);
+            height: auto;
+            filter: drop-shadow(0 28px 44px rgba(0,0,0,.4));
+            animation: introLogo .58s cubic-bezier(.2,.9,.22,1) both;
+        }
+        @keyframes introLogo {
             from {
                 opacity: 0;
                 transform: scale(.96);
@@ -141,10 +158,10 @@
                 transform: scale(1);
             }
         }
-        @keyframes logoGoldSweep {
+        @keyframes introSweep {
             from {
                 opacity: 0;
-                transform: translateX(-70%);
+                transform: translateX(-90%);
             }
             30%,
             70% {
@@ -152,15 +169,17 @@
             }
             to {
                 opacity: 0;
-                transform: translateX(70%);
+                transform: translateX(90%);
+            }
+        }
+        @keyframes introExit {
+            to {
+                opacity: 0;
+                visibility: hidden;
             }
         }
         @media (prefers-reduced-motion: reduce) {
-            .brand,
-            .brand::after {
-                animation: none;
-            }
-            .brand::after {
+            .intro-overlay {
                 display: none;
             }
         }
@@ -1394,6 +1413,9 @@
     </style>
 </head>
 <body>
+    <div class="intro-overlay" aria-hidden="true">
+        <img class="intro-logo" src="assets/intro-logo-3d.png" alt="">
+    </div>
     <nav class="nav">
         <div class="container nav-inner">
             <a class="brand" href="#" aria-label="Dropstep home"><img src="assets/logo.png" alt="Dropstep"></a>
