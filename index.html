@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Dropstep | Brand Management for Agencies, Athletes, Creators & Influencers</title>
     <meta name="description" content="Dropstep runs brand outreach, talent websites, follow-up, content calendars, and deal tracking for agencies, athletes, creators, and influencers.">
     <link rel="canonical" href="https://dropstep.io/">
@@ -35,10 +35,17 @@
             --white: #FFFFFF;
             --muted: rgba(245,240,223,.68);
             --line: rgba(255,255,255,.08);
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --page-pad: 20px;
         }
 
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
         body {
             margin: 0;
             min-height: 100vh;
@@ -49,6 +56,10 @@
             font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body.has-mobile-cta {
+            padding-bottom: calc(76px + var(--safe-bottom));
         }
         main {
             position: relative;
@@ -163,6 +174,7 @@
             font-weight: 900;
             letter-spacing: .04em;
             text-transform: uppercase;
+            touch-action: manipulation;
             transition: transform .16s ease, background .16s ease, border-color .16s ease;
         }
         .btn:hover {
@@ -206,9 +218,11 @@
             position: fixed;
             inset: 0 0 auto 0;
             z-index: 20;
+            padding-top: var(--safe-top);
             background: rgba(255,255,255,.92);
             border-bottom: 1px solid rgba(8,8,8,.1);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
         .nav-inner {
             height: 72px;
@@ -306,28 +320,66 @@
         }
         .menu-btn {
             display: none;
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             border: 1px solid rgba(8,8,8,.14);
             border-radius: 10px;
             background: rgba(8,8,8,.06);
             color: var(--black);
             font-weight: 900;
+            touch-action: manipulation;
         }
         .mobile-menu {
             display: none;
-            padding: 10px 0 20px;
+            padding: 8px 0 calc(16px + var(--safe-bottom));
             border-top: 1px solid rgba(8,8,8,.1);
             background: var(--white);
         }
         .mobile-menu.open { display: block; }
         .mobile-menu a {
-            display: block;
-            padding: 13px 0;
+            display: flex;
+            align-items: center;
+            min-height: 48px;
+            padding: 12px 0;
             color: rgba(8,8,8,.78);
             font-size: 12px;
             font-weight: 900;
             text-transform: uppercase;
+            touch-action: manipulation;
+        }
+        .mobile-menu a.menu-cta {
+            justify-content: center;
+            min-height: 52px;
+            margin-top: 8px;
+            padding: 14px 18px;
+            border-radius: 999px;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .mobile-cta-bar {
+            display: none;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 19;
+            padding: 10px var(--page-pad) calc(10px + var(--safe-bottom));
+            border-top: 1px solid rgba(255,255,255,.08);
+            background: rgba(4,4,4,.9);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transform: translate3d(0, 110%, 0);
+            transition: transform .24s ease;
+            pointer-events: none;
+        }
+        .mobile-cta-bar.is-visible {
+            transform: translate3d(0, 0, 0);
+            pointer-events: auto;
+        }
+        .mobile-cta-bar .btn {
+            width: 100%;
+            min-height: 52px;
         }
 
         .hero {
@@ -1925,8 +1977,14 @@
         }
 
         @media (max-width: 980px) {
+            :root { --page-pad: 18px; }
+
             .nav-links { display: none; }
             .menu-btn { display: block; }
+
+            .hero {
+                padding: calc(96px + var(--safe-top)) 0 72px;
+            }
             .hero-grid,
             .walk-step,
             .section-head,
@@ -1934,97 +1992,308 @@
             .pilot-offer {
                 grid-template-columns: 1fr;
             }
+            .hero-grid {
+                width: 100%;
+                gap: 28px;
+            }
             .hero-visual {
                 justify-self: stretch;
                 width: 100%;
-                margin-top: 12px;
-                transform: none;
+                margin-top: 8px;
+                transform: none !important;
                 animation: none;
             }
             .console { animation: none; }
             .float-chip {
                 left: auto;
-                right: 12px;
-                top: -12px;
+                right: 10px;
+                top: -10px;
                 bottom: auto;
             }
             .hero-grid > div:first-child { transform: none; }
+            .hero-action {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 14px;
+            }
+            .hero-trust {
+                justify-content: center;
+            }
+            .walkthrough-intro {
+                margin-bottom: 40px;
+            }
             .simple-steps {
+                gap: 14px;
+                margin-top: 32px;
                 padding-left: 0;
             }
-            .simple-steps::before {
-                left: 19px;
-            }
+            .simple-steps::before { display: none; }
             .simple-step-card {
                 width: 100%;
+                padding: 18px;
             }
             .athlete-site-grid { grid-template-columns: 1fr; }
-            .hero { padding-top: 108px; }
             .comparison-grid { grid-template-columns: 1fr; }
-            .why-grid { grid-template-columns: 1fr; }
-            .browser-frame { height: 520px; }
+            .why-grid { grid-template-columns: 1fr; gap: 12px; }
+            .browser-frame { height: min(56vw, 420px); min-height: 300px; }
+            .browser-mockup { border-radius: 20px; }
             .pricing-grid,
             .stat-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .athlete-preview { grid-template-columns: 1fr; }
             .athlete-panel { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+            .live-example-cta,
+            .comparison-cta,
+            .founder-cta {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .live-example-cta .btn,
+            .comparison-cta .btn,
+            .founder-cta .btn {
+                width: 100%;
+            }
+            main > section:not(.hero) {
+                content-visibility: auto;
+                contain-intrinsic-size: auto 640px;
+            }
         }
 
         @media (max-width: 640px) {
+            :root { --page-pad: 14px; }
+
             .container { width: min(100% - 28px, 1180px); }
-            .nav-inner { height: 66px; }
-            .brand img { width: 128px; }
-            .hero-title { font-size: 56px; }
+            .nav-inner { height: 64px; }
+            .brand img { width: 122px; }
+
+            .mobile-cta-bar { display: block; }
+
+            .page-atmosphere__ambient,
+            .page-atmosphere__glow {
+                animation: none !important;
+            }
+            .page-atmosphere__glow {
+                filter: blur(64px);
+                opacity: .72;
+            }
+            .page-atmosphere__noise { opacity: .028; }
+
+            .hero {
+                padding: calc(88px + var(--safe-top)) 0 52px;
+            }
+            .hero-title {
+                max-width: none;
+                font-size: clamp(44px, 11.8vw, 56px);
+                line-height: .9;
+            }
+            .hero-checklist {
+                gap: 10px;
+                margin-top: 22px;
+            }
+            .hero-check {
+                gap: 12px;
+                padding: 12px 0;
+                font-size: 14px;
+            }
+            .hero-check::after { font-size: 14px; }
+
             .console {
-                padding: 18px;
-                border-radius: 20px;
+                padding: 16px;
+                border-radius: 18px;
+                box-shadow: 0 28px 70px rgba(0,0,0,.48);
+            }
+            .console-brand {
+                font-size: 11px;
+                line-height: 1.35;
+            }
+            .flow-profile {
+                margin-top: 14px;
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+            .flow-steps {
+                gap: 10px;
+                margin-top: 14px;
             }
             .flow-steps::before { display: none; }
+            .flow-card {
+                gap: 10px;
+                padding: 12px;
+                border-radius: 14px;
+            }
+            .flow-step {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+                border-radius: 9px;
+            }
+            .flow-card-body strong { font-size: 14px; }
+            .flow-card-body span { font-size: 11px; margin-top: 4px; }
+            .flow-foot {
+                margin-top: 14px;
+                padding-top: 14px;
+                font-size: 12px;
+            }
             .float-chip { display: none; }
+
+            .section { padding: 52px 0; }
+            .premium-headline,
+            .why-headline {
+                font-size: clamp(30px, 8.2vw, 40px);
+                line-height: 1.06;
+            }
+            .premium-copy,
+            .why-copy {
+                margin-top: 16px;
+                font-size: 15px;
+                line-height: 1.65;
+            }
+            .why-grid { margin-top: 32px; }
+            .why-card,
+            .founder-stat,
+            .comparison-column,
+            .simple-step-card,
+            .final-panel {
+                padding: 20px 18px;
+                border-radius: 16px;
+            }
+            .why-card h3,
+            .founder-stat h3,
+            .simple-step-card h3 {
+                font-size: 18px;
+            }
+            .walkthrough-intro { margin-bottom: 28px; }
+            .simple-steps { gap: 12px; margin-top: 24px; }
+            .simple-number {
+                width: 34px;
+                height: 34px;
+                font-size: 13px;
+            }
+            .simple-step-card {
+                gap: 14px;
+            }
+            .simple-step-card p,
+            .why-card p,
+            .founder-stat p,
+            .comparison-list li {
+                font-size: 13px;
+            }
+
+            .comparison-title { margin-bottom: 28px; }
+            .comparison-grid { gap: 12px; }
+            .comparison-column h3 { font-size: 20px; margin-bottom: 16px; }
+
+            .live-example-copy { margin-bottom: 20px; }
+            .live-example-subhead { font-size: 15px; }
+            .browser-chrome {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                padding: 10px 12px;
+            }
+            .browser-dots { justify-content: center; }
+            .browser-url { font-size: 11px; padding: 8px 12px; }
+            .browser-frame {
+                height: min(62vw, 340px);
+                min-height: 240px;
+            }
+            .browser-mockup {
+                border-radius: 18px;
+                box-shadow: 0 24px 70px rgba(0,0,0,.42);
+            }
+            .demo-note { font-size: 12px; }
+
+            .final { padding: 52px 0; }
+            .final-panel {
+                padding: 28px 20px;
+                border-radius: 20px;
+            }
+            .final .btn { margin-top: 22px; }
+
+            .footer-grid {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+            footer {
+                padding: 24px 0 calc(24px + var(--safe-bottom));
+                font-size: 10px;
+                line-height: 1.5;
+            }
+            .footer-brand { width: 140px; height: 36px; }
+            .footer-brand img { width: 128px; }
+
+            .btn { width: 100%; min-height: 52px; }
+            .btn.gold { min-height: 54px; }
+
+            .console,
+            .why-card,
+            .founder-stat,
+            .comparison-column,
+            .simple-step-card,
+            .final-panel,
+            .browser-mockup,
+            .float-chip {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
             .proof-stats,
             .simple-steps,
             .pricing-grid,
             .stat-grid {
                 grid-template-columns: 1fr;
             }
-            .btn { width: 100%; }
-            .live-example-copy { margin-bottom: 24px; }
-            .browser-chrome {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            .browser-dots { justify-content: center; }
-            .browser-frame { height: 480px; }
-            .athlete-info h3 { font-size: 38px; }
-            .athlete-metrics { grid-template-columns: 1fr; }
-            .section { padding: 64px 0; }
-            .section-title { font-size: 43px; }
+            .section-title { font-size: 38px; }
             .vertical-steps { padding-left: 0; }
             .vertical-steps::before { display: none; }
-            .work-step { grid-template-columns: 1fr; gap: 10px; }
+            .work-step { grid-template-columns: 1fr; gap: 10px; padding: 18px; }
             .walk-step,
-            .walk-step.featured {
-                padding: 24px;
-            }
+            .walk-step.featured { padding: 20px; }
             .match-row,
-            .deal-row {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
+            .deal-row { grid-template-columns: 1fr; gap: 8px; }
             .outreach-table-head,
-            .outreach-row {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
+            .outreach-row { grid-template-columns: 1fr 1fr; gap: 8px; }
             .outreach-table-head span:nth-child(3),
             .outreach-table-head span:nth-child(4),
             .outreach-row span:nth-child(3),
-            .outreach-row span:nth-child(4) {
-                grid-column: 1 / -1;
+            .outreach-row span:nth-child(4) { grid-column: 1 / -1; }
+            .pilot-offer { padding: 20px; }
+        }
+
+        @media (max-width: 390px) {
+            .hero-title { font-size: clamp(40px, 11vw, 48px); }
+            .hero-check { font-size: 13px; }
+            .premium-headline,
+            .why-headline { font-size: clamp(28px, 8vw, 34px); }
+            .flow-card {
+                grid-template-columns: auto 1fr;
             }
-            .pilot-offer { padding: 24px; }
-            .footer-grid { flex-direction: column; align-items: flex-start; }
+            .flow-card-icon {
+                grid-column: 2;
+                justify-self: end;
+                align-self: start;
+            }
+            .browser-frame {
+                height: min(68vw, 300px);
+                min-height: 220px;
+            }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .btn:hover,
+            .why-card:hover,
+            .comparison-column:hover,
+            .simple-step-card:hover,
+            .flow-card:hover {
+                transform: none;
+            }
+            .hero-action .btn.gold:hover,
+            .btn.gold:hover {
+                transform: none;
+                filter: none;
+            }
         }
     </style>
 </head>
@@ -2059,7 +2328,7 @@
                 <a href="#about">About</a>
                 <a href="#live-example">See Example</a>
                 <a href="#what-you-get">What You Get</a>
-                <a href="/start/">Apply For Dropstep</a>
+                <a href="/start/" class="menu-cta">Apply For Dropstep</a>
             </div>
         </div>
     </nav>
@@ -2351,6 +2620,10 @@
         </div>
     </footer>
 
+    <div class="mobile-cta-bar" aria-hidden="true">
+        <a class="btn gold" href="/start/">Apply For Dropstep</a>
+    </div>
+
     <script>
         const button = document.querySelector('.menu-btn');
         const menu = document.querySelector('.mobile-menu');
@@ -2365,8 +2638,38 @@
             });
         });
 
+        const mobileCtaBar = document.querySelector('.mobile-cta-bar');
+        const heroSection = document.querySelector('.hero');
+        const footerEl = document.querySelector('footer');
+        const mobileCtaQuery = window.matchMedia('(max-width: 640px)');
+
+        const updateMobileCta = () => {
+            if (!mobileCtaBar || !mobileCtaQuery.matches || !heroSection || !footerEl) {
+                mobileCtaBar?.classList.remove('is-visible');
+                document.body.classList.remove('has-mobile-cta');
+                mobileCtaBar?.setAttribute('aria-hidden', 'true');
+                return;
+            }
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            const footerTop = footerEl.getBoundingClientRect().top;
+            const show = heroBottom < 24 && footerTop > window.innerHeight * 0.92;
+            mobileCtaBar.classList.toggle('is-visible', show);
+            document.body.classList.toggle('has-mobile-cta', show);
+            mobileCtaBar.setAttribute('aria-hidden', show ? 'false' : 'true');
+        };
+
+        window.addEventListener('scroll', updateMobileCta, { passive: true });
+        window.addEventListener('resize', updateMobileCta);
+        if (typeof mobileCtaQuery.addEventListener === 'function') {
+            mobileCtaQuery.addEventListener('change', updateMobileCta);
+        } else if (typeof mobileCtaQuery.addListener === 'function') {
+            mobileCtaQuery.addListener(updateMobileCta);
+        }
+        updateMobileCta();
+
         const fadeItems = document.querySelectorAll('.fade-up');
         if ('IntersectionObserver' in window) {
+            const fadeThreshold = window.matchMedia('(max-width: 640px)').matches ? 0.08 : 0.18;
             const fadeObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -2374,7 +2677,7 @@
                         fadeObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.18 });
+            }, { threshold: fadeThreshold });
 
             fadeItems.forEach((item) => fadeObserver.observe(item));
         } else {
@@ -2408,7 +2711,6 @@
         counters.forEach((el) => setTimeout(() => runCounter(el), 520));
 
         const heroVisual = document.querySelector('.hero-visual');
-        const heroSection = document.querySelector('.hero');
         const canParallax = heroVisual && heroSection && !prefersReducedMotion
             && window.matchMedia('(pointer: fine)').matches;
         if (canParallax) {
