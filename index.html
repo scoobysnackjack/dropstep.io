@@ -111,10 +111,58 @@
             align-items: center;
             justify-content: space-between;
         }
+        .brand {
+            position: relative;
+            display: inline-flex;
+            overflow: hidden;
+            animation: logoIntro .42s ease-out both;
+        }
+        .brand::after {
+            content: "";
+            position: absolute;
+            inset: -30% -55%;
+            background: linear-gradient(105deg, transparent 38%, rgba(197,160,74,.72) 50%, transparent 62%);
+            transform: translateX(-70%);
+            animation: logoGoldSweep .5s ease-out .34s both;
+            pointer-events: none;
+        }
         .brand img {
             width: 166px;
             height: auto;
             display: block;
+        }
+        @keyframes logoIntro {
+            from {
+                opacity: 0;
+                transform: scale(.96);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes logoGoldSweep {
+            from {
+                opacity: 0;
+                transform: translateX(-70%);
+            }
+            30%,
+            70% {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+                transform: translateX(70%);
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .brand,
+            .brand::after {
+                animation: none;
+            }
+            .brand::after {
+                display: none;
+            }
         }
         .nav-links {
             display: flex;
