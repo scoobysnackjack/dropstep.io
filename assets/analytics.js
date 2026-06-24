@@ -4,7 +4,7 @@
     if (window.__dropstepGaInit) return;
     window.__dropstepGaInit = true;
 
-    var GA_ID = 'G-M2HP0SG0LB';
+    var GA_ID = 'G-GTJCTDYHMK';
     var isProduction = /^(www\.)?dropstep\.io$/i.test(window.location.hostname);
 
     if (!isProduction) return;
